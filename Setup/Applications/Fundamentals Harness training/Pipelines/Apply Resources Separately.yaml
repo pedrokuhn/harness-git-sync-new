@@ -1,0 +1,17 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Execute Apply Secret Workflow
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE Apply Secret
+  workflowName: Workflow to apply secret
+- type: ENV_STATE
+  name: Execute Apply Deployment Workflow
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE Apply Deployment
+  workflowName: Workflow to apply deployment

@@ -1,0 +1,19 @@
+environment: dev
+flinkVersion: "1.11"
+jarName: "tee.jar"
+
+securityContext:
+  fsGroup: 9999
+
+namespace: ${infra.kubernetes.namespace}
+
+image:
+  repository: registry.hub.docker.com/aihumn/telematics-event-enrichment
+  pullPolicy: Always
+  tag: 1.0
+
+imagePullSecrets:
+  - name: infrasvc-dockercfg
+
+nodeSelector:
+  role: flink-jobs

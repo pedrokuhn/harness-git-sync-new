@@ -1,0 +1,18 @@
+harnessApiVersion: '1.0'
+type: STACK_DRIVER_LOG
+alertEnabled: false
+alertPriority: P5
+alertThreshold: 0.5
+baselineEndMinute: 27133620
+baselineStartMinute: 27133546
+connectorName: Google Cloud Platform GCS
+enabled24x7: true
+hostnameField: resource.labels.pod_name
+isLogsConfiguration: true
+messageField: textPayload
+numOfOccurrencesForAlert: 1
+query: |-
+  resource.type="k8s_container"
+  resource.labels.cluster_name="pedro-k8s-lab-cluster"
+  resource.labels.namespace_name="pedro-prod"
+serviceName: webfrontend

@@ -1,0 +1,19 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  annotations:
+    harness.io/managed: true
+  name: {{.Values.name}}-destinationrule
+spec:
+  host: {{.Values.name}}-svc
+  subsets:
+    - labels:
+        harness.io/track: canary
+      name: canary
+    - labels:
+        harness.io/track: stable
+      name: stable
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM

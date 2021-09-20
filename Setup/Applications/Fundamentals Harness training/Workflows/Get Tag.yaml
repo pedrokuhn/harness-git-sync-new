@@ -1,0 +1,81 @@
+harnessApiVersion: '1.0'
+type: BUILD
+notificationRules:
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupNames:
+  - Account Administrator
+phases:
+- daemonSet: false
+  name: Phase 1
+  phaseSteps:
+  - type: PREPARE_STEPS
+    name: Prepare Steps
+    steps:
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        outputVars: tag
+        publishAsVar: true
+        scriptString: |-
+          ##################################
+          ####### Logic to get the tag value #######
+          ##################################
+
+          echo "ref ---- ${ref}"
+          echo "after ---- ${after}"
+
+          tag="latest"
+          export tag
+        scriptType: BASH
+        secretOutputVars: ''
+        sshKeyRefName: null
+        sweepingOutputName: tag
+        sweepingOutputScope: PIPELINE
+        templateExpressions: null
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        timeoutMillis: 60000
+    stepsInParallel: false
+  - type: COLLECT_ARTIFACT
+    name: Collect Artifact
+    steps:
+    - type: ARTIFACT_COLLECTION
+      name: Artifact Collection
+      properties:
+        artifactStreamName: packages
+        buildNo: helm-source-harness-develop.zip
+        entityType: SERVICE
+        regex: false
+        serviceName: Service Test Security Shell
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        timeoutMillis: 300000
+    - type: ARTIFACT_COLLECTION
+      name: Artifact Collection_2
+      properties:
+        artifactStreamName: package-2
+        buildNo: helm-source-harness-master.zip
+        entityType: SERVICE
+        regex: false
+        serviceName: Service Test Security Shell-New
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        timeoutMillis: 300000
+    stepsInParallel: true
+  - type: WRAP_UP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  statefulSet: false
+templatized: false

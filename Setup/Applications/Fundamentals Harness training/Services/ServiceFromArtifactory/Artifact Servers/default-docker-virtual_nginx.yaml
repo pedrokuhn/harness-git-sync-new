@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: ARTIFACTORY
+dockerRepositoryServer: pedroharnesstest.jfrog.io
+imageName: nginx
+metadataOnly: true
+repositoryName: default-docker-virtual
+repositoryType: docker
+serverName: tst
+useDockerFormat: false

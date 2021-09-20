@@ -1,0 +1,6 @@
+harnessApiVersion: '1.0'
+type: AMAZON_S3
+artifactPaths:
+- '*.zip'
+bucketName: cs-pedro-artifact
+serverName: Amazon Web Services

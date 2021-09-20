@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: {{ .Values.path1 }}
+          backend:
+            serviceName: foo
+            servicePort: 8080
+        - path: {{ .Values.path2 }}
+          backend:
+            serviceName: bar
+            servicePort: 8080

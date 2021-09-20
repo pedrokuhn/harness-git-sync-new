@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+gitFileConfig:
+  branch: master
+  connectorName: basic-helm-chart
+  useBranch: true
+  useInlineServiceDefinition: false
+storeType: HelmSourceRepo

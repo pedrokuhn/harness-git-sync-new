@@ -1,0 +1,26 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Rollback Verification
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Rollback Approval
+- type: ENV_STATE
+  name: Deploy to prod
+  parallel: false
+  skipCondition:
+    expression: ${deploy_info.approvalStatus}=="REJECTED"
+    type: CONDITIONAL_SKIP
+  stageName: STAGE 2
+  workflowName: nginx_deploy_training-to-production
+- type: ENV_STATE
+  name: Rollback Workflow
+  parallel: false
+  skipCondition:
+    expression: ${deploy_info.approvalStatus}=="SUCCESS"
+    type: CONDITIONAL_SKIP
+  stageName: STAGE 3
+  workflowName: Rollback Deploy

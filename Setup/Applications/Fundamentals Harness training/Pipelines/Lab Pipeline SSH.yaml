@@ -1,0 +1,31 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Get Tag
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Get Tag
+- type: ENV_STATE
+  name: Lab SSH AWS
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Lab SSH AWS
+- type: ENV_STATE
+  name: nginx_deploy_training-to-staging
+  parallel: false
+  skipCondition:
+    type: ALWAYS_SKIP
+  stageName: STAGE 3
+  workflowName: nginx_deploy_training-to-staging
+- type: ENV_STATE
+  name: SSH New Rolling
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 5
+  workflowName: SSH New Rolling

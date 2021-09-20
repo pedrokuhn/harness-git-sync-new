@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+helmChartConfig:
+  chartName: jenkins
+  chartVersion: '1'
+  connectorName: Artifact Server
+skipVersioningForAllK8sObjects: false
+storeType: HelmChartRepo
