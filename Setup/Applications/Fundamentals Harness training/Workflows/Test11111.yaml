@@ -41,13 +41,15 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: KUBECONFIG=${KUBECONFIG_PATH} /opt/harness-delegate/client-tools/helm/v3.1.2/helm
+        scriptString: KUBECONFIG=${KUBECONFIG_PATH} /opt/harness-delegate/client-tools/helm/v3.1.2/helm list
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: HELM_DEPLOY
       name: Helm Deploy
