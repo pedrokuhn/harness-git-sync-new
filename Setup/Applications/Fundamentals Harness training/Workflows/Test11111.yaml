@@ -35,6 +35,24 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        includeInfraSelectors: true
+        outputVars: ''
+        publishAsVar: false
+        scriptString: KUBECONFIG=${KUBECONFIG_PATH} /opt/harness-delegate/client-tools/helm/v3.1.2/helm
+        scriptType: BASH
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: VERIFY_SERVICE
     name: Verify Service
