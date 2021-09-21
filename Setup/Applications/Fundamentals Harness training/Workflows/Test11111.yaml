@@ -25,11 +25,6 @@ phases:
   phaseSteps:
   - type: HELM_DEPLOY
     name: Deploy Containers
-    stepSkipStrategies:
-    - assertionExpression: 'true'
-      scope: SPECIFIC_STEPS
-      steps:
-      - Helm Deploy
     steps:
     - type: SHELL_SCRIPT
       name: Shell Script
