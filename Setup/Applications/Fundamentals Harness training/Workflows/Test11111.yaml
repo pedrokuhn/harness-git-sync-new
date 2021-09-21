@@ -26,15 +26,6 @@ phases:
   - type: HELM_DEPLOY
     name: Deploy Containers
     steps:
-    - type: HELM_DEPLOY
-      name: Helm Deploy
-      properties:
-        gitFileConfig: null
-        helmReleaseNamePrefix: ${service.name}-${env.name}-${infra.helm.shortId}
-        steadyStateTimeout: 10
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
     - type: SHELL_SCRIPT
       name: Shell Script
       properties:
@@ -53,6 +44,15 @@ phases:
         templateExpressions: null
         templateVariables: ''
         timeoutMillis: 60000
+    - type: HELM_DEPLOY
+      name: Helm Deploy
+      properties:
+        gitFileConfig: null
+        helmReleaseNamePrefix: ${service.name}-${env.name}-${infra.helm.shortId}
+        steadyStateTimeout: 10
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
     stepsInParallel: false
   - type: VERIFY_SERVICE
     name: Verify Service
