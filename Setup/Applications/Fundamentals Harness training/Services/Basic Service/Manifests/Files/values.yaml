@@ -8,7 +8,7 @@ namespace: ${infra.kubernetes.namespace}
 
 env:
   config:
-    config_properties: ${configFile.getAsString("config.properties")} 
+    config_properties: ${configFile.getAsString("config_properties")} 
   secrets:
     username: 'test'
     password1: 'test'
