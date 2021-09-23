@@ -1,7 +1,7 @@
 name: new-app-harness-example
 replicas: 1
 
-secretName: my-secret
+secretName: webapp-secrets
 
 createNamespace: true
 namespace: ${infra.kubernetes.namespace}
