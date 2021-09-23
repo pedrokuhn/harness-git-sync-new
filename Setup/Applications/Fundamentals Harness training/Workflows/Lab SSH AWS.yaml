@@ -47,14 +47,6 @@ phases:
       name: Install
       properties:
         commandName: Install
-    - type: COMMAND
-      name: Json to Environment Variables
-      properties:
-        commandType: OTHER
-      templateUri: CS - Pedro/Generic Commands/Json to Environment Variables:latest
-      templateVariables:
-      - name: RuntimePath
-      - name: ArtifactFileName
     stepsInParallel: false
   - type: ENABLE_SERVICE
     name: Enable Service
