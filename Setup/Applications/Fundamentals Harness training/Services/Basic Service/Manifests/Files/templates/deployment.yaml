@@ -1,94 +1,152 @@
-apiVersion: apps/v1
-kind: Deployment
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: {{ .Values.name }}
+# spec:
+#   replicas: {{ .Values.replicas }}
+#   selector:
+#     matchLabels:
+#       app: {{ .Values.name }}
+#   template:
+#     metadata:
+#       labels:
+#         app: {{ .Values.name }}
+#     spec:
+#       containers:
+#         - name: {{ .Values.name }}
+#           image: redis
+#           env:
+#             - name: SECRET_USERNAME
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: {{ .Values.secretName }}
+#                   key: 'username'
+#             - name: SECRET_PASSWORD
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: {{ .Values.secretName }}
+#                   key: 'password'
+#             - name: RANDOM_VERSION
+#               value: '0.0.7'
+
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: {{ .Values.name }}-2
+# spec:
+#   replicas: {{ .Values.replicas }}
+#   selector:
+#     matchLabels:
+#       app: {{ .Values.name }}
+#   template:
+#     metadata:
+#       labels:
+#         app: {{ .Values.name }}
+#     spec:
+#       containers:
+#         - name: {{ .Values.name }}
+#           image: redis
+#           env:
+#             - name: SECRET_USERNAME
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: {{ .Values.secretName }}
+#                   key: 'username'
+#             - name: SECRET_PASSWORD
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: {{ .Values.secretName }}
+#                   key: 'password'
+#             - name: RANDOM_VERSION
+#               value: '0.0.7'
+
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: {{ .Values.name }}-3
+# spec:
+#   replicas: {{ .Values.replicas }}
+#   selector:
+#     matchLabels:
+#       app: {{ .Values.name }}
+#   template:
+#     metadata:
+#       labels:
+#         app: {{ .Values.name }}
+#     spec:
+#       containers:
+#         - name: {{ .Values.name }}
+#           image: redis
+#           env:
+#             - name: SECRET_USERNAME
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: {{ .Values.secretName }}
+#                   key: 'username'
+#             - name: SECRET_PASSWORD
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: {{ .Values.secretName }}
+#                   key: 'password'
+#             - name: RANDOM_VERSION
+#               value: '0.0.7'
+######################################################
+
+{{- if .Values.createNamespace}}
+apiVersion: v1
+kind: Namespace
 metadata:
-  name: {{ .Values.name }}
-spec:
-  replicas: {{ .Values.replicas }}
-  selector:
-    matchLabels:
-      app: {{ .Values.name }}
-  template:
-    metadata:
-      labels:
-        app: {{ .Values.name }}
-    spec:
-      containers:
-        - name: {{ .Values.name }}
-          image: redis
-          env:
-            - name: SECRET_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secretName }}
-                  key: 'username'
-            - name: SECRET_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secretName }}
-                  key: 'password'
-            - name: RANDOM_VERSION
-              value: '0.0.7'
+  name: {{.Values.namespace}}
+{{- end}}
 
 ---
-apiVersion: apps/v1
-kind: Deployment
+
+apiVersion: v1
+kind: Service
 metadata:
-  name: {{ .Values.name }}-2
+  name: web-app-svc
 spec:
-  replicas: {{ .Values.replicas }}
+  type: {{.Values.serviceType}}
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
   selector:
-    matchLabels:
-      app: {{ .Values.name }}
-  template:
-    metadata:
-      labels:
-        app: {{ .Values.name }}
-    spec:
-      containers:
-        - name: {{ .Values.name }}
-          image: redis
-          env:
-            - name: SECRET_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secretName }}
-                  key: 'username'
-            - name: SECRET_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secretName }}
-                  key: 'password'
-            - name: RANDOM_VERSION
-              value: '0.0.7'
+    app: {{.Values.name}}
 
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.name }}-3
+  name: {{.Values.name}}
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.name }}
+      app: {{.Values.name}}
   template:
     metadata:
+      name: web-app-dev
       labels:
-        app: {{ .Values.name }}
+        app: {{.Values.name}}
     spec:
       containers:
-        - name: {{ .Values.name }}
-          image: redis
-          env:
-            - name: SECRET_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secretName }}
-                  key: 'username'
-            - name: SECRET_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.secretName }}
-                  key: 'password'
-            - name: RANDOM_VERSION
-              value: '0.0.7'
+      - name: {{.Values.name}}
+        image: {{.Values.image}}
+        ports:
+        - containerPort: 8080
+        envFrom:
+        {{- if .Values.env.secrets}}
+        - secretRef:
+            name: webapp-secrets
+        {{- end}}
+        volumeMounts:
+        - name: webapp-mount 
+          mountPath: /app
+      volumes:
+        - name: webapp-mount
+          configMap:
+            name: webapp-configmap  
