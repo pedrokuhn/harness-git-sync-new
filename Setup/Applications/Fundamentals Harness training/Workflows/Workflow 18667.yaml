@@ -25,9 +25,6 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
-    steps:
-    - type: K8S_DEPLOYMENT_ROLLING
-      name: Rollout Deployment
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
