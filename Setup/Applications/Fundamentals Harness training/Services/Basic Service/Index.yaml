@@ -1,9 +1,5 @@
 harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
-configVariables:
-- name: test
-  value: gcpsecretsmanager:pedro-test-secret
-  valueType: ENCRYPTED_TEXT
 deploymentType: KUBERNETES
 helmVersion: V2
