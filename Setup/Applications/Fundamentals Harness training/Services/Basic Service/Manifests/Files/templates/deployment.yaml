@@ -135,7 +135,7 @@ spec:
     spec:
       containers:
       - name: {{.Values.name}}
-        image: {{.Values.image}}
+        image: nginx:latest
         ports:
         - containerPort: 8080
         envFrom:
