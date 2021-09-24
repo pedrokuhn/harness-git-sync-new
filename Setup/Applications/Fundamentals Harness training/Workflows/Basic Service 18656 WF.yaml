@@ -38,13 +38,15 @@ phases:
         publishAsVar: false
         scriptString: |-
           secret="${configFile.getAsString("super_secret_tadem")}"
-          echo "$secret" > /temp/pedro-secret-json
+          echo "$secret" > /tmp/pedro-secret.json
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
