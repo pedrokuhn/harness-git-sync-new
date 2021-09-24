@@ -141,7 +141,7 @@ spec:
         envFrom:
         {{- if .Values.env.secrets}}
         - secretRef:
-            name: webapp-secrets
+            name: {{ .Values.secretName }}
         {{- end}}
         volumeMounts:
         - name: webapp-mount 
