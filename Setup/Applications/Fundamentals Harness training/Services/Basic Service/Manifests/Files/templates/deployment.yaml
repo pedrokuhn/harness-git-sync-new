@@ -108,7 +108,7 @@ kind: Service
 metadata:
   name: web-app-svc
 spec:
-  type: {{.Values.serviceType}}
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 8080
