@@ -149,4 +149,4 @@ spec:
       volumes:
         - name: webapp-mount
           configMap:
-            name: webapp-configmap  
+            name: test-configmap  
