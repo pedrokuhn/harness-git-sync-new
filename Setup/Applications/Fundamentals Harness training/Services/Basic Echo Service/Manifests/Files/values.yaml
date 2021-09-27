@@ -1,8 +1,8 @@
 name: harness-example
 replicas: 1
 
-image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
+image: hashicorp/http-echo:${artifact.buildNo}
 
 createNamespace: true
 namespace: ${infra.kubernetes.namespace}
