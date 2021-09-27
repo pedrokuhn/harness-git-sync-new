@@ -40,6 +40,9 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
+    stepSkipStrategies:
+    - assertionExpression: ${workflow.variables.skipCanary}==true
+      scope: ALL_STEPS
     steps:
     - type: K8S_DELETE
       name: Canary Delete
