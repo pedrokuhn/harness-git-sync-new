@@ -25,6 +25,9 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    stepSkipStrategies:
+    - assertionExpression: ${workflow.variables.skipCanary}==true
+      scope: ALL_STEPS
     steps:
     - type: K8S_CANARY_DEPLOY
       name: Canary Deployment
