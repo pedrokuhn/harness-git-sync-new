@@ -1,5 +1,3 @@
-'
 ENVIRONMENT=DEV
 Key=dummy
 secretReference=pedro-test-secret
-'
