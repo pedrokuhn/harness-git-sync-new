@@ -110,4 +110,11 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Basic Echo Service
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  allowedValues: true,false
+  fixed: false
+  mandatory: true
+  name: skipCanary
+  value: 'false'
