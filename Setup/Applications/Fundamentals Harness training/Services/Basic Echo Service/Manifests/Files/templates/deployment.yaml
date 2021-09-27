@@ -4,6 +4,8 @@ kind: ConfigMap
 metadata:
   name: {{.Values.name}}
 data:
+#
+
 {{.Values.env.config | toYaml | indent 2}}
 ---
 {{- end}}
@@ -40,10 +42,16 @@ spec:
   selector:
     matchLabels:
       app: {{.Values.name}}
+{{- if .Values.skipCanary}}
+      harness.io/track: stable
+{{- end}}
   template:
     metadata:
       labels:
         app: {{.Values.name}}
+{{- if .Values.skipCanary}}
+        harness.io/track: stable
+{{- end}}
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
@@ -52,6 +60,8 @@ spec:
       containers:
       - name: {{.Values.name}}
         image: {{.Values.image}}
+        args:
+        - -text="hello world"
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
