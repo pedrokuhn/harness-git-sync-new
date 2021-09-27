@@ -12,4 +12,4 @@ env:
     password1: 'test'
 
 config_properties: |-
-    ${configFile.getAsString("config_properties")}
+${configFile.getAsString("config_properties")}
