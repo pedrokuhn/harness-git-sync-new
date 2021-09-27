@@ -37,6 +37,9 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
+    stepSkipStrategies:
+    - assertionExpression: ${workflow.variables.skipCanary}==true
+      scope: ALL_STEPS
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
