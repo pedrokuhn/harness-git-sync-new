@@ -96,6 +96,9 @@ rollbackPhases:
   - type: K8S_PHASE_STEP
     name: Wrap Up
     phaseStepNameForRollback: Wrap Up
+    stepSkipStrategies:
+    - assertionExpression: ${workflow.variables.skipCanary}==true
+      scope: ALL_STEPS
     stepsInParallel: false
   provisionNodes: false
   serviceName: Basic Echo Service
