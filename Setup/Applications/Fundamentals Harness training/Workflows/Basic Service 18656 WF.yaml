@@ -48,6 +48,17 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 60000
+    - type: SHELL_SCRIPT
+      name: Test Template 17441
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: CS - Pedro/Test Template 17441:latest
+      templateVariables:
+      - name: GITHUB_SSH_TOKEN
+        value: ${secrets.getValues("gitPasswordDefault")}
+      - name: GITHUB_REPO
+        value: defaul-repo
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
