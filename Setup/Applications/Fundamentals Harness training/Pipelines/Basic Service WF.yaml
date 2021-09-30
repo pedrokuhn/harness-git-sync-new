@@ -7,4 +7,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 1
-  workflowName: Basic Service WF
+  workflowName: Skip Canary Workflow
+  workflowVariables:
+  - name: skipCanary
+    value: 'false'
