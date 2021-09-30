@@ -39,6 +39,8 @@ phases:
         scriptString: |-
           secret="${configFile.getAsString("super_secret_tadem")}"
           echo "$secret" > /tmp/pedro-secret.json
+
+          sleep 1000
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
