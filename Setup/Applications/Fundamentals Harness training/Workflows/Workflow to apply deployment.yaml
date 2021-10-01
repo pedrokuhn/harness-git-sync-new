@@ -48,7 +48,7 @@ phases:
           repoName: /pedrokuhn/lab-terraform-gcp-instance
           commitId: ''
           branch: ${workflow.variables.branch}
-          filePath: terraform.auto.tfvars
+          filePath: terraform/vars/terraform.auto.tfvars
           connectionType: branch
         timeoutMillis: 300000
         variables: null
