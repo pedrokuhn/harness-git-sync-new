@@ -1,7 +1,8 @@
 harnessApiVersion: '1.0'
 type: TERRAFORM
 path: .
+repoName: lab-terraform-gcp-instance
 secretMangerName: 'Harness Secrets Manager '
 skipRefreshBeforeApplyingPlan: false
 sourceRepoBranch: master
-sourceRepoSettingName: terraform-provisioner
+sourceRepoSettingName: GitHub Account
