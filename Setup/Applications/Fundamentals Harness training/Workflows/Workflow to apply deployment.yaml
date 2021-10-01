@@ -91,3 +91,7 @@ userVariables:
   fixed: false
   mandatory: true
   name: branch
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: path
