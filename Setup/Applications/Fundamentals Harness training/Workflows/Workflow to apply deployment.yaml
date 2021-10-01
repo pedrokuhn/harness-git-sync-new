@@ -26,11 +26,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     steps:
-    - type: K8S_APPLY
-      name: Apply
-      properties:
-        filePaths: templates/Deployment.yaml
-        stateTimeoutInMinutes: 10
     - type: TERRAFORM_APPLY
       name: Terraform Apply
       properties:
@@ -49,6 +44,11 @@ phases:
         timeoutMillis: 300000
         variables: null
         workspace: ''
+    - type: K8S_APPLY
+      name: Apply
+      properties:
+        filePaths: templates/Deployment.yaml
+        stateTimeoutInMinutes: 10
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
