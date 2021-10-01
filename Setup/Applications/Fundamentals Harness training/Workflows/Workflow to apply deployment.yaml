@@ -93,5 +93,5 @@ userVariables:
   name: branch
 - type: TEXT
   fixed: false
-  mandatory: true
+  mandatory: false
   name: path
