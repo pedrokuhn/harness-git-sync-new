@@ -27,17 +27,20 @@ phases:
     name: Deploy
     steps:
     - type: TERRAFORM_APPLY
-      name: Terraform Apply
+      name: Terraform Plan
       properties:
         backendConfigs: null
         delegateTag: ''
         environmentVariables: null
         exportPlanToApplyStep: false
         inheritApprovedPlan: false
-        name: Terraform Apply
+        name: Terraform Plan
         provisionerName: Terraform Test Provisioner
-        runPlanOnly: false
+        runPlanOnly: true
         targets: null
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         tfVarFiles:
         - terraform.auto.tfvars
         tfVarGitFileConfig: null
