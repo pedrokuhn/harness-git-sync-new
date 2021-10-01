@@ -31,6 +31,24 @@ phases:
       properties:
         filePaths: templates/Deployment.yaml
         stateTimeoutInMinutes: 10
+    - type: TERRAFORM_APPLY
+      name: Terraform Apply
+      properties:
+        backendConfigs: null
+        delegateTag: ''
+        environmentVariables: null
+        exportPlanToApplyStep: false
+        inheritApprovedPlan: false
+        name: Terraform Apply
+        provisionerName: Terraform Test Provisioner
+        runPlanOnly: false
+        targets: null
+        tfVarFiles:
+        - terraform.auto.tfvars
+        tfVarGitFileConfig: null
+        timeoutMillis: 300000
+        variables: null
+        workspace: ''
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
