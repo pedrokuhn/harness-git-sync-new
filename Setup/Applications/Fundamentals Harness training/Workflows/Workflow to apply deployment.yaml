@@ -41,9 +41,15 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
-        tfVarFiles:
-        - terraform.auto.tfvars
-        tfVarGitFileConfig: null
+        tfVarFiles: null
+        tfVarGitFileConfig:
+          useBranch: true
+          connectorId: 1U3iAnjjQ0mVN8Z_Y1C0Vg
+          repoName: /pedrokuhn/lab-terraform-gcp-instance
+          commitId: ''
+          branch: ${workflow.variables.branch}
+          filePath: .
+          connectionType: branch
         timeoutMillis: 300000
         variables: null
         workspace: ''
