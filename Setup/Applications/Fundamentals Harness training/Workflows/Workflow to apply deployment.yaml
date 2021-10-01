@@ -85,4 +85,9 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Service With Dummy Artifact
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: branch
