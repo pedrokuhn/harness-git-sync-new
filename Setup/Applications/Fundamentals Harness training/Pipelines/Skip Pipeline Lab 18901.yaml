@@ -2,15 +2,8 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
-  name: Workflow 18158 - 2
-  parallel: false
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 3
-  workflowName: Workflow 18158 - 2
-- type: ENV_STATE
   name: Workflow 18158 - 2-1
-  parallel: true
+  parallel: false
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 3
