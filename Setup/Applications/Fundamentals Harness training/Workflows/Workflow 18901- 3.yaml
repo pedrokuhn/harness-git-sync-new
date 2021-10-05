@@ -80,7 +80,7 @@ phases:
   computeProviderName: GKE cluster
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Primary
+  name: Sister Service
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -97,6 +97,15 @@ phases:
   provisionNodes: false
   serviceName: Basic Service
   statefulSet: false
+  templateExpressions:
+  - expression: ${ServiceSister}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
@@ -130,8 +139,8 @@ rollbackPhases:
   computeProviderName: GKE cluster
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Rollback Primary
-  phaseNameForRollback: Primary
+  name: Rollback Sister Service
+  phaseNameForRollback: Sister Service
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -148,6 +157,15 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Basic Service
   statefulSet: false
+  templateExpressions:
+  - expression: ${ServiceSister}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
 templatized: true
 userVariables:
 - type: ENTITY
@@ -155,3 +173,8 @@ userVariables:
   fixed: false
   mandatory: true
   name: Service
+- type: ENTITY
+  description: Variable for Service entity in Rollback Sister Service
+  fixed: false
+  mandatory: true
+  name: ServiceSister
