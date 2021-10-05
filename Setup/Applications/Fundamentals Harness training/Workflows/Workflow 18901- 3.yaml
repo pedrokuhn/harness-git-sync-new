@@ -25,18 +25,17 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    steps:
+    - type: K8S_DEPLOYMENT_ROLLING
+      name: Rollout Deployment
+      properties:
+        stateTimeoutInMinutes: 10
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
-    steps:
-    - type: K8S_DELETE
-      name: Canary Delete
-      properties:
-        instanceUnitType: COUNT
-        resources: ${k8s.canaryWorkload}
     stepsInParallel: false
   provisionNodes: false
   serviceName: Basic Service
