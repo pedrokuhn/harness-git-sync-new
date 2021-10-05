@@ -32,3 +32,10 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 3
   workflowName: Workflow 18158 - 2
+- type: ENV_STATE
+  name: Workflow 18158 - 2-1
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 3
+  workflowName: Workflow 18158 - 2
