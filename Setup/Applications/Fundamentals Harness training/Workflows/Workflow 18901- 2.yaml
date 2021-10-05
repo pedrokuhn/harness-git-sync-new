@@ -18,27 +18,23 @@ notificationRules:
   - Account Administrator
 preDeploymentSteps:
 - type: SHELL_SCRIPT
-  name: Primary Context Setup
+  name: Promote Main Service
   properties:
     commandPath: null
     connectionAttributeName: null
     executeOnDelegate: true
     host: null
-    outputVars: serviceName,artifact,repositoryName
-    publishAsVar: true
-    scriptString: |-
-      serviceName=${workflow.variables.service}
-
-      artifact=${workflow.variables.artifact}
-
-      repositoryName=${workflow.variables.repositoryName}
+    outputVars: ''
+    publishAsVar: false
+    scriptString: echo "Promote Main Service"
     scriptType: BASH
-    secretOutputVars: ''
     sshKeyRefName: null
-    sweepingOutputName: main
-    sweepingOutputScope: PIPELINE
+    sweepingOutputName: null
+    sweepingOutputScope: null
     templateExpressions: null
-    templateVariables: ''
+    templateUuid: null
+    templateVariables: null
+    templateVersion: null
     timeoutMillis: 60000
 - type: SHELL_SCRIPT
   name: Sister Context Setup
