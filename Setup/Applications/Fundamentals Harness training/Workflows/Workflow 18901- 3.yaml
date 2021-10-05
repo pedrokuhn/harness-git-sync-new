@@ -110,6 +110,31 @@ phases:
       value: DOCKER
     - name: entityType
       value: SERVICE
+postDeploymentSteps:
+- type: SHELL_SCRIPT
+  name: Confirm Artifacts
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    executeOnDelegate: true
+    host: null
+    outputVars: ''
+    publishAsVar: false
+    scriptString: |
+      #!/bin/bash
+
+      echo "context.main.serviceName = ${context.main.serviceName}"
+      echo "context.main.artifact = ${context.main.artifact}"
+
+      echo "context.sister.serviceName = ${context.sister.serviceName}"
+      echo "context.sister.artifact = ${context.sister.artifact}"
+    scriptType: BASH
+    sshKeyRefName: null
+    sweepingOutputName: null
+    sweepingOutputScope: null
+    templateExpressions: null
+    templateVariables: ''
+    timeoutMillis: 60000
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
