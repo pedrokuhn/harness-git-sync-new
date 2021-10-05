@@ -16,24 +16,6 @@ notificationRules:
   userGroupAsExpression: false
   userGroupNames:
   - Account Administrator
-preDeploymentSteps:
-- type: SHELL_SCRIPT
-  name: Ivanti Create Task RFC
-  properties:
-    commandPath: null
-    connectionAttributeName: null
-    executeOnDelegate: true
-    host: null
-    outputVars: ''
-    publishAsVar: false
-    scriptString: echo "Ivanti Create Task RFC"
-    scriptType: BASH
-    sshKeyRefName: null
-    sweepingOutputName: null
-    sweepingOutputScope: null
-    templateExpressions: null
-    templateVariables: ''
-    timeoutMillis: 60000
 templatized: true
 userVariables:
 - type: TEXT
