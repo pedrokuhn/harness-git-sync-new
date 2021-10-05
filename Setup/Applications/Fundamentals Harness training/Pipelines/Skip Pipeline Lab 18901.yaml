@@ -14,3 +14,19 @@ pipelineStages:
   - name: service
   - name: serviceSister
   - name: repositoryName
+- type: APPROVAL
+  name: Approval 1
+  parallel: false
+  properties:
+    userGroups:
+    - Account Administrator
+    variables:
+    - name: RFC
+      value: ''
+    stageName: STAGE 2
+    timeoutMillis: 86400000
+    approvalStateType: USER_GROUP
+    sweepingOutputName: RFC
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
