@@ -40,4 +40,25 @@ preDeploymentSteps:
     templateExpressions: null
     templateVariables: ''
     timeoutMillis: 60000
+- type: SHELL_SCRIPT
+  name: Sister Context Setup
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    executeOnDelegate: true
+    host: null
+    outputVars: serviceName,artifact
+    publishAsVar: true
+    scriptString: |-
+      serviceName=${workflow.variables.serviceSister}
+
+      artifact=${workflow.variables.artifactSister}
+    scriptType: BASH
+    secretOutputVars: ''
+    sshKeyRefName: null
+    sweepingOutputName: sister
+    sweepingOutputScope: PIPELINE
+    templateExpressions: null
+    templateVariables: ''
+    timeoutMillis: 60000
 templatized: false
