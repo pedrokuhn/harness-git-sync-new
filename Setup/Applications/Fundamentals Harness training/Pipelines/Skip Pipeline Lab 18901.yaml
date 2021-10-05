@@ -1,18 +1,8 @@
 harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
-- type: ENV_STATE
-  name: Workflow 18158
-  parallel: false
-  skipCondition:
-    expression: ${workflow.variables.Test}=='test'
-    type: CONDITIONAL_SKIP
-  stageName: STAGE 2
-  workflowName: Workflow 18158
-  workflowVariables:
-  - name: Test
 - type: APPROVAL
-  name: Approval 1
+  name: Approval 0
   parallel: false
   properties:
     userGroups:
