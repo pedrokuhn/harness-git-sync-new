@@ -37,25 +37,23 @@ preDeploymentSteps:
     templateVersion: null
     timeoutMillis: 60000
 - type: SHELL_SCRIPT
-  name: Sister Context Setup
+  name: Promote Sister Service
   properties:
     commandPath: null
     connectionAttributeName: null
     executeOnDelegate: true
     host: null
-    outputVars: serviceName,artifact
-    publishAsVar: true
-    scriptString: |-
-      serviceName=${workflow.variables.serviceSister}
-
-      artifact=${workflow.variables.artifactSister}
+    outputVars: ''
+    publishAsVar: false
+    scriptString: echo "Promote Sister Service"
     scriptType: BASH
-    secretOutputVars: ''
     sshKeyRefName: null
-    sweepingOutputName: sister
-    sweepingOutputScope: PIPELINE
+    sweepingOutputName: null
+    sweepingOutputScope: null
     templateExpressions: null
-    templateVariables: ''
+    templateUuid: null
+    templateVariables: null
+    templateVersion: null
     timeoutMillis: 60000
 templatized: true
 userVariables:
