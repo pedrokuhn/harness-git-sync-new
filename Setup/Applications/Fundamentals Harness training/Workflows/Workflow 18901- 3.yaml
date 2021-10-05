@@ -21,7 +21,7 @@ phases:
   computeProviderName: GKE cluster
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Canary
+  name: Primary -
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -47,6 +47,15 @@ phases:
   provisionNodes: false
   serviceName: Basic Service
   statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
 - type: KUBERNETES
   computeProviderName: GKE cluster
   daemonSet: false
@@ -73,8 +82,8 @@ rollbackPhases:
   computeProviderName: GKE cluster
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Rollback Canary
-  phaseNameForRollback: Canary
+  name: Rollback Primary -
+  phaseNameForRollback: Primary -
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -88,6 +97,15 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Basic Service
   statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
 - type: KUBERNETES
   computeProviderName: GKE cluster
   daemonSet: false
@@ -110,4 +128,10 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Basic Service
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: ENTITY
+  description: Variable for Service entity in Rollback Primary -
+  fixed: false
+  mandatory: true
+  name: Service
