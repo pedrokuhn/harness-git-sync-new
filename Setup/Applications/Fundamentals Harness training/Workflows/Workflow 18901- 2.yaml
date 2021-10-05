@@ -8,14 +8,6 @@ failureStrategies:
   - APPLICATION_ERROR
   repairActionCode: ROLLBACK_WORKFLOW
   retryCount: 0
-notificationRules:
-- conditions:
-  - FAILED
-  executionScope: WORKFLOW
-  notificationGroupAsExpression: false
-  userGroupAsExpression: false
-  userGroupNames:
-  - Account Administrator
 preDeploymentSteps:
 - type: SHELL_SCRIPT
   name: Shell Script_2
