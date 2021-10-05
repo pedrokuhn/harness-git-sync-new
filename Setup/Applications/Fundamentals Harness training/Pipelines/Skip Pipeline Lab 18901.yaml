@@ -14,8 +14,21 @@ pipelineStages:
   - name: service
   - name: serviceSister
   - name: repositoryName
+- type: ENV_STATE
+  name: Workflow 18901- 2
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 3
+  workflowName: Workflow 18901- 2
+  workflowVariables:
+  - name: artifact
+  - name: artifactSister
+  - name: service
+  - name: serviceSister
+  - name: repositoryName
 - type: APPROVAL
-  name: Approval 1
+  name: Approval 2
   parallel: false
   properties:
     workflowVariables: null
@@ -31,16 +44,3 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
-- type: ENV_STATE
-  name: Workflow 18901- 2
-  parallel: false
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 3
-  workflowName: Workflow 18901- 2
-  workflowVariables:
-  - name: artifact
-  - name: artifactSister
-  - name: service
-  - name: serviceSister
-  - name: repositoryName
