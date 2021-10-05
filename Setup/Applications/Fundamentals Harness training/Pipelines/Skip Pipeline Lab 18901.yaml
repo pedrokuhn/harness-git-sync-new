@@ -10,15 +10,10 @@ pipelineStages:
   workflowName: Workflow 18901
   workflowVariables:
   - name: artifact
-    value: hashicorp_http-echo
   - name: artifactSister
-    value: hashicorp_http-echo
   - name: service
-    value: Basic Echo Service
   - name: serviceSister
-    value: Basic Echo Service
   - name: repositoryName
-    value: Basic Echo Service
 - type: ENV_STATE
   name: Workflow 18901- 2
   parallel: false
