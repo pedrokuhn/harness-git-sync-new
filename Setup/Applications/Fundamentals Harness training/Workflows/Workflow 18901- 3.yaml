@@ -37,32 +37,11 @@ phases:
   - type: K8S_PHASE_STEP
     name: Wrap Up
     steps:
-    - type: SHELL_SCRIPT
-      name: Create Main Service Context Variables
+    - type: K8S_DELETE
+      name: Canary Delete
       properties:
-        commandPath: null
-        connectionAttributeName: null
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: true
-        outputVars: serviceName,artifact,repositoryName
-        publishAsVar: true
-        scriptString: |
-          #!/bin/bash
-
-          serviceName=${service.name}
-
-          artifact=${artifact.buildNo}
-
-          repositoryName=${artifact.source.repositoryName}
-        scriptType: BASH
-        secretOutputVars: ''
-        sshKeyRefName: null
-        sweepingOutputName: main
-        sweepingOutputScope: PIPELINE
-        templateExpressions: null
-        templateVariables: ''
-        timeoutMillis: 60000
+        instanceUnitType: COUNT
+        resources: ${k8s.canaryWorkload}
     stepsInParallel: false
   provisionNodes: false
   serviceName: Basic Service
