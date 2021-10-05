@@ -58,3 +58,16 @@ pipelineStages:
   - entityType: SERVICE
     name: Service
     value: ${service}
+- type: ENV_STATE
+  name: Workflow 18901- 2-1
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 4
+  workflowName: Workflow 18901- 2
+  workflowVariables:
+  - name: artifact
+  - name: artifactSister
+  - name: service
+  - name: serviceSister
+  - name: repositoryName
