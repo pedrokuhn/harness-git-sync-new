@@ -72,6 +72,31 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
+    steps:
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        includeInfraSelectors: true
+        outputVars: serviceName,artifact
+        publishAsVar: true
+        scriptString: |-
+          #!/bin/bash
+
+          serviceName=${service.name}
+
+          artifact=${artifact.buildNo}
+        scriptType: BASH
+        secretOutputVars: ''
+        sshKeyRefName: null
+        sweepingOutputName: sister
+        sweepingOutputScope: PIPELINE
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   provisionNodes: false
   serviceName: Basic Service
