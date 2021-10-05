@@ -21,12 +21,6 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 3
   workflowName: Workflow 18901- 2
-  workflowVariables:
-  - name: artifact
-  - name: artifactSister
-  - name: service
-  - name: serviceSister
-  - name: repositoryName
 - type: APPROVAL
   name: Approval 2
   parallel: false
@@ -65,9 +59,3 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 4
   workflowName: Workflow 18901- 2
-  workflowVariables:
-  - name: artifact
-  - name: artifactSister
-  - name: service
-  - name: serviceSister
-  - name: repositoryName
