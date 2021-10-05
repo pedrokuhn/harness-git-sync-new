@@ -72,25 +72,4 @@ preDeploymentSteps:
     templateExpressions: null
     templateVariables: ''
     timeoutMillis: 60000
-templatized: true
-userVariables:
-- type: TEXT
-  fixed: false
-  mandatory: true
-  name: service
-- type: TEXT
-  fixed: false
-  mandatory: false
-  name: serviceSister
-- type: TEXT
-  fixed: false
-  mandatory: true
-  name: repositoryName
-- type: TEXT
-  fixed: false
-  mandatory: true
-  name: artifact
-- type: TEXT
-  fixed: false
-  mandatory: false
-  name: artifactSister
+templatized: false
