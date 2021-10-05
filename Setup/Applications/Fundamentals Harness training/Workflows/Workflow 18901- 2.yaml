@@ -72,4 +72,21 @@ preDeploymentSteps:
     templateExpressions: null
     templateVariables: ''
     timeoutMillis: 60000
+- type: SHELL_SCRIPT
+  name: Shell Script_2
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    executeOnDelegate: true
+    host: null
+    outputVars: ''
+    publishAsVar: false
+    scriptString: exit 1
+    scriptType: BASH
+    sshKeyRefName: null
+    sweepingOutputName: null
+    sweepingOutputScope: null
+    templateExpressions: null
+    templateVariables: ''
+    timeoutMillis: 60000
 templatized: false
