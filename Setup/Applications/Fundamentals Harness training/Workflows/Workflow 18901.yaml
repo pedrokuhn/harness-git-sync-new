@@ -16,4 +16,28 @@ notificationRules:
   userGroupAsExpression: false
   userGroupNames:
   - Account Administrator
+preDeploymentSteps:
+- type: SHELL_SCRIPT
+  name: Primary Context Setup
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    executeOnDelegate: true
+    host: null
+    outputVars: serviceName,artifact,repositoryName
+    publishAsVar: true
+    scriptString: |-
+      serviceName=${workflow.variables.service}
+
+      artifact=${workflow.variables.artifact}
+
+      repositoryName=${workflow.variables.repositoryName}
+    scriptType: BASH
+    secretOutputVars: ''
+    sshKeyRefName: null
+    sweepingOutputName: main
+    sweepingOutputScope: PIPELINE
+    templateExpressions: null
+    templateVariables: ''
+    timeoutMillis: 60000
 templatized: false
