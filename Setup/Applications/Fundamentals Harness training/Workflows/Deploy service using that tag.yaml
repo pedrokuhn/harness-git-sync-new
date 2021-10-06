@@ -38,7 +38,11 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: sleep 20s
+        scriptString: |-
+          #!/bin/bash
+          export TZ='Australia/Sydney'
+          date
+          date -u
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
@@ -47,7 +51,7 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
-        timeoutMillis: 10000
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
