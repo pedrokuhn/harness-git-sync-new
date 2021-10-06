@@ -40,9 +40,11 @@ phases:
         publishAsVar: false
         scriptString: |-
           #!/bin/bash
-          export TZ='Australia/Sydney'
+          export TZ=Australia/Sydney
+
           date
-          date -u
+          TZ=US/Pacific date
+          date
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
