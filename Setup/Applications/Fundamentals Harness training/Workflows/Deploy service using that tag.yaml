@@ -41,13 +41,7 @@ phases:
         scriptString: |-
           #!/bin/bash
 
-          echo "$TZ"
-
-          export TZ="Australia/Sydney"
-          date
-
-          export TZ="US/Pacific date"
-          date
+          ls -lha /usr/share/zoneinfo/
 
           date-u
         scriptType: BASH
