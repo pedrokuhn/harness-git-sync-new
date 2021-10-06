@@ -1,0 +1,5 @@
+harnessApiVersion: '1.0'
+type: GCR
+dockerImageName: customer-success-244100/sales-goals-adonis
+registryHostName: gcr.io
+serverName: Google Cloud Platform GCS
