@@ -3,8 +3,8 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: ${workflow.variables.branch}
   connectorName: GitHub Account
-  filePath: harness/values.yaml
-  repoName: pedrokuhn/basic-service-manifest
+  filePath: values.yaml
+  repoName: pedrokuhn/basic-service-manifest/manifest
   useBranch: true
   useInlineServiceDefinition: false
 storeType: Remote
