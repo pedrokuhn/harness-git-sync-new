@@ -1,4 +1,0 @@
-harnessApiVersion: '1.0'
-type: DOCKER
-imageName: hashicorp/http-echo
-serverName: Harness Docker Hub
