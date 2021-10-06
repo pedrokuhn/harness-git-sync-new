@@ -53,7 +53,7 @@ pipelineStages:
   workflowVariables:
   - entityType: SERVICE
     name: ServiceSister
-    value: ${serviceSister}
+    value: ${serviceSisteruashduashdasudh}
   - entityType: SERVICE
     name: Service
     value: ${service}
