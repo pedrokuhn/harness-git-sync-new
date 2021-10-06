@@ -40,10 +40,9 @@ phases:
         publishAsVar: false
         scriptString: |-
           #!/bin/bash
-
-          ls -lha /usr/share/zoneinfo/
-
-          date-u
+          export TZ='Australia/Sydney'
+          date
+          date -u
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
