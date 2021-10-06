@@ -1,5 +1,5 @@
 harnessApiVersion: '1.0'
 type: GCR
-dockerImageName: customer-success-244100/harness/toolbox
+dockerImageName: customer-success-244100/zee
 registryHostName: gcr.io
 serverName: Google Cloud Platform GCS
