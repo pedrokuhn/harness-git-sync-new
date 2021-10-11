@@ -21,23 +21,6 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 3
   workflowName: Workflow 18901- 2
-- type: APPROVAL
-  name: Approval 2
-  parallel: false
-  properties:
-    workflowVariables: null
-    userGroups:
-    - Account Administrator
-    variables:
-    - name: RFC
-      value: ''
-    stageName: STAGE 2
-    timeoutMillis: 86400000
-    approvalStateType: USER_GROUP
-    sweepingOutputName: RFC
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 2
 - type: ENV_STATE
   name: Workflow 18901- 3
   parallel: false
