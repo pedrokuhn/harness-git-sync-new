@@ -15,13 +15,6 @@ pipelineStages:
   - name: serviceSister
   - name: repositoryName
 - type: ENV_STATE
-  name: Workflow 18901- 2
-  parallel: false
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 3
-  workflowName: Workflow 18901- 2
-- type: ENV_STATE
   name: Workflow 18901- 3
   parallel: false
   skipCondition:
