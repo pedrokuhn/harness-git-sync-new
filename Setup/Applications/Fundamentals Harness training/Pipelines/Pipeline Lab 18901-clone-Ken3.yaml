@@ -48,10 +48,10 @@ pipelineStages:
   workflowVariables:
   - entityType: SERVICE
     name: ServiceSister
-    value: ${serviceSister}
+    value: ${serviceSister2}
   - entityType: SERVICE
     name: Service
-    value: ${service}
+    value: ${service2}
 - type: ENV_STATE
   name: Workflow 18901- 2-1
   parallel: true
