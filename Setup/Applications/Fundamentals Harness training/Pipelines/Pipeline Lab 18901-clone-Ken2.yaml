@@ -2,19 +2,6 @@ harnessApiVersion: '1.0'
 type: PIPELINE
 pipelineStages:
 - type: ENV_STATE
-  name: Workflow 18901
-  parallel: false
-  skipCondition:
-    type: DO_NOT_SKIP
-  stageName: STAGE 1
-  workflowName: Workflow 18901
-  workflowVariables:
-  - name: artifact
-  - name: artifactSister
-  - name: service
-  - name: serviceSister
-  - name: repositoryName
-- type: ENV_STATE
   name: Workflow 18901- 2
   parallel: false
   skipCondition:
@@ -22,7 +9,7 @@ pipelineStages:
   stageName: STAGE 3
   workflowName: Workflow 18901- 2
 - type: APPROVAL
-  name: Approval 2
+  name: Approval 1
   parallel: false
   properties:
     workflowVariables: null
