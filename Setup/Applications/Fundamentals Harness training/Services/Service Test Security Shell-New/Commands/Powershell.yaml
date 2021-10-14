@@ -20,4 +20,20 @@ commandUnits:
   deploymentType: SSH
   name: Setup Env
   scriptType: POWERSHELL
+- command: |-
+    Write-Host "Before"
+
+
+    if (Test)
+
+    {
+
+
+
+
+    Write-Host "After"
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Exec
+  scriptType: POWERSHELL
 targetToAllEnv: true
