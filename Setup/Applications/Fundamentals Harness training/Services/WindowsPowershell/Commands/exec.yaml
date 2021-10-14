@@ -29,4 +29,10 @@ commandUnits:
   deploymentType: SSH
   name: Exec
   scriptType: POWERSHELL
+- command: |
+    Write-Host "finished"
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Exec-1
+  scriptType: POWERSHELL
 targetToAllEnv: true
