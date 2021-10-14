@@ -32,6 +32,10 @@ phases:
         excludeSelectedHostsFromFuturePhases: true
         instanceCount: 1
         specificHosts: false
+    - type: COMMAND
+      name: Powershell
+      properties:
+        commandName: Powershell
     stepsInParallel: false
   - type: DISABLE_SERVICE
     name: Disable Service
