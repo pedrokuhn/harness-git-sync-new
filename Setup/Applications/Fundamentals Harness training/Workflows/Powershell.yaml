@@ -36,7 +36,7 @@ phases:
       name: Powershell
       properties:
         commandName: Powershell
-        executeOnDelegate: true
+        executeOnDelegate: false
         templateUuid: null
         templateVariables: null
         templateVersion: null
