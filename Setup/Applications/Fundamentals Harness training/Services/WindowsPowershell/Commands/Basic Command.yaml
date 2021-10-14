@@ -1,4 +1,13 @@
 harnessApiVersion: '1.0'
 type: OTHER
 commandUnitType: COMMAND
+commandUnits:
+- command: |-
+    if (Test)
+
+    {
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Exec
+  scriptType: POWERSHELL
 targetToAllEnv: true
