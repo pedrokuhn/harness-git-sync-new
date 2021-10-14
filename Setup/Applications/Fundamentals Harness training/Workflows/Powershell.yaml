@@ -36,6 +36,11 @@ phases:
       name: Powershell
       properties:
         commandName: Powershell
+        executeOnDelegate: true
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        timeoutMillis: 14400000
     stepsInParallel: false
   - type: DISABLE_SERVICE
     name: Disable Service
