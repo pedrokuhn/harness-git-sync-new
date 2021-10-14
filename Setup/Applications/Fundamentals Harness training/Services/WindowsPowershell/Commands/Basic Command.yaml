@@ -2,14 +2,6 @@ harnessApiVersion: '1.0'
 type: OTHER
 commandUnitType: COMMAND
 commandUnits:
-- command: |-
-    if (Test)
-
-    {
-  commandUnitType: EXEC
-  deploymentType: SSH
-  name: Exec
-  scriptType: POWERSHELL
 - command: |2-
 
     # Execute as root and pass environment variables
