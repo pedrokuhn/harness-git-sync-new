@@ -6,8 +6,6 @@ infrastructure:
 - type: AWS_SSH
   awsInstanceFilter:
     tags:
-    - key: user
-      value: pedro-cs-test
     - key: User
       value: pedro-cs-test
     vpcIds:
@@ -15,7 +13,7 @@ infrastructure:
   cloudProviderName: Amazon Web Services
   desiredCapacity: 0
   hostConnectionAttrsName: test ssh key
-  hostConnectionType: PUBLIC_DNS
+  hostConnectionType: PRIVATE_DNS
   hostNameConvention: ${host.ec2Instance.privateDnsName.split('\.')[0]}
   region: us-east-2
   setDesiredCapacity: false
