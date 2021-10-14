@@ -8,6 +8,8 @@ infrastructure:
     tags:
     - key: user
       value: pedro-cs-test
+    - key: User
+      value: pedro-cs-test
     vpcIds:
     - vpc-00ea086b
   cloudProviderName: Amazon Web Services
@@ -19,7 +21,3 @@ infrastructure:
   setDesiredCapacity: false
   useAutoScalingGroup: false
   usePublicDns: false
-scopedServices:
-- Service Test Security Shell-New
-- Service Test Security Shell
-- tst
