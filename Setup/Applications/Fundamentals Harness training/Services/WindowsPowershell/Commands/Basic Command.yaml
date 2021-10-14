@@ -20,4 +20,12 @@ commandUnits:
   deploymentType: SSH
   name: Setup Env
   scriptType: POWERSHELL
+- command: |-
+    if (Test)
+
+    {
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Exec
+  scriptType: POWERSHELL
 targetToAllEnv: true
