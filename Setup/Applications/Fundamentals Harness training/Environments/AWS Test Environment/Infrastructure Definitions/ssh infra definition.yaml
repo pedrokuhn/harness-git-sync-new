@@ -13,7 +13,7 @@ infrastructure:
   cloudProviderName: Amazon Web Services
   desiredCapacity: 0
   hostConnectionAttrsName: test ssh key
-  hostConnectionType: PRIVATE_DNS
+  hostConnectionType: PUBLIC_DNS
   hostNameConvention: ${host.ec2Instance.privateDnsName.split('\.')[0]}
   region: us-east-2
   setDesiredCapacity: false
