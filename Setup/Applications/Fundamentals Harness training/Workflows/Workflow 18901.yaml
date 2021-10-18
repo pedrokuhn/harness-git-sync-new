@@ -47,6 +47,15 @@ phases:
   provisionNodes: false
   serviceName: Basic Echo Service
   statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
 preDeploymentSteps:
 - type: SHELL_SCRIPT
   name: Primary Context Setup
@@ -112,8 +121,22 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Basic Echo Service
   statefulSet: false
+  templateExpressions:
+  - expression: ${Service}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
 templatized: true
 userVariables:
+- type: ENTITY
+  description: Variable for Service entity in Rollback Canary
+  fixed: false
+  mandatory: true
+  name: Service
 - type: TEXT
   fixed: false
   mandatory: true
