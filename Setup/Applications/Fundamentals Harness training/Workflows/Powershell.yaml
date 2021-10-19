@@ -40,7 +40,7 @@ phases:
         templateUuid: null
         templateVariables: null
         templateVersion: null
-        timeoutMillis: 14400000
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: DISABLE_SERVICE
     name: Disable Service
