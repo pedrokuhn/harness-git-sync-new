@@ -32,15 +32,6 @@ phases:
         excludeSelectedHostsFromFuturePhases: true
         instanceCount: 1
         specificHosts: false
-    - type: COMMAND
-      name: Powershell
-      properties:
-        commandName: Powershell
-        executeOnDelegate: false
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
     stepsInParallel: false
   - type: DISABLE_SERVICE
     name: Disable Service
