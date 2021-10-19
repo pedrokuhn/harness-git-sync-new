@@ -36,6 +36,10 @@ phases:
       name: Start
       properties:
         commandName: Start
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: DISABLE_SERVICE
     name: Disable Service
