@@ -76,7 +76,7 @@ phases:
 
           export newVariableNameOld=${deploy.variableName}
 
-          echo 'echo "${deploy.variableNameOld}"' > tst.sh
+          echo 'test=${newVariableNameOld}' > tst.sh
           chmod +x ./tst.sh
 
           ./tst.sh
