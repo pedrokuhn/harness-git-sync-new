@@ -69,14 +69,20 @@ phases:
           echo "###### Variable Name #####"
           echo "${deploy.variableName}"
 
+          export newVariableName=${deploy.variableName}
+
           echo "###### Variable Name Old #####"
           echo "${deploy.variableNameOld}"
+
+          export newVariableNameOld=${deploy.variableName}
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   provisionNodes: false
