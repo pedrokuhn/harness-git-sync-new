@@ -71,7 +71,7 @@ phases:
           export runServices=${deploy.variableNameOld}
 
 
-          ../opt/harness-delegate/pedro-script/executionScript.sh
+          . /opt/harness-delegate/pedro-script/executionScript.sh
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
