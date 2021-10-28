@@ -8,3 +8,12 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 1
   workflowName: Get Tag
+- type: ENV_STATE
+  name: Basic Rolling Workflow
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Basic Rolling Workflow
+  workflowVariables:
+  - name: branch
