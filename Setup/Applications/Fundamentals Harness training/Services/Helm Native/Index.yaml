@@ -1,5 +1,9 @@
 harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
+configVariables:
+- name: PASSWORD
+  value: gcpkms:gitPasswordDefault
+  valueType: ENCRYPTED_TEXT
 deploymentType: HELM
 helmVersion: V3
