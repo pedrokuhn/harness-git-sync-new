@@ -72,7 +72,7 @@ phases:
 
           ls -lha
 
-          pwd
+          whoami
 
           ./opt/harness-delegate/pedro-script/executionScript.sh
         scriptType: BASH
