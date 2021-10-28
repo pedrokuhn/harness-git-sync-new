@@ -40,13 +40,16 @@ phases:
           #### Test
 
           export variableName="test value"
+          export variableNameOld="test value old"
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
         sweepingOutputName: deploy
         sweepingOutputScope: PIPELINE
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
