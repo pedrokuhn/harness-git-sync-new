@@ -67,19 +67,11 @@ phases:
         publishAsVar: false
         scriptString: |-
           echo "###### Variable Name #####"
-          echo "${deploy.variableName}"
+          export runServicesNew=${deploy.variableName}
+          export runServices=${deploy.variableNameOld}
 
-          export newVariableName=${deploy.variableName}
 
-          echo "###### Variable Name Old #####"
-          echo "${deploy.variableNameOld}"
-
-          export newVariableNameOld=${deploy.variableName}
-
-          echo 'test=${newVariableNameOld}' > tst.sh
-          chmod +x ./tst.sh
-
-          ./tst.sh
+          ./opt/harness-delegate/pedro-script/executionScript.sh
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
