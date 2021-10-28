@@ -74,14 +74,16 @@ phases:
         includeInfraSelectors: true
         outputVars: variableName
         publishAsVar: true
-        scriptString: export variableName="Variable Service 1"
+        scriptString: export variableName="Variable Service 2"
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
         sweepingOutputName: deploy
         sweepingOutputScope: PHASE
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
