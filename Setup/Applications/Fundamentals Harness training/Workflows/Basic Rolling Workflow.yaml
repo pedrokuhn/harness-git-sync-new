@@ -40,7 +40,6 @@ phases:
           #### Test
 
           export variableName="test value"
-          export variableNameOld="test123456"
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
