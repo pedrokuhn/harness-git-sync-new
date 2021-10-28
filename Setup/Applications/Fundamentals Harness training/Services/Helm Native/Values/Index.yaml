@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+gitFileConfig:
+  branch: master
+  connectorName: helm source repo personal
+  filePath: src/values-2.yaml
+  useBranch: true
+  useInlineServiceDefinition: false
+storeType: Remote
