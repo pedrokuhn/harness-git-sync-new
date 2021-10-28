@@ -70,6 +70,9 @@ phases:
           export runServicesNew=${deploy.variableName}
           export runServices=${deploy.variableNameOld}
 
+          ls -lha
+
+          pwd
 
           ./opt/harness-delegate/pedro-script/executionScript.sh
         scriptType: BASH
