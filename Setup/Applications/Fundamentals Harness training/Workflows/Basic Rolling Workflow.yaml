@@ -75,6 +75,11 @@ phases:
           echo "${deploy.variableNameOld}"
 
           export newVariableNameOld=${deploy.variableName}
+
+          echo 'echo "${deploy.variableNameOld}"' > tst.sh
+          chmod +x ./tst.sh
+
+          ./tst.sh
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
