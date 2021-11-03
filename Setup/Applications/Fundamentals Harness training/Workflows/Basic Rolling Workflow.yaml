@@ -77,7 +77,7 @@ phases:
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
-        sweepingOutputName: deploy
+        sweepingOutputName: deployNew
         sweepingOutputScope: PIPELINE
         templateExpressions: null
         templateUuid: null
