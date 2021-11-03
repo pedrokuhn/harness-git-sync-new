@@ -42,6 +42,8 @@ phases:
           export variableName="test value"
 
           python3 /script/scriptPyhon.py install
+
+          test_script
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
