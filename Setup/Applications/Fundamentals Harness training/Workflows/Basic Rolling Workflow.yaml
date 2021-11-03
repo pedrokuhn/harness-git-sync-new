@@ -65,19 +65,20 @@ phases:
         executeOnDelegate: true
         host: null
         includeInfraSelectors: true
-        outputVars: ''
-        publishAsVar: false
+        outputVars: variableName
+        publishAsVar: true
         scriptString: |-
           echo "###### Variable Name #####"
           export runServicesNew=${deploy.variableName}
-          export runServices=${deploy.variableNameOld}
+          export variableName=${deploy.variableNameOld}
 
 
-          . /opt/harness-delegate/pedro-script/executionScript.sh
+          #. /opt/harness-delegate/pedro-script/executionScript.sh
         scriptType: BASH
+        secretOutputVars: ''
         sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
+        sweepingOutputName: deploy
+        sweepingOutputScope: PIPELINE
         templateExpressions: null
         templateUuid: null
         templateVariables: null
