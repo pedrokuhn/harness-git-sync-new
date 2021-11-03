@@ -1,6 +1,0 @@
-harnessApiVersion: '1.0'
-type: APPLICATION
-branchName: develop
-gitConnector: GitHub Account
-isGitSyncEnabled: true
-repoName: /pedrokuhn/harness-git-sync-new
