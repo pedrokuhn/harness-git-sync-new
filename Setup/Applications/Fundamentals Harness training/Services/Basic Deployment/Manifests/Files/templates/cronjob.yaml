@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: CronJob
 spec:
-  schedule: {{ .value.schedule }}
+  schedule: {{ .Values.schedule }}
   jobTemplate:
     spec:
       template:
