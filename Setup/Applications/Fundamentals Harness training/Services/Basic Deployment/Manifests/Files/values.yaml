@@ -3,6 +3,11 @@ replicas: 1
 
 schedule: "*/1 * * * *"
 
+cronJobs:
+  1: job1
+  2: job2
+  3: job3
+
 image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
 
