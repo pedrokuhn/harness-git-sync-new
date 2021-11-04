@@ -40,7 +40,9 @@ phases:
           cat <<EOF
           file secret:
           ${configFile.getAsString("test-file")}
-          EOF
+          EOF > tst.txt
+
+          cat tst.txt
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
