@@ -37,10 +37,7 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          cat <<EOF
-          file secret:
-          ${configFile.getAsString("test-file")}
-          EOF > tst.txt
+          echo "${configFile.getAsBase64(\"test-file\")}" > tst.txt
 
           cat tst.txt
         scriptType: BASH
