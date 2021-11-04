@@ -39,7 +39,7 @@ phases:
         scriptString: |-
           cat <<EOF
           file secret:
-          ${configFile.getAsString("secret-file")}
+          ${configFile.getAsString("test-file")}
           EOF
         scriptType: BASH
         sshKeyRefName: null
