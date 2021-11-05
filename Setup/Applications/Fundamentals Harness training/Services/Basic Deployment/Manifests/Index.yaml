@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 gitFileConfig:
-  branch: lab
+  branch: develop
   connectorName: GitHub Account
   repoName: pedrokuhn/basic-helm-chart
   useBranch: true
