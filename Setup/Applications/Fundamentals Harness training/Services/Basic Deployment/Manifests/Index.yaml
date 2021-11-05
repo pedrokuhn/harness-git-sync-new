@@ -1,9 +1,9 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 gitFileConfig:
-  branch: develop
+  branch: master
   connectorName: GitHub Account
-  repoName: pedrokuhn/basic-helm-chart
+  repoName: pedrokuhn/helm-chart
   useBranch: true
   useInlineServiceDefinition: false
 storeType: HelmSourceRepo
