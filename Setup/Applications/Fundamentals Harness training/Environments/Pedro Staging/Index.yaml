@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: ENVIRONMENT
+configMapYamlByServiceTemplateName: {}
+environmentType: NON_PROD
+variableOverrides:
+- name: PASSWORD
+  serviceName: Helm Native
+  value: gcpkms:gitPasswordOtherRepo
+  valueType: ENCRYPTED_TEXT

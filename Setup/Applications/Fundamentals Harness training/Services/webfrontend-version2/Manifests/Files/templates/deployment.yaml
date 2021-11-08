@@ -1,0 +1,106 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-app-harness-example-deployment
+  annotations:
+    app.kubernetes.io/managed-by: Helm
+  labels:
+    app-id: 'secondary'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: new-app-harness-example
+  template:
+    metadata:
+      labels:
+        app: new-app-harness-example
+    spec:
+      containers:
+        - name: new-app-harness-example
+          image: redis
+          env:
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: 'mysecret1'
+                  key: 'username'
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: 'mysecret1'
+                  key: 'password'
+            - name: SECRET_PASSWORD_2
+              value: '0.0.7'
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-app-harness-example-deployment-2
+  annotations:
+    app.kubernetes.io/managed-by: Helm
+  labels:
+    app-id: 'secondary'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: new-app-harness-example
+  template:
+    metadata:
+      labels:
+        app: new-app-harness-example
+    spec:
+      containers:
+        - name: new-app-harness-example
+          image: redis
+          env:
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: 'mysecret1'
+                  key: 'username'
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: 'mysecret1'
+                  key: 'password'
+            - name: SECRET_PASSWORD_2
+              value: '0.0.7'
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-app-harness-example-deployment-3
+  annotations:
+    app.kubernetes.io/managed-by: Helm
+  labels:
+    app-id: 'secondary'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: new-app-harness-example
+  template:
+    metadata:
+      labels:
+        app: new-app-harness-example
+    spec:
+      containers:
+        - name: new-app-harness-example
+          image: redis
+          env:
+            - name: SECRET_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: 'mysecret1'
+                  key: 'username'
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: 'mysecret1'
+                  key: 'password'
+            - name: SECRET_PASSWORD_2
+              value: '0.0.7'

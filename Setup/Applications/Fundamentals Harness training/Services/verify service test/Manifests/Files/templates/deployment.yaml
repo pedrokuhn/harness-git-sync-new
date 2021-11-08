@@ -1,0 +1,67 @@
+{{- if .Values.env.config}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.Values.name}}
+data:
+{{.Values.env.config | toYaml | indent 2}}
+---
+{{- end}}
+
+{{- if .Values.env.secrets}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{.Values.name}}
+stringData:
+{{.Values.env.secrets | toYaml | indent 2}}
+---
+{{- end}}
+
+{{- if .Values.dockercfg}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{.Values.name}}-dockercfg
+  annotations:
+    harness.io/skip-versioning: true
+data:
+  .dockercfg: {{.Values.dockercfg}}
+type: kubernetes.io/dockercfg
+---
+{{- end}}
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: processing-job-test
+  namespace: pedro
+  labels:
+    app.kubernetes.io/name: r1-processing-worker
+    helm.sh/chart: r1-processing-worker-0.0.1
+    app.kubernetes.io/instance: release-a9967862-f1c9-3157-b594-baa107989a56
+    relativity.one/owner: 'heisenberg'
+    app.kubernetes.io/managed-by: Harness
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 300
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: 'false'
+      labels:
+        app.kubernetes.io/name: r1-processing-worker
+        relativity.one/department: processing
+        relativity.one/team: heisenberg
+    spec:
+      securityContext:
+        runAsUser: 999
+      containers:
+        - name: processing-job
+          image: busybox
+          command: ["echo", "job-test"]
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: EnvironmentType
+              value: dev
+      restartPolicy: Never

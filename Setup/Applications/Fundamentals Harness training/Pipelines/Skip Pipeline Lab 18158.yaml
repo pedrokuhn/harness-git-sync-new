@@ -1,0 +1,41 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Workflow 18158
+  parallel: false
+  skipCondition:
+    expression: ${workflow.variables.Test}=='test'
+    type: CONDITIONAL_SKIP
+  stageName: STAGE 2
+  workflowName: Workflow 18158
+  workflowVariables:
+  - name: Test
+- type: APPROVAL
+  name: Approval 1
+  parallel: false
+  properties:
+    userGroups:
+    - Account Administrator
+    workflowVariables: null
+    stageName: STAGE 2
+    timeoutMillis: 86400000
+    approvalStateType: USER_GROUP
+    sweepingOutputName: ''
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+- type: ENV_STATE
+  name: Workflow 18158 - 2
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 3
+  workflowName: Workflow 18158 - 2
+- type: ENV_STATE
+  name: Workflow 18158 - 2-1
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 3
+  workflowName: Workflow 18158 - 2

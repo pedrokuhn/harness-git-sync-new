@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: TERRAFORM
+path: .
+secretMangerName: 'Harness Secrets Manager '
+skipRefreshBeforeApplyingPlan: false
+sourceRepoBranch: master
+sourceRepoSettingName: Fundamentals git training

@@ -1,0 +1,4 @@
+harnessApiVersion: '1.0'
+type: DOCKER
+imageName: customer-success-244100/pedro-gar/quickstart-image
+serverName: Google Cloud Artifact Registry

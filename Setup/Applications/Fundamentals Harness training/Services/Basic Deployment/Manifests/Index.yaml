@@ -1,0 +1,6 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+helmChartConfig:
+  chartName: what-a-helm-chart
+  connectorName: Github What a Helm
+storeType: HelmChartRepo

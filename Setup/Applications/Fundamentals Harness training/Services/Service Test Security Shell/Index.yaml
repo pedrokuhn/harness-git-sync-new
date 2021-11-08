@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: ZIP
+configVariables:
+- name: repository_name
+  value: helm-source-harness
+  valueType: TEXT
+deploymentType: SSH

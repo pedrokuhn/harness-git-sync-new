@@ -1,0 +1,19 @@
+# harness.io/skip-file-for-deploy
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  annotations:
+    harness.io/managed: true
+  name: {{.Values.name}}-virtualservice
+spec:
+  gateways:
+    - '{{.Values.name}}-gateway'
+  hosts:
+    - '*'
+  http:
+    - match:
+        - port: 8090
+      route:
+        - destination:
+            host: {{.Values.name}}.{{.Values.namespace}}.svc.cluster.local

@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+gitFileConfig:
+  branch: master
+  connectorName: Fundamentals git training
+  useBranch: true
+  useInlineServiceDefinition: false
+kustomizeConfig:
+  kustomizeDirPath: wordpress
+storeType: KustomizeSourceRepo

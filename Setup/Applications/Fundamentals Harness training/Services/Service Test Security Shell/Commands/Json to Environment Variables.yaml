@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: START
+commandUnitType: COMMAND
+targetToAllEnv: true
+templateUri: CS - Pedro/Generic Commands/Json to Environment Variables:latest
+templateVariables:
+- name: RuntimePath
+  value: ${WINGS_RUNTIME_PATH}
+- name: ArtifactFileName
+  value: packages

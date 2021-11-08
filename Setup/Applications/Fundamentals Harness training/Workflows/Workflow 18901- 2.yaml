@@ -1,0 +1,69 @@
+harnessApiVersion: '1.0'
+type: CANARY
+concurrencyStrategy: INFRA
+envName: Pedro Staging
+failureStrategies:
+- executionScope: WORKFLOW
+  failureTypes:
+  - APPLICATION_ERROR
+  repairActionCode: ROLLBACK_WORKFLOW
+  retryCount: 0
+preDeploymentSteps:
+- type: SHELL_SCRIPT
+  name: Promote Main Service
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    delegateSelectors:
+    - helm-delegate-ypufem-0
+    executeOnDelegate: true
+    host: null
+    outputVars: ''
+    publishAsVar: false
+    scriptString: echo "Promote Main Service"
+    scriptType: BASH
+    sshKeyRefName: null
+    sweepingOutputName: null
+    sweepingOutputScope: null
+    templateExpressions: null
+    templateUuid: null
+    templateVariables: null
+    templateVersion: null
+    timeoutMillis: 60000
+- type: SHELL_SCRIPT
+  name: Promote Sister Service
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    executeOnDelegate: true
+    host: null
+    outputVars: ''
+    publishAsVar: false
+    scriptString: echo "Promote Sister Service"
+    scriptType: BASH
+    sshKeyRefName: null
+    sweepingOutputName: null
+    sweepingOutputScope: null
+    templateExpressions: null
+    templateUuid: null
+    templateVariables: null
+    templateVersion: null
+    timeoutMillis: 60000
+- type: SHELL_SCRIPT
+  name: Ivanti Create Task RFC
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    executeOnDelegate: true
+    host: null
+    outputVars: ''
+    publishAsVar: false
+    scriptString: echo "Ivanti Create Task RFC"
+    scriptType: BASH
+    sshKeyRefName: null
+    sweepingOutputName: null
+    sweepingOutputScope: null
+    templateExpressions: null
+    templateVariables: ''
+    timeoutMillis: 60000
+templatized: false

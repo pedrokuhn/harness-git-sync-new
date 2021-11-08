@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  labels:
+    app: {{ .Values.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+        - name: {{ .Values.name }}
+          image: docker.io/istio/tcp-echo-server:1.2
+          imagePullPolicy: IfNotPresent
+          args: ['9000,9001,9002', 'one']
+          ports:
+            - containerPort: 9000
+            - containerPort: 9001

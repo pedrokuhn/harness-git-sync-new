@@ -1,0 +1,12 @@
+harnessApiVersion: '1.0'
+type: SERVICE
+artifactType: DOCKER
+configVariables:
+- name: namespace
+  value: wordpress-go
+  valueType: TEXT
+- name: mysqlpass
+  value: gcpkms:wordpress-mysql-pass123
+  valueType: ENCRYPTED_TEXT
+deploymentType: KUBERNETES
+helmVersion: V2

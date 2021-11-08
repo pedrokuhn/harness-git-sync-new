@@ -1,0 +1,15 @@
+name: new-app-harness-example
+replicas: 1
+
+secretName: webapp-secrets
+
+createNamespace: true
+namespace: ${infra.kubernetes.namespace}
+
+env:
+  secrets:
+    username: 'test'
+    password1: 'test1'
+
+config_properties: |-
+${configFile.getAsString("config_properties")}

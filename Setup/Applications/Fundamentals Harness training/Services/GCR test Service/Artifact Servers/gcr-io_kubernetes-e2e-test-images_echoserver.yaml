@@ -1,0 +1,5 @@
+harnessApiVersion: '1.0'
+type: GCR
+dockerImageName: kubernetes-e2e-test-images/echoserver
+registryHostName: gcr.io
+serverName: Google Cloud Platform GCS
