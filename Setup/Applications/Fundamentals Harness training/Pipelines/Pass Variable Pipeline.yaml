@@ -7,7 +7,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 1
-  workflowName: Get Tag Renamed
+  workflowName: Get Tag
 - type: ENV_STATE
   name: Deploy tag
   parallel: false
