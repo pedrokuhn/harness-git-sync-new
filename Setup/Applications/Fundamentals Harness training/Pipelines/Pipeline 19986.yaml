@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: STAGE 1 NEW NAME
   workflowName: Get Tag Renamed
 - type: ENV_STATE
   name: Basic Rolling Workflow
