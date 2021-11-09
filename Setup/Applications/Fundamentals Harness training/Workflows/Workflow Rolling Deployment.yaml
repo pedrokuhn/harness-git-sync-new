@@ -3,10 +3,12 @@ type: ROLLING
 concurrencyStrategy: INFRA
 envName: Pedro Staging
 failureStrategies:
-- executionScope: WORKFLOW
+- actionAfterTimeout: END_EXECUTION
+  executionScope: WORKFLOW
   failureTypes:
   - APPLICATION_ERROR
-  repairActionCode: ROLLBACK_WORKFLOW
+  manualInterventionTimeout: 1209600000
+  repairActionCode: MANUAL_INTERVENTION
   retryCount: 0
 notificationRules:
 - conditions:
