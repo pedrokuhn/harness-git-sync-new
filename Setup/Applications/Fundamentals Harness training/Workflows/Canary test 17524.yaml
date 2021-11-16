@@ -16,6 +16,13 @@ notificationRules:
   userGroupAsExpression: false
   userGroupNames:
   - Account Administrator
+- conditions:
+  - FAILED
+  executionScope: WORKFLOW
+  notificationGroupAsExpression: false
+  userGroupAsExpression: false
+  userGroupNames:
+  - Account Administrator
 phases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
