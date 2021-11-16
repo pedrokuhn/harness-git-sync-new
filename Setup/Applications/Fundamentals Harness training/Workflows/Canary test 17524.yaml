@@ -72,13 +72,17 @@ preDeploymentSteps:
     host: null
     outputVars: ''
     publishAsVar: false
-    scriptString: echo "Hello World"
+    scriptString: |-
+      echo "Hello World"
+      exit 1
     scriptType: BASH
     sshKeyRefName: null
     sweepingOutputName: null
     sweepingOutputScope: null
     templateExpressions: null
-    templateVariables: ''
+    templateUuid: null
+    templateVariables: null
+    templateVersion: null
     timeoutMillis: 60000
 rollbackPhases:
 - type: KUBERNETES
