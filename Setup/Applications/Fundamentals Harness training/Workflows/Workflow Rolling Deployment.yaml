@@ -29,8 +29,6 @@ phases:
     name: Deploy
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
-      name: Rollout Deployment
-    - type: K8S_DEPLOYMENT_ROLLING
       name: Export Manifest Deployment
       properties:
         exportManifests: true
