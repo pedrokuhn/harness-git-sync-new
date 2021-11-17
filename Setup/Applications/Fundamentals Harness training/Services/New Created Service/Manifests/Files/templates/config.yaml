@@ -104,7 +104,7 @@ data:
             chargifyChannel = "#chargify-anomalies-st"
             salesOpsChannel = "#saas-purchases-stg"
             salesforceErrors = "#trial-signup-errors"
-            mixPanelLink = "https://mixpanel.com/report/580835/explore/#list/chosen_columns:!('Last%%20activity','$email',Customer,'Agent%%20count','Signed%%20up%%20on'),filter:(conjunction:and,filters:!((filter:(operand:'%s',operator:in),property:'$email',selected_property_type:string,type:string))),sort_order:descending,sort_property:'Last%%20activity',sort_property_type:datetime"
+            
             chargifyLink = "https://sysdigcloud-staging.chargify.com/customers/%s"
         }
         api {
