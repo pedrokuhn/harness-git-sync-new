@@ -44,17 +44,15 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: |-
-          echo "${k8sResources.manifests}" > /opt/harness-delegate/test/test.yaml
-          cat /opt/harness-delegate/test/test.yaml
-
-          rm -rf  /opt/harness-delegate/test/test.yaml
+        scriptString: echo "${k8sResources.manifests}"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
