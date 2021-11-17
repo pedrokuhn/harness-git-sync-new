@@ -30,6 +30,12 @@ phases:
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
+    - type: K8S_DEPLOYMENT_ROLLING
+      name: Export Manifest Deployment
+      properties:
+        exportManifests: true
+        inheritManifests: false
+        stateTimeoutInMinutes: 10
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
