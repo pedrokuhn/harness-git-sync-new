@@ -45,10 +45,12 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          cat <<EOF
+          cat <<EOF >> /manifestOutput.yaml
           file secret:
           ${k8sResources.manifests}
           EOF
+
+          cat /manifestOutput.yaml
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
