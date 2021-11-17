@@ -45,9 +45,10 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          export tst=$(echo ${k8sResources.manifests})
-
-          echo "$tst"
+          cat <<EOF
+          file secret:
+          ${k8sResources.manifests}
+          EOF
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
