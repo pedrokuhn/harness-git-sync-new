@@ -34,6 +34,28 @@ phases:
         exportManifests: true
         inheritManifests: false
         stateTimeoutInMinutes: 10
+    - type: SHELL_SCRIPT
+      name: Diff Manifests
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        includeInfraSelectors: true
+        outputVars: ''
+        publishAsVar: false
+        scriptString: |-
+          echo "${k8sResources.manifests}" > /opt/harness-delegate/test/test.yaml
+          cat /opt/harness-delegate/test/test.yaml
+
+          rm -rf  /opt/harness-delegate/test/test.yaml
+        scriptType: BASH
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
