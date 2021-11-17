@@ -44,7 +44,10 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: echo "${k8sResources.manifests}"
+        scriptString: |-
+          export tst=$(echo ${k8sResources.manifests})
+
+          echo "$tst"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
