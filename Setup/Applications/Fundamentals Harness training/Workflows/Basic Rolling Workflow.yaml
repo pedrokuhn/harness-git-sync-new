@@ -68,8 +68,8 @@ phases:
         publishAsVar: false
         scriptString: |-
           echo "###### Variable Name #####"
-          export runServicesNew=${deploy.variableName}
-          export variableName=${deploy.variableNameOld}
+          #export runServicesNew=${deploy.variableName}
+          #export variableName=${deploy.variableNameOld}
 
 
           #. /opt/harness-delegate/pedro-script/executionScript.sh
