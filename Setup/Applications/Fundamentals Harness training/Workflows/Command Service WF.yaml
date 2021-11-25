@@ -33,7 +33,18 @@ phases:
     - type: COMMAND
       name: Test Deploy
       properties:
+        commandName: Test Deploy
         commandType: OTHER
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        timeoutMillis: 60000
       templateUri: CS - Pedro/Test Deploy:latest
     stepsInParallel: false
   - type: CUSTOM_DEPLOYMENT_PHASE_STEP
