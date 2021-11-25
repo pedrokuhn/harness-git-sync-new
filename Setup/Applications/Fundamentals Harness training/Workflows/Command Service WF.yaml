@@ -30,6 +30,11 @@ phases:
       name: Fetch Instances
       properties:
         stateTimeoutInMinutes: 1
+    - type: COMMAND
+      name: Test Deploy
+      properties:
+        commandType: OTHER
+      templateUri: CS - Pedro/Test Deploy:latest
     stepsInParallel: false
   - type: CUSTOM_DEPLOYMENT_PHASE_STEP
     name: Verify Service
