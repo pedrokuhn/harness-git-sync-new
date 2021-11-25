@@ -36,6 +36,8 @@ phases:
         commandName: Test Deploy
         commandType: OTHER
         connectionAttributeName: null
+        delegateSelectors:
+        - my-first-delegate
         executeOnDelegate: true
         host: null
         outputVars: ''
