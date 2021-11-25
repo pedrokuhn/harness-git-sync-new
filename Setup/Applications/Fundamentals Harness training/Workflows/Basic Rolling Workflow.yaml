@@ -117,4 +117,4 @@ userVariables:
 - type: TEXT
   fixed: false
   mandatory: true
-  name: branch
+  name: test_args
