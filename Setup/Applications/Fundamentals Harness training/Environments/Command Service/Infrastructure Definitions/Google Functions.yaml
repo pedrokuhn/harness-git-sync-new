@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: INFRA_DEFINITION
+cloudProviderType: CUSTOM
+deploymentType: CUSTOM
+deploymentTypeTemplateUri: CS - Pedro/Google Function Test
+infrastructure:
+- type: CUSTOM
