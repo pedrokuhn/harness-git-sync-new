@@ -74,5 +74,5 @@ templatized: true
 userVariables:
 - type: TEXT
   fixed: false
-  mandatory: true
+  mandatory: false
   name: DeployArgs
