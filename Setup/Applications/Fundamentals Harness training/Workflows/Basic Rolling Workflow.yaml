@@ -34,19 +34,16 @@ phases:
         executeOnDelegate: true
         host: null
         includeInfraSelectors: true
-        outputVars: variableName,variableNameOld
-        publishAsVar: true
+        outputVars: ''
+        publishAsVar: false
         scriptString: |-
           #### Test
 
-          export variableName="test value"
-
-          test_script
+          echo "${workflow.variables.DeployArgs}"
         scriptType: BASH
-        secretOutputVars: ''
         sshKeyRefName: null
-        sweepingOutputName: deploy
-        sweepingOutputScope: PIPELINE
+        sweepingOutputName: null
+        sweepingOutputScope: null
         templateExpressions: null
         templateUuid: null
         templateVariables: null
