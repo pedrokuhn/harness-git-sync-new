@@ -114,4 +114,4 @@ userVariables:
 - type: TEXT
   fixed: false
   mandatory: true
-  name: test_args
+  name: DeployArgs
