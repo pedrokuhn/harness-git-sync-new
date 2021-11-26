@@ -25,6 +25,11 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    stepSkipStrategies:
+    - assertionExpression: ${workflow.variables.conductorWorkflowBody} == 'na'
+      scope: SPECIFIC_STEPS
+      steps:
+      - Shell Script
     steps:
     - type: SHELL_SCRIPT
       name: Shell Script
