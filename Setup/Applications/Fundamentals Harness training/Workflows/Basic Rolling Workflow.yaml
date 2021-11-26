@@ -119,4 +119,4 @@ userVariables:
 - type: TEXT
   fixed: false
   mandatory: true
-  name: conductorWorkflowBody
+  name: workflowBody
