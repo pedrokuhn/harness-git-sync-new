@@ -30,7 +30,7 @@ phases:
       name: Canary Deployment
       properties:
         exportManifests: false
-        inheritManifests: true
+        inheritManifests: false
         instanceUnitType: COUNT
         instances: '1'
         skipDryRun: false
