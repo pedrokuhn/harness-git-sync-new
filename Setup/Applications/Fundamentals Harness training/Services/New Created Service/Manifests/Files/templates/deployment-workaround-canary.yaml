@@ -9,16 +9,12 @@ spec:
   selector:
     matchLabels:
       app: {{.Values.name}}
-{{- if .Values.skipCanary}}
-      harness.io/track: stable
-{{- end}}
+      harness.io/track: canary
   template:
     metadata:
       labels:
         app: {{.Values.name}}
-{{- if .Values.skipCanary}}
-        harness.io/track: stable
-{{- end}}
+        harness.io/track: canary
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
