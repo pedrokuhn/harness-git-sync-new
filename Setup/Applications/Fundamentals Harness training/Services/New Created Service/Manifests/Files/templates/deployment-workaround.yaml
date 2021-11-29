@@ -9,10 +9,16 @@ spec:
   selector:
     matchLabels:
       app: {{.Values.name}}
+{{- if .Values.skipCanary}}
+      harness.io/track: stable
+{{- end}}
   template:
     metadata:
       labels:
         app: {{.Values.name}}
+{{- if .Values.skipCanary}}
+        harness.io/track: stable
+{{- end}}
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
@@ -20,7 +26,9 @@ spec:
       {{- end}}
       containers:
       - name: {{.Values.name}}
-        image: nginx:latest
+        image: {{.Values.image}}
+        args:
+        - -text="hello world"
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
