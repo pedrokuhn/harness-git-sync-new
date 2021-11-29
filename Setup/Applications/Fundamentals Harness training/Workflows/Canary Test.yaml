@@ -30,10 +30,10 @@ phases:
       name: Canary Deployment
       properties:
         exportManifests: false
-        inheritManifests: false
+        inheritManifests: true
         instanceUnitType: COUNT
         instances: '1'
-        skipDryRun: true
+        skipDryRun: false
         stateTimeoutInMinutes: 10
         templateUuid: null
         templateVariables: null
