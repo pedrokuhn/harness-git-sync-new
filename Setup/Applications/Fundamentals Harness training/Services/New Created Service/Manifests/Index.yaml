@@ -8,4 +8,4 @@ gitFileConfig:
   useBranch: true
   useInlineServiceDefinition: false
 skipVersioningForAllK8sObjects: false
-storeType: Remote
+storeType: HelmSourceRepo
