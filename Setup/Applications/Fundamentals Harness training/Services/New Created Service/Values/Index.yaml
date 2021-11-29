@@ -1,9 +1,0 @@
-harnessApiVersion: '1.0'
-type: APPLICATION_MANIFEST
-gitFileConfig:
-  branch: secpod
-  connectorName: GitHub Account
-  repoName: pedrokuhn/basic-service-manifest
-  useBranch: true
-  useInlineServiceDefinition: false
-storeType: Remote
