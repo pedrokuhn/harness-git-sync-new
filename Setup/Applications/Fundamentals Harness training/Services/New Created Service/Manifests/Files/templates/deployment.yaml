@@ -73,5 +73,3 @@ spec:
         runAsUser: 101
         runAsGroup: 101 #warnings on aeis-cs-lab
         supplementalGroups: [101] #warnings on aeis-cs-lab
-        seccompProfile:
-            type: RuntimeDefault
