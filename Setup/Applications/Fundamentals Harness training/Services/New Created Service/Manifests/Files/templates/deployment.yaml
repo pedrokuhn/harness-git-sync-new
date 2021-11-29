@@ -53,7 +53,7 @@ spec:
       {{- end}}
       containers:
       - name: {{.Values.name}}
-        image: ${artifact.metadata.image}
+        image: {{.Values.image}}
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
