@@ -1,11 +1,12 @@
 name: harness-example
 replicas: 1
 
-image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
+image: hashicorp/http-echo:${artifact.buildNo}
 
 createNamespace: true
 namespace: ${infra.kubernetes.namespace}
+skipCanary: ${workflow.variables.skipCanary}
 
 # Service Type allow you to specify what kind of service you want.
 # Possible values for ServiceType are:
@@ -15,7 +16,7 @@ serviceType: LoadBalancer
 # A Service can map an incoming port to any targetPort.
 # targetPort is where application is listening on inside the container.
 servicePort: 80
-serviceTargetPort: 80
+serviceTargetPort: 5678
 
 # Specify all environment variables to be added to the container.
 # The following two maps, config and secrets, are put into a ConfigMap
