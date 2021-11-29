@@ -75,4 +75,9 @@ rollbackPhases:
   provisionNodes: false
   serviceName: New Created Service
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: skipCanary
