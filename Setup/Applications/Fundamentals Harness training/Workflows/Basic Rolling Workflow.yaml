@@ -26,7 +26,7 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     stepSkipStrategies:
-    - assertionExpression: ${jsonpath('[0].name')} == 'na'
+    - assertionExpression: ${workflow.variables.workflowBody} == 'na'
       scope: SPECIFIC_STEPS
       steps:
       - Shell Script
