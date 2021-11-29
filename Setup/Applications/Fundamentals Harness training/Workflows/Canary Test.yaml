@@ -54,6 +54,13 @@ phases:
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
+    steps:
+    - type: K8S_DELETE
+      name: Delete Canary
+      properties:
+        deleteNamespacesForRelease: false
+        resources: ${k8s.canaryWorkload}
+        stateTimeoutInMinutes: 10
     stepsInParallel: false
   provisionNodes: false
   serviceName: New Created Service
