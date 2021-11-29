@@ -3,7 +3,6 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: secpod
   connectorName: GitHub Account
-  filePath: values.yaml
   repoName: pedrokuhn/basic-service-manifest
   useBranch: true
   useInlineServiceDefinition: false
