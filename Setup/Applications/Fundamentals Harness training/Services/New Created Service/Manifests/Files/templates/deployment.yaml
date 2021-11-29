@@ -1,3 +1,5 @@
+# harness.io/skip-file-for-deploy
+
 {{- if .Values.env.config}}
 apiVersion: v1
 kind: ConfigMap
