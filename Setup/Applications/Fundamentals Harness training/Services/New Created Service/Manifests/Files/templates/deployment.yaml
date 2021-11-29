@@ -53,7 +53,7 @@ spec:
       {{- end}}
       containers:
       - name: {{.Values.name}}
-        image: {{.Values.image}}
+        image: nginx:latest
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
