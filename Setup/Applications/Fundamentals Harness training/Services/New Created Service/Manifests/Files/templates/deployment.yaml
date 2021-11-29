@@ -63,3 +63,14 @@ spec:
             name: {{.Values.name}}
         {{- end}}
         {{- end}}
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+      securityContext:
+        fsGroup: 101
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101 #warnings on aeis-cs-lab
+        supplementalGroups: [101] #warnings on aeis-cs-lab
+        seccompProfile:
+            type: RuntimeDefault
