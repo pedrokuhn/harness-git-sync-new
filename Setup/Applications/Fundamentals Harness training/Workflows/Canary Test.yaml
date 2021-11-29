@@ -42,9 +42,12 @@ phases:
       name: Apply
       properties:
         exportManifests: false
-        filePaths: templates/deployment-workaround.yaml
+        filePaths: templates/deployment-workaround-canary.yaml
         inheritManifests: false
         stateTimeoutInMinutes: 10
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
