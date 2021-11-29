@@ -15,5 +15,3 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 2
   workflowName: Basic Rolling Workflow
-  workflowVariables:
-  - name: branch
