@@ -76,7 +76,8 @@ spec:
     - name: nri-integration-cfg-volume
       configMap:
       name: nri-integration-cfg
-    ---
+
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
