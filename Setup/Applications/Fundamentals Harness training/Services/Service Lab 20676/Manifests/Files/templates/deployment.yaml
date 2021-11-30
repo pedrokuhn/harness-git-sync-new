@@ -5,7 +5,7 @@ metadata:
     app: {{.Values.name}}
   name: {{.Values.name}}-deployment
 spec:
-  replicas: 5
+  replicas: {{int .Values.replicas}}
   selector:
     matchLabels:
       app: {{.Values.name}}
