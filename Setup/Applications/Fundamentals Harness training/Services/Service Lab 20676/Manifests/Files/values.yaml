@@ -1,7 +1,11 @@
 name: harness-example
 replicas: 1
 
-workflow: "test name"
+workflow: "test workflow"
+vaultPath: "test vaultPath"
+vaultProject: "test vaultProject"
+vaultRole: "test vaultRole"
+serviceacct: "test serviceacct" 
 
 image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
