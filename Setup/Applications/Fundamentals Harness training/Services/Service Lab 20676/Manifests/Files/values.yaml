@@ -7,7 +7,7 @@ vaultProject: "test vaultProject"
 vaultRole: "test vaultRole"
 serviceacct: "test serviceacct" 
 
-image: ${artifact.metadata.image}
+image: hashicorp/http-echo:${artifact.buildNo}
 dockercfg: ${artifact.source.dockerconfig}
 
 createNamespace: true
