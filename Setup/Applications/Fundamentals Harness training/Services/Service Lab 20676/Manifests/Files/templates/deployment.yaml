@@ -66,16 +66,16 @@ spec:
       volumes:
       - name: host-volume
         hostPath:
-        path: /
+          path: /
       - name: host-docker-socket
         hostPath:
-        path: /var/run/docker.sock
+          path: /var/run/docker.sock
       - name: nri-default-integration-cfg-volume
         configMap:
-        name: nri-default-integration-cfg
+          name: nri-default-integration-cfg
       - name: nri-integration-cfg-volume
         configMap:
-        name: nri-integration-cfg
+          name: nri-integration-cfg
 
 ---
 apiVersion: v1
