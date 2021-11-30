@@ -1,7 +1,7 @@
 name: harness-example
 replicas: 1
 
-workflow: '${workflow.variable.test}'
+workflow: "${workflow.variable.test}"
 vaultPath: "test-vaultPath"
 vaultProject: "test-vaultProject"
 vaultRole: "test-vaultRole"
