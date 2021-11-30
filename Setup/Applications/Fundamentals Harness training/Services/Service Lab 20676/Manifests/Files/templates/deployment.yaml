@@ -82,21 +82,21 @@ kind: ConfigMap
 metadata:
   name: nri-integration-cfg
 data:
-  nri-flex.yml: |
-  integrations:
-  - name: nri-flex
-    config:
-    name: Casino Flex checks
-  apis:
-  - database: mysql
-    name: pigbeeMysqlChecks
-    event_type: CasinoMysqlCheck
-    db_conn: {{.Values.pigbeeFeaturesConnectionString}}
-    db_queries:
-  - name: MEMCACHE_ITEM_PERFORMANCE
-    run: "select `key`, avg_time from server_performance_logs where type = 'get' and `key` like 'Perf.memcache0%' and DATE_SUB(NOW(),INTERVAL 10 MINUTE) <= updated_on ORDER BY updated_on DESC"
-    custom_attributes:
-    env: {{CASINO_ENV}}
+  nri-flex.yml: |-
+integrations:
+- name: nri-flex
+  config:
+  name: Casino Flex checks
+apis:
+- database: mysql
+  name: pigbeeMysqlChecks
+  event_type: CasinoMysqlCheck
+  db_conn: {{.Values.pigbeeFeaturesConnectionString}}
+  db_queries:
+- name: MEMCACHE_ITEM_PERFORMANCE
+  run: "select `key`, avg_time from server_performance_logs where type = 'get' and `key` like 'Perf.memcache0%' and DATE_SUB(NOW(),INTERVAL 10 MINUTE) <= updated_on ORDER BY updated_on DESC"
+  custom_attributes:
+  env: {{CASINO_ENV}}
 ---
 apiVersion: v1
 kind: ConfigMap
