@@ -1,6 +1,8 @@
 name: harness-example
 replicas: 1
 
+workflow: "test name"
+
 image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
 
