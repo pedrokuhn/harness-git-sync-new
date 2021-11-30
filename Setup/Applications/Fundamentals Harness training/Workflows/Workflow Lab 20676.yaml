@@ -61,4 +61,9 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Service Lab 20676
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: test
