@@ -12,7 +12,7 @@ image: hashicorp/http-echo:${artifact.buildNo}
 dockercfg: ${artifact.source.dockerconfig}
 
 createNamespace: true
-namespace: '${infra.kubernetes.namespace}''
+namespace: '${infra.kubernetes.namespace}'
 
 # Service Type allow you to specify what kind of service you want.
 # Possible values for ServiceType are:
