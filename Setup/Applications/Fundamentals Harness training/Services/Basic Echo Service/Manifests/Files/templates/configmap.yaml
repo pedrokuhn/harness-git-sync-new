@@ -18,4 +18,4 @@ data:
     - name: MEMCACHE_ITEM_PERFORMANCE
       run: "select `key`, avg_time from server_performance_logs where type = 'get' and `key` like 'Perf.memcache0%' and DATE_SUB(NOW(),INTERVAL 10 MINUTE) <= updated_on ORDER BY updated_on DESC"
       custom_attributes:
-      env: {{CASINO_ENV}} ### this field
+      env: {{ "{{CASINO_ENV}}" }} ### this field
