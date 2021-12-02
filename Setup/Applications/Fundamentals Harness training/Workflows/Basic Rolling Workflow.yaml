@@ -32,25 +32,6 @@ phases:
       - Shell Script
     steps:
     - type: SHELL_SCRIPT
-      name: Shell Script_2
-      properties:
-        commandPath: null
-        connectionAttributeName: null
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: true
-        outputVars: id
-        publishAsVar: true
-        scriptString: export id="1234"
-        scriptType: BASH
-        secretOutputVars: ''
-        sshKeyRefName: null
-        sweepingOutputName: input
-        sweepingOutputScope: WORKFLOW
-        templateExpressions: null
-        templateVariables: ''
-        timeoutMillis: 60000
-    - type: SHELL_SCRIPT
       name: Shell Script
       properties:
         commandPath: null
