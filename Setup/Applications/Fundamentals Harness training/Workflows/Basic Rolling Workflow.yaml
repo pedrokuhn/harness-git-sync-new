@@ -110,9 +110,4 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Basic Echo Service
   statefulSet: false
-templatized: true
-userVariables:
-- type: TEXT
-  fixed: false
-  mandatory: true
-  name: workflowBody
+templatized: false
