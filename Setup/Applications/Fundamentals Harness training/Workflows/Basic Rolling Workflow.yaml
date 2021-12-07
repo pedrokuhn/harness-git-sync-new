@@ -37,8 +37,6 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          apt install -y git
-
           cat <<EOF
           file secret:
           ${configFile.getAsString("SSH test file")}
@@ -48,7 +46,9 @@ phases:
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
