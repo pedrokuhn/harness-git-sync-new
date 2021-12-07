@@ -2,6 +2,6 @@ harnessApiVersion: '1.0'
 type: CONFIG_FILE
 checksumType: MD5
 encrypted: true
-fileName: gcpkms:SSH ec2 key
+fileName: gcpkms:ssh-key-example
 targetFilePath: SSH test file
 targetToAllEnv: false
