@@ -37,12 +37,10 @@ phases:
         outputVars: ''
         publishAsVar: false
         scriptString: |-
-          cat <<EOF > tst-ssh
+          cat <<EOF
           file secret:
           ${configFile.getAsString("SSH test file")}
           EOF
-
-          cat tst-ssh
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
