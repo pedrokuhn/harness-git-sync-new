@@ -1,3 +1,4 @@
+# harness.io/skip-versioning
 apiVersion: v1
 kind: Service
 metadata:
