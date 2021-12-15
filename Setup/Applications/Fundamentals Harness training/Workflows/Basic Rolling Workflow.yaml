@@ -25,36 +25,6 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
-    stepSkipStrategies:
-    - assertionExpression: ${workflow.variables.test} == 'na'
-      scope: SPECIFIC_STEPS
-      steps:
-      - Shell Script
-    steps:
-    - type: SHELL_SCRIPT
-      name: Shell Script
-      properties:
-        commandPath: null
-        connectionAttributeName: null
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: true
-        outputVars: ''
-        publishAsVar: false
-        scriptString: |-
-          cat <<EOF
-          file secret:
-          ${configFile.getAsString("SSH test file")}
-          EOF
-        scriptType: BASH
-        sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
