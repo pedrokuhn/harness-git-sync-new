@@ -3,6 +3,6 @@ type: TERRAFORM
 path: ${workflow.variables.path}
 repoName: /pedrokuhn/lab-terraform-gcp-instance
 secretMangerName: 'Harness Secrets Manager '
-skipRefreshBeforeApplyingPlan: false
+skipRefreshBeforeApplyingPlan: true
 sourceRepoBranch: ${workflow.variables.branch}
 sourceRepoSettingName: GitHub Account
