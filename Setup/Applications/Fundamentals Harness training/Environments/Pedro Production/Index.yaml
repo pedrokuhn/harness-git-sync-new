@@ -4,6 +4,10 @@ configMapYamlByServiceTemplateName: {}
 description: Fundamentals Harness training
 environmentType: PROD
 variableOverrides:
+- name: PASSWORD
+  serviceName: Helm Native
+  value: stable-alpine-perl
+  valueType: TEXT
 - name: A
   serviceName: Basic Echo Service
   value: test
