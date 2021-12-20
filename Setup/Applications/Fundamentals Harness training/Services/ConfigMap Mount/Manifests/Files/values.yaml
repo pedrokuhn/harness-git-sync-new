@@ -1,7 +1,7 @@
 name: harness-example
 replicas: 1
 
-releaseVersion: ${workflow.releaseNo}
+releaseVersion: ${workflow.lastGoodReleaseNo}
 
 image: hashicorp/http-echo:${artifact.buildNo}
 dockercfg: ${artifact.source.dockerconfig}
