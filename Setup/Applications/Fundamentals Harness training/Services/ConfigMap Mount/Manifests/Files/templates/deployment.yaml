@@ -40,9 +40,9 @@ spec:
       {{- end}}
       containers:
       - name: {{.Values.name}}
-        image: {{.Values.image}}
+        image: busybox:latest
         args:
-        - -text="hello world"
+        - "sleep 10000"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.sh
