@@ -46,7 +46,7 @@ spec:
         - "1000000"
         volumeMounts:
         - name: config-volume
-          mountPath: /app/config.sh
+          mountPath: /app/
       volumes:
         - name: config-volume
           configMap:
