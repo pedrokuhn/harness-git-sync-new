@@ -41,6 +41,8 @@ spec:
       containers:
       - name: {{.Values.name}}
         image: {{.Values.image}}
+        args:
+        - -text="hello world"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.sh
