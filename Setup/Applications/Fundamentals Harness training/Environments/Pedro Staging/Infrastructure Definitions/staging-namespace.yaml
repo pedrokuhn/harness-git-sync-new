@@ -4,6 +4,6 @@ cloudProviderType: KUBERNETES_CLUSTER
 deploymentType: KUBERNETES
 infrastructure:
 - type: DIRECT_KUBERNETES
-  cloudProviderName: GKE cluster
+  cloudProviderName: Kubernetes Cluster 2
   namespace: pedro-staging
   releaseName: release-${infra.kubernetes.infraId}
