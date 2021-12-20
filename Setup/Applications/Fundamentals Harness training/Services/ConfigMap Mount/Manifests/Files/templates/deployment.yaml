@@ -42,7 +42,8 @@ spec:
       - name: {{.Values.name}}
         image: busybox:latest
         args:
-        - "sleep 10000"
+        - sleep
+        - "1000000"
         volumeMounts:
         - name: config-volume
           mountPath: /app/config.sh
