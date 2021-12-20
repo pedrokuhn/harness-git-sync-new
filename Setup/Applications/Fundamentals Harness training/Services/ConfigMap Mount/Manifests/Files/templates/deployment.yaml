@@ -6,6 +6,7 @@ metadata:
 data:
   config.sh: |
     echo "test file"
+---
 
 {{- if .Values.dockercfg}}
 apiVersion: v1
