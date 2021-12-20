@@ -30,7 +30,7 @@ phases:
       name: Rollout Deployment
       properties:
         delegateSelectors:
-        - new-vm-delegate
+        - new-vm-delegate-ypufem-0
         exportManifests: false
         inheritManifests: false
         stateTimeoutInMinutes: 10
