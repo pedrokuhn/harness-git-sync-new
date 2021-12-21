@@ -68,7 +68,7 @@ phases:
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Canary
+  name: Second
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -134,8 +134,8 @@ rollbackPhases:
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Rollback Canary
-  phaseNameForRollback: Canary
+  name: Rollback Second
+  phaseNameForRollback: Second
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -177,7 +177,7 @@ userVariables:
   mandatory: true
   name: InfraDefinition_Kubernetes
 - type: ENTITY
-  description: Variable for Infrastructure Definition entity in Rollback Canary
+  description: Variable for Infrastructure Definition entity in Rollback Second
   fixed: false
   mandatory: true
   name: InfraDefinition_Kubernetes2
