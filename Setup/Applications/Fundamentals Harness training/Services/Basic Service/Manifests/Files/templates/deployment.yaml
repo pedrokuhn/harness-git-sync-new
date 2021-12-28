@@ -4,8 +4,6 @@ kind: ConfigMap
 metadata:
   name: {{.Values.name}}
 data:
-#
-
 {{.Values.env.config | toYaml | indent 2}}
 ---
 {{- end}}
