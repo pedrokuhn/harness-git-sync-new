@@ -2,3 +2,8 @@ harnessApiVersion: '1.0'
 type: ENVIRONMENT
 configMapYamlByServiceTemplateName: {}
 environmentType: PROD
+variableOverrides:
+- name: A
+  serviceName: Basic Echo Service
+  value: asasa
+  valueType: TEXT
