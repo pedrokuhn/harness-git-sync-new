@@ -1,152 +1,69 @@
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: {{ .Values.name }}
-# spec:
-#   replicas: {{ .Values.replicas }}
-#   selector:
-#     matchLabels:
-#       app: {{ .Values.name }}
-#   template:
-#     metadata:
-#       labels:
-#         app: {{ .Values.name }}
-#     spec:
-#       containers:
-#         - name: {{ .Values.name }}
-#           image: redis
-#           env:
-#             - name: SECRET_USERNAME
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: {{ .Values.secretName }}
-#                   key: 'username'
-#             - name: SECRET_PASSWORD
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: {{ .Values.secretName }}
-#                   key: 'password'
-#             - name: RANDOM_VERSION
-#               value: '0.0.7'
-
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: {{ .Values.name }}-2
-# spec:
-#   replicas: {{ .Values.replicas }}
-#   selector:
-#     matchLabels:
-#       app: {{ .Values.name }}
-#   template:
-#     metadata:
-#       labels:
-#         app: {{ .Values.name }}
-#     spec:
-#       containers:
-#         - name: {{ .Values.name }}
-#           image: redis
-#           env:
-#             - name: SECRET_USERNAME
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: {{ .Values.secretName }}
-#                   key: 'username'
-#             - name: SECRET_PASSWORD
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: {{ .Values.secretName }}
-#                   key: 'password'
-#             - name: RANDOM_VERSION
-#               value: '0.0.7'
-
-# ---
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: {{ .Values.name }}-3
-# spec:
-#   replicas: {{ .Values.replicas }}
-#   selector:
-#     matchLabels:
-#       app: {{ .Values.name }}
-#   template:
-#     metadata:
-#       labels:
-#         app: {{ .Values.name }}
-#     spec:
-#       containers:
-#         - name: {{ .Values.name }}
-#           image: redis
-#           env:
-#             - name: SECRET_USERNAME
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: {{ .Values.secretName }}
-#                   key: 'username'
-#             - name: SECRET_PASSWORD
-#               valueFrom:
-#                 secretKeyRef:
-#                   name: {{ .Values.secretName }}
-#                   key: 'password'
-#             - name: RANDOM_VERSION
-#               value: '0.0.7'
-######################################################
-
-{{- if .Values.createNamespace}}
+{{- if .Values.env.config}}
 apiVersion: v1
-kind: Namespace
+kind: ConfigMap
 metadata:
-  name: {{.Values.namespace}}
+  name: {{.Values.name}}
+data:
+#
+
+{{.Values.env.config | toYaml | indent 2}}
+---
 {{- end}}
 
----
-
+{{- if .Values.env.secrets}}
 apiVersion: v1
-kind: Service
+kind: Secret
 metadata:
-  name: web-app-svc
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-  selector:
-    app: {{.Values.name}}
-
+  name: {{.Values.name}}
+stringData:
+{{.Values.env.secrets | toYaml | indent 2}}
 ---
+{{- end}}
+
+{{- if .Values.dockercfg}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{.Values.name}}-dockercfg
+  annotations:
+    harness.io/skip-versioning: true
+data:
+  .dockercfg: {{.Values.dockercfg}}
+type: kubernetes.io/dockercfg
+---
+{{- end}}
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.name}}
+  name: {{.Values.name}}-deployment
 spec:
-  replicas: 1
+  replicas: {{int .Values.replicas}}
   selector:
     matchLabels:
       app: {{.Values.name}}
   template:
     metadata:
-      name: web-app-dev
       labels:
         app: {{.Values.name}}
     spec:
+      {{- if .Values.dockercfg}}
+      imagePullSecrets:
+      - name: {{.Values.name}}-dockercfg
+      {{- end}}
       containers:
       - name: {{.Values.name}}
-        image: nginx:latest
-        ports:
-        - containerPort: 8080
+        image: {{.Values.image}}
+        args:
+        - -text="hello world"
+        {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
+        {{- if .Values.env.config}}
+        - configMapRef:
+            name: {{.Values.name}}
+        {{- end}}
         {{- if .Values.env.secrets}}
         - secretRef:
-            name: {{ .Values.secretName }}
+            name: {{.Values.name}}
         {{- end}}
-        volumeMounts:
-        - name: webapp-mount 
-          mountPath: /app
-      volumes:
-        - name: webapp-mount
-          configMap:
-            name: test-configmap  
+        {{- end}}
