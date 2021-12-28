@@ -2,6 +2,9 @@ harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
 configVariables:
+- name: b
+  value: b
+  valueType: TEXT
 - name: A
   value: tst
   valueType: TEXT
