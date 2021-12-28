@@ -11,5 +11,3 @@ env:
     username: 'test'
     password1: 'test1'
 
-config_properties: |-
-${configFile.getAsString("config_properties")}
