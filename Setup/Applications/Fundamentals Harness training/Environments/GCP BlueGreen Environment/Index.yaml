@@ -3,6 +3,10 @@ type: ENVIRONMENT
 configMapYamlByServiceTemplateName: {}
 environmentType: PROD
 variableOverrides:
+- name: i
+  serviceName: Basic Echo Service
+  value: '1110111'
+  valueType: TEXT
 - name: h
   serviceName: Basic Echo Service
   value: '110100'
