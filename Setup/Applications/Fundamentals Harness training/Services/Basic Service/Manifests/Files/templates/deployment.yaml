@@ -65,3 +65,18 @@ spec:
             name: {{.Values.name}}
         {{- end}}
         {{- end}}
+      - name: {{.Values.name}}-2
+        image: {{.Values.image}}
+        args:
+        - -text="hello world"
+        {{- if or .Values.env.config .Values.env.secrets}}
+        envFrom:
+        {{- if .Values.env.config}}
+        - configMapRef:
+            name: {{.Values.name}}
+        {{- end}}
+        {{- if .Values.env.secrets}}
+        - secretRef:
+            name: {{.Values.name}}
+        {{- end}}
+        {{- end}}
