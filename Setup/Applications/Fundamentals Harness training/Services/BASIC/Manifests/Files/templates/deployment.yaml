@@ -32,34 +32,27 @@ type: kubernetes.io/dockercfg
 {{- end}}
 
 apiVersion: apps/v1
-kind: Deployment
+kind: Pod
 metadata:
-  name: {{.Values.name}}-deployment
+  name: mc1
 spec:
-  replicas: {{int .Values.replicas}}
-  selector:
-    matchLabels:
-      app: {{.Values.name}}
-  template:
-    metadata:
-      labels:
-        app: {{.Values.name}}
-    spec:
-      {{- if .Values.dockercfg}}
-      imagePullSecrets:
-      - name: {{.Values.name}}-dockercfg
-      {{- end}}
-      containers:
-      - name: {{.Values.name}}
-        image: {{.Values.image}}
-        {{- if or .Values.env.config .Values.env.secrets}}
-        envFrom:
-        {{- if .Values.env.config}}
-        - configMapRef:
-            name: {{.Values.name}}
-        {{- end}}
-        {{- if .Values.env.secrets}}
-        - secretRef:
-            name: {{.Values.name}}
-        {{- end}}
-        {{- end}}
+  volumes:
+  - name: html
+    emptyDir: {}
+  containers:
+  - name: 1st
+    image: nginx
+    volumeMounts:
+    - name: html
+      mountPath: /usr/share/nginx/html
+  - name: 2nd
+    image: debian
+    volumeMounts:
+    - name: html
+      mountPath: /html
+    command: ["/bin/sh", "-c"]
+    args:
+      - while true; do
+          date >> /html/index.html;
+          sleep 1;
+        done
