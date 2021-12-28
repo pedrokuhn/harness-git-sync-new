@@ -66,3 +66,6 @@ spec:
               date >> /html/index.html;
               sleep 1;
             done
+      volumes:
+      - name: html
+        emptyDir: {}
