@@ -50,16 +50,19 @@ spec:
       - name: {{.Values.name}}-dockercfg
       {{- end}}
       containers:
-      - name: {{.Values.name}}
-        image: {{.Values.image}}
-        {{- if or .Values.env.config .Values.env.secrets}}
-        envFrom:
-        {{- if .Values.env.config}}
-        - configMapRef:
-            name: {{.Values.name}}
-        {{- end}}
-        {{- if .Values.env.secrets}}
-        - secretRef:
-            name: {{.Values.name}}
-        {{- end}}
-        {{- end}}
+      - name: 1st
+        image: nginx
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      - name: 2nd
+        image: debian
+        volumeMounts:
+        - name: html
+          mountPath: /html
+        command: ["/bin/sh", "-c"]
+        args:
+          - while true; do
+              date >> /html/index.html;
+              sleep 1;
+            done
