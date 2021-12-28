@@ -1,8 +1,0 @@
-harnessApiVersion: '1.0'
-type: CONFIG_FILE
-checksum: 8e410ocdENkcVOUz9mLPrQ==
-checksumType: MD5
-encrypted: false
-fileName: config_properties
-targetFilePath: config_properties
-targetToAllEnv: true

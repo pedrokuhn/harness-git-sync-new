@@ -1,3 +1,0 @@
-ENVIRONMENT=DEV
-Key=dummy
-secretReference="${secrets.getValue("pedro-test-secret")}"
