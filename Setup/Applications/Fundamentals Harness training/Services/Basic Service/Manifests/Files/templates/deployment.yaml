@@ -34,7 +34,7 @@ spec:
         image: {{.Values.image}}
         args:
         - -text="hello world"
-      - name: {{.Values.name}}-2
+      - name: test
         image: {{.Values.image}}
         args:
         - -text="hello world"
