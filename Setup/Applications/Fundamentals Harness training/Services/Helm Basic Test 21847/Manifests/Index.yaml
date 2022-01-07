@@ -3,7 +3,6 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: harness
   connectorName: helm-service-repo
-  filePath: templates
   useBranch: true
   useInlineServiceDefinition: false
 storeType: Remote
