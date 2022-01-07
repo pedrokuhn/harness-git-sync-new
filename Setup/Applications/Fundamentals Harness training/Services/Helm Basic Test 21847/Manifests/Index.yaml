@@ -1,8 +1,3 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
-gitFileConfig:
-  branch: harness
-  connectorName: helm-service-repo
-  useBranch: true
-  useInlineServiceDefinition: false
-storeType: Remote
+storeType: Local
