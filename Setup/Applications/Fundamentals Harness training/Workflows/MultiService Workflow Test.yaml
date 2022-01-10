@@ -21,7 +21,7 @@ phases:
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Canary
+  name: First Phase
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -35,13 +35,20 @@ phases:
   provisionNodes: false
   serviceName: BASIC
   statefulSet: false
+  templateExpressions:
+  - expression: ${InfraDefinition_KUBERNETES}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Rollback Canary
-  phaseNameForRollback: Canary
+  name: Rollback First Phase
+  phaseNameForRollback: First Phase
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -55,4 +62,17 @@ rollbackPhases:
   provisionNodes: false
   serviceName: BASIC
   statefulSet: false
-templatized: false
+  templateExpressions:
+  - expression: ${InfraDefinition_KUBERNETES}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+templatized: true
+userVariables:
+- type: ENTITY
+  description: Variable for Infrastructure Definition entity in Rollback First Phase
+  fixed: false
+  mandatory: true
+  name: InfraDefinition_KUBERNETES
