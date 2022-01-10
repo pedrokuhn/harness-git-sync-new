@@ -70,6 +70,11 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    stepSkipStrategies:
+    - assertionExpression: 'true'
+      scope: SPECIFIC_STEPS
+      steps:
+      - Rollout Deployment
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
