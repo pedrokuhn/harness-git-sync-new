@@ -21,7 +21,7 @@ phases:
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: First Phase
+  name: Terraform Phase
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -75,8 +75,8 @@ rollbackPhases:
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Rollback First Phase
-  phaseNameForRollback: First Phase
+  name: Rollback Terraform Phase
+  phaseNameForRollback: Terraform Phase
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -129,7 +129,7 @@ rollbackPhases:
 templatized: true
 userVariables:
 - type: ENTITY
-  description: Variable for Infrastructure Definition entity in Rollback First Phase
+  description: Variable for Infrastructure Definition entity in Rollback Terraform Phase
   fixed: false
   mandatory: true
   name: InfraDefinition_KUBERNETES
