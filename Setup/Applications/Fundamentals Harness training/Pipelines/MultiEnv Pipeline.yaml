@@ -35,7 +35,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 3
-  workflowName: Test 123
+  workflowName: MultiService Workflow Test
   workflowVariables:
   - entityType: ENVIRONMENT
     name: Environment
