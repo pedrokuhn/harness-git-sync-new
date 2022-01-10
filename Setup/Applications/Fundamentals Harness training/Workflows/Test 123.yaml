@@ -55,6 +55,13 @@ phases:
   provisionNodes: false
   serviceName: BASIC
   statefulSet: false
+  templateExpressions:
+  - expression: ${InfraDefinition_KUBERNETES}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
@@ -78,4 +85,36 @@ rollbackPhases:
   provisionNodes: false
   serviceName: BASIC
   statefulSet: false
-templatized: false
+  templateExpressions:
+  - expression: ${InfraDefinition_KUBERNETES}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
+templateExpressions:
+- expression: ${Environment}
+  fieldName: envId
+  metadata:
+  - name: relatedField
+    value: ${InfraDefinition_KUBERNETES}
+  - name: entityType
+    value: ENVIRONMENT
+- expression: ${InfraDefinition_KUBERNETES}
+  fieldName: infraDefinitionId
+  metadata:
+  - name: relatedField
+  - name: entityType
+    value: INFRASTRUCTURE_DEFINITION
+templatized: true
+userVariables:
+- type: ENTITY
+  description: Variable for Environment entity
+  fixed: false
+  mandatory: true
+  name: Environment
+- type: ENTITY
+  description: Variable for Infrastructure Definition entity in Rollback Rolling
+  fixed: false
+  mandatory: true
+  name: InfraDefinition_KUBERNETES
