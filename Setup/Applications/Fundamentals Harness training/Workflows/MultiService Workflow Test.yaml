@@ -42,6 +42,27 @@ phases:
     - name: relatedField
     - name: entityType
       value: INFRASTRUCTURE_DEFINITION
+- type: KUBERNETES
+  computeProviderName: Kubernetes Cluster 2
+  daemonSet: false
+  infraDefinitionName: staging-namespace
+  name: Primary
+  phaseSteps:
+  - type: K8S_PHASE_STEP
+    name: Deploy
+    steps:
+    - type: K8S_DEPLOYMENT_ROLLING
+      name: Rollout Deployment
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Verify
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: BASIC
+  statefulSet: false
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: Kubernetes Cluster 2
@@ -69,6 +90,28 @@ rollbackPhases:
     - name: relatedField
     - name: entityType
       value: INFRASTRUCTURE_DEFINITION
+- type: KUBERNETES
+  computeProviderName: Kubernetes Cluster 2
+  daemonSet: false
+  infraDefinitionName: staging-namespace
+  name: Rollback Primary
+  phaseNameForRollback: Primary
+  phaseSteps:
+  - type: K8S_PHASE_STEP
+    name: Deploy
+    phaseStepNameForRollback: Deploy
+    statusForRollback: SUCCESS
+    steps:
+    - type: K8S_DEPLOYMENT_ROLLING_ROLLBACK
+      name: Rollback Deployment
+    stepsInParallel: false
+  - type: K8S_PHASE_STEP
+    name: Wrap Up
+    phaseStepNameForRollback: Wrap Up
+    stepsInParallel: false
+  provisionNodes: false
+  serviceName: BASIC
+  statefulSet: false
 templatized: true
 userVariables:
 - type: ENTITY
