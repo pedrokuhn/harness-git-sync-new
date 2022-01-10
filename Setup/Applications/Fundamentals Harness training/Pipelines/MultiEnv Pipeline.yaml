@@ -8,6 +8,13 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 1
   workflowName: Test 123
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: Pedro Staging
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: staging-namespace
 - type: ENV_STATE
   name: QA
   parallel: false
