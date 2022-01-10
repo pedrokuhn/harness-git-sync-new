@@ -46,7 +46,7 @@ phases:
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Primary
+  name: rollout kube_deploy Phase
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -63,6 +63,13 @@ phases:
   provisionNodes: false
   serviceName: BASIC
   statefulSet: false
+  templateExpressions:
+  - expression: ${InfraDefinition_KUBERNETES2}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: Kubernetes Cluster 2
@@ -94,8 +101,8 @@ rollbackPhases:
   computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
-  name: Rollback Primary
-  phaseNameForRollback: Primary
+  name: Rollback rollout kube_deploy Phase
+  phaseNameForRollback: rollout kube_deploy Phase
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -112,6 +119,13 @@ rollbackPhases:
   provisionNodes: false
   serviceName: BASIC
   statefulSet: false
+  templateExpressions:
+  - expression: ${InfraDefinition_KUBERNETES2}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 templatized: true
 userVariables:
 - type: ENTITY
@@ -119,3 +133,8 @@ userVariables:
   fixed: false
   mandatory: true
   name: InfraDefinition_KUBERNETES
+- type: ENTITY
+  description: Variable for Infrastructure Definition entity in Rollback rollout kube_deploy Phase
+  fixed: false
+  mandatory: true
+  name: InfraDefinition_KUBERNETES2
