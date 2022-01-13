@@ -29,6 +29,7 @@ phases:
     - type: HELM_DEPLOY
       name: Helm Deploy
       properties:
+        commandFlags: -set-string secrets.value=${secrets.getValue(“my-secret-${env.name}”)}
         gitFileConfig: null
         helmReleaseNamePrefix: ${service.name}-${env.name}-${infra.helm.shortId}
         steadyStateTimeout: 10
