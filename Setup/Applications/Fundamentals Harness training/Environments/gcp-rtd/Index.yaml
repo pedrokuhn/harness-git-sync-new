@@ -12,10 +12,6 @@ variableOverrides:
   serviceName: Basic Echo Service
   value: test
   valueType: TEXT
-- name: A
-  serviceName: Basic Echo Service
-  value: test
-  valueType: TEXT
 - name: AAA
   serviceName: istio-tcp-lab
   value: stable-alpine-perl
