@@ -5,4 +5,7 @@ gitFileConfig:
   connectorName: helm-service-repo
   useBranch: true
   useInlineServiceDefinition: false
+helmCommandFlag:
+  valueMap:
+    TEMPLATE: --dependency-update
 storeType: HelmSourceRepo
