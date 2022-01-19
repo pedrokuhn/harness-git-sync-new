@@ -61,4 +61,15 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Helm Basic Test 21847
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  allowedValues: public,api,internal
+  fixed: false
+  mandatory: true
+  name: instanceType
+- type: TEXT
+  allowedValues: traefik-v2-public,traefik-v2-api,traefik-v2-internal
+  fixed: false
+  mandatory: true
+  name: appName
