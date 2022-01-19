@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: APPLICATION_MANIFEST
+gitFileConfig:
+  branch: harness-26514
+  connectorName: helm-service-repo
+  filePath: helm/traefik-v2/values-${workflow.variables.instanceType}.yaml,environments/${env.name}/${workflow.variables.instanceType}.yaml
+  useBranch: true
+  useInlineServiceDefinition: false
+storeType: Remote
