@@ -3,8 +3,3 @@ type: ENVIRONMENT
 configMapYamlByServiceTemplateName: {}
 description: Repro for 26514
 environmentType: PROD
-variableOverrides:
-- name: AAA
-  serviceName: istio-tcp-lab
-  value: stable-alpine-perl
-  valueType: TEXT
