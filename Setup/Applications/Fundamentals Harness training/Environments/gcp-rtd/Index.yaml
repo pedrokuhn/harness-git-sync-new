@@ -8,10 +8,6 @@ variableOverrides:
   serviceName: Helm Native
   value: stable-alpine-perl
   valueType: TEXT
-- name: o_test
-  serviceName: Basic Echo Service
-  value: test
-  valueType: TEXT
 - name: AAA
   serviceName: istio-tcp-lab
   value: stable-alpine-perl
