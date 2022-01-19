@@ -1,8 +1,8 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 gitFileConfig:
-  branch: harness-26514
-  connectorName: helm-service-repo
+  branch: main
+  connectorName: BitBucket
   filePath: helm/traefik-v2
   useBranch: true
   useInlineServiceDefinition: false
