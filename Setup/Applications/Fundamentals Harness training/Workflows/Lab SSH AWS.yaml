@@ -31,6 +31,8 @@ phases:
       properties:
         commandPath: null
         connectionAttributeName: null
+        delegateSelectors:
+        - my-first-delegate
         executeOnDelegate: true
         host: null
         outputVars: ''
