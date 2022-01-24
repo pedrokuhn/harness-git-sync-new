@@ -47,6 +47,23 @@ phases:
       name: Install
       properties:
         commandName: Install
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: echo "----> ${host.ec2Instance.instanceId}"
+        scriptType: BASH
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: ENABLE_SERVICE
     name: Enable Service
