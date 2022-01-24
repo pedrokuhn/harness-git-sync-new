@@ -31,7 +31,7 @@ phases:
       properties:
         excludeSelectedHostsFromFuturePhases: true
         hostNames:
-        - ec2-18-220-121-88.us-east-2.compute.amazonaws.com
+        - ec2-18-116-117-209.us-east-2.compute.amazonaws.com
         specificHosts: true
         templateUuid: null
         templateVariables: null
