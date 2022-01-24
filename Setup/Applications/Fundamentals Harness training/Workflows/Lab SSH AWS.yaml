@@ -47,22 +47,6 @@ phases:
       name: Install
       properties:
         commandName: Install
-    - type: COMMAND
-      name: Install IIS Application
-      properties:
-        commandType: OTHER
-      templateUri: CS - Pedro/Power Shell Commands/Install IIS Application:latest
-      templateVariables:
-      - name: ReleaseNo
-      - name: ServiceName
-      - name: AppPoolName
-        value: DefaultAppPool
-      - name: AppPoolDotNetVersion
-        value: v4.0
-      - name: DownloadDirectory
-        value: $env:TEMP
-      - name: AppPhysicalDirectory
-        value: $env:SYSTEMDRIVE
     stepsInParallel: false
   - type: ENABLE_SERVICE
     name: Enable Service
