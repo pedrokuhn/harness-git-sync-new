@@ -35,13 +35,17 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: echo "----> ${host.ec2Instance.instanceId}"
+        scriptString: |-
+          echo "123456------test output"
+          echo "----> ${host.ec2Instance.instanceId}"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: AWS_NODE_SELECT
       name: Select Nodes
