@@ -59,7 +59,7 @@ phases:
   computeProviderName: GKE cluster
   daemonSet: false
   infraDefinitionName: prod-namespace
-  name: Canary
+  name: Deploy Main Service
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
@@ -104,8 +104,8 @@ rollbackPhases:
   computeProviderName: GKE cluster
   daemonSet: false
   infraDefinitionName: prod-namespace
-  name: Rollback Canary
-  phaseNameForRollback: Canary
+  name: Rollback Deploy Main Service
+  phaseNameForRollback: Deploy Main Service
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
