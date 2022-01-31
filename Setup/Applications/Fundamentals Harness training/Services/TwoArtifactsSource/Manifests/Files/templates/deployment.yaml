@@ -64,7 +64,7 @@ spec:
         {{- end}}
         {{- end}}
       - name: {{.Values.name}}-2
-        image: {{.Values.image}}
+        image: {{.Values.image_sidecar}}
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
