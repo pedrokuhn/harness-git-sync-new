@@ -2,6 +2,7 @@ name: harness-example
 replicas: 1
 
 image: ${artifact.metadata.image}
+image_sidecar: ${context.dummyservice.SECOND_IMAGE}
 dockercfg: ${artifact.source.dockerconfig}
 
 createNamespace: true
