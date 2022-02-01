@@ -1,5 +1,9 @@
 harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
+configVariables:
+- name: new_config_variable
+  value: TestValue
+  valueType: TEXT
 deploymentType: KUBERNETES
 helmVersion: V2
