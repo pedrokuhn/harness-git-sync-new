@@ -1,4 +1,4 @@
-name: harness-example
+name: ${serviceVariable.new_config_variable}
 replicas: 8
 
 image: ${artifact.metadata.image}
