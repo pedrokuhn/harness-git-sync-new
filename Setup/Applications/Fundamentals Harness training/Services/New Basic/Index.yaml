@@ -3,7 +3,7 @@ type: SERVICE
 artifactType: DOCKER
 configVariables:
 - name: new_config_variable
-  value: TestValue
+  value: testvalue
   valueType: TEXT
 deploymentType: KUBERNETES
 helmVersion: V2
