@@ -1,0 +1,12 @@
+harnessApiVersion: '1.0'
+type: SHELL_SCRIPT
+scriptString: "set -e\n\n#Create a working directory and set variable \ncd /tmp\n\
+  mkdir -p ${workflow.startTs}\ncd ${workflow.startTs}\n\n#working_directory=$(echo\
+  \ ${workflow.startTs})\n\n#Clone GIT repository\ngit clone https://intelliflo-harness:${secrets.getValue(\"\
+  harness-github-token\")}@github.com/Intelliflo/${serviceVariable.repository_name}.git\n\
+  cd ${serviceVariable.repository_name}\n\necho \"Cloning repo: ${serviceVariable.repository_name}\"\
+  \necho \"Artifact: ${artifact.fileName}\"\n\nif [[ \"${artifact.fileName}\" != *\"\
+  master\"* ]]\nthen\n  echo \"Pulling PR ${context.package.pr_number}\"\n  git pull\
+  \ origin pull/${context.package.pr_number}/merge\nfi"
+scriptType: BASH
+timeoutMillis: 600000

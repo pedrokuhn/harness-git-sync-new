@@ -1,0 +1,15 @@
+harnessApiVersion: '1.0'
+type: KUBERNETES_CLUSTER
+delegateSelectors:
+- my-first-delegate
+skipValidation: false
+usageRestrictions:
+  appEnvRestrictions:
+  - appFilter:
+      entityNames:
+      - Fundamentals Harness training
+      filterType: SELECTED
+    envFilter:
+      filterTypes:
+      - NON_PROD
+useKubernetesDelegate: true

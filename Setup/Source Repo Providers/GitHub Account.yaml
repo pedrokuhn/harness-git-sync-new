@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: GIT
+keyAuth: false
+password: gcpkms:gitPasswordDefault
+providerType: GIT
+url: https://github.com
+urlType: ACCOUNT
+username: phmastelaro@gmail.com

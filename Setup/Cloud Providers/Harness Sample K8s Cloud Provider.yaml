@@ -1,0 +1,18 @@
+harnessApiVersion: '1.0'
+type: KUBERNETES_CLUSTER
+delegateSelectors:
+- harness-sample-k8s-delegate
+skipValidation: true
+usageRestrictions:
+  appEnvRestrictions:
+  - appFilter:
+      filterType: ALL
+    envFilter:
+      filterTypes:
+      - PROD
+  - appFilter:
+      filterType: ALL
+    envFilter:
+      filterTypes:
+      - NON_PROD
+useKubernetesDelegate: true

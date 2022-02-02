@@ -1,0 +1,5 @@
+harnessApiVersion: '1.0'
+type: SPLUNK
+password: gcpkms:Splunk Trial Access
+splunkUrl: https://35.199.147.233:8089
+username: admin

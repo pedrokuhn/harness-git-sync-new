@@ -1,0 +1,6 @@
+harnessApiVersion: '1.0'
+type: GCP
+serviceAccountKeyFileContent: gcpkms:Pedro gcloud SA encrypted text
+skipValidation: false
+useDelegate: false
+useDelegateSelectors: false

@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: AWS
+accessKeySecretId: gcpkms:Pedro AWS Access Key
+assumeCrossAccountRole: false
+secretKey: gcpkms:pedro cs user Secret access key
+useEc2IamCredentials: false
+useIRSA: false

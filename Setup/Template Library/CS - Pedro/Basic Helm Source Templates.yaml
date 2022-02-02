@@ -1,0 +1,19 @@
+harnessApiVersion: '1.0'
+type: ARTIFACT_SOURCE
+customRepositoryMapping:
+  artifactRoot: $.Contents
+  buildNoPath: Key
+script: "# Shell Script is expected to query the custom artifact repository\n# and\
+  \ save available artifacts in specific format at \n# ${ARTIFACT_RESULT_PATH} file\
+  \ path. Harness will read the file, \n# process it and make those artifacts available\
+  \ for deployment\n#\n# Harness is expected to initialize ${ARTIFACT_RESULT_PATH}\n\
+  # environment variable - a random unique file path on delegate,\n# so script execution\
+  \ can save the result.\n#\n#\n#\n\n#!/bin/bash\n\nexport AWS_ACCESS_KEY_ID=${secrets.getValue(\"\
+  Pedro AWS Access Key\")}\nexport AWS_SECRET_ACCESS_KEY=${secrets.getValue(\"pedro\
+  \ cs user Secret access key\")}\nexport AWS_DEFAULT_REGION=\"us-east-1\"\n\naws\
+  \ --output json s3api list-objects --bucket pedro-lab --prefix what-the-helm- >\
+  \ ${ARTIFACT_RESULT_PATH}\n"
+sourceType: CUSTOM
+timeout: '60'
+variables:
+- name: ARTIFACT_RESULT_PATH

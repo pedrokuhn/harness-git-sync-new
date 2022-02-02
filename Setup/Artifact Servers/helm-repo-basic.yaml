@@ -1,0 +1,5 @@
+harnessApiVersion: '1.0'
+type: AMAZON_S3_HELM_REPO
+bucket: pedro-lab
+cloudProvider: Amazon Web Services
+region: us-east-1

@@ -1,0 +1,10 @@
+harnessApiVersion: '1.0'
+type: PROMETHEUS
+prometheusUrl: http://35.185.239.151:9090/
+usageRestrictions:
+  appEnvRestrictions:
+  - appFilter:
+      filterType: ALL
+    envFilter:
+      filterTypes:
+      - NON_PROD

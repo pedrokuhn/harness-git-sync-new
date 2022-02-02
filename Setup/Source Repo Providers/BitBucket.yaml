@@ -1,0 +1,22 @@
+harnessApiVersion: '1.0'
+type: GIT
+branch: main
+delegateSelectors:
+- my-first-delegate
+keyAuth: true
+providerType: GIT
+sshKeyName: BitBucket
+url: git@bitbucket.org:pedromastelaro/traefik-v2-repro.git
+urlType: REPO
+usageRestrictions:
+  appEnvRestrictions:
+  - appFilter:
+      filterType: ALL
+    envFilter:
+      filterTypes:
+      - PROD
+  - appFilter:
+      filterType: ALL
+    envFilter:
+      filterTypes:
+      - NON_PROD

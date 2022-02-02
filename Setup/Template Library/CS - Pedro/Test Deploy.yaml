@@ -1,0 +1,24 @@
+harnessApiVersion: '1.0'
+type: SSH
+commandUnitType: OTHER
+commandUnits:
+- command: |
+    mkdir -p $WINGS_STAGING_PATH
+    cd $WINGS_STAGING_PATH
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Exec
+  scriptType: BASH
+- command: |-
+    echo "deploying"
+
+    touch env-dsv.yaml
+
+    echo "gcloud config set project ${workflow.variables.ProjectID}"
+
+    gcloud functions deploy ${app.name} --source=./ --runtime=${serviceVariable.runtime} ${workflow.variables.DeployArgs} | true
+  commandUnitType: EXEC
+  deploymentType: SSH
+  name: Exec-1
+  scriptType: BASH
+  workingDirectory: $WINGS_STAGING_PATH
