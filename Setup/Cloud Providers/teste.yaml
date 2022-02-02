@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: KUBERNETES_CLUSTER
+authType: SERVICE_ACCOUNT
+caCert: gcpkms:GKE cluster CA cert
+masterUrl: teste
+serviceAccountToken: gcpkms:Pedro gcloud SA encrypted text
+skipValidation: true
+useKubernetesDelegate: false
