@@ -11,3 +11,10 @@ pipelineStages:
   workflowVariables:
   - name: skipCanary
     value: 'false'
+- type: ENV_STATE
+  name: Rolling Lab
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: Rolling Lab
