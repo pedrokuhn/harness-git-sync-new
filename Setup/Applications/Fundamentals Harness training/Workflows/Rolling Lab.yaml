@@ -79,4 +79,9 @@ rollbackPhases:
   provisionNodes: false
   serviceName: New Basic
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: chart_version
