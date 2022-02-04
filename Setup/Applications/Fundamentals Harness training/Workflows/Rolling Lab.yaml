@@ -36,7 +36,7 @@ phases:
         includeInfraSelectors: true
         outputVars: SHORTEN_INFRA
         publishAsVar: true
-        scriptString: export SHORTEN_INFRA=$("echo {infra.name} | sed 's/pedro-//g'")
+        scriptString: export SHORTEN_INFRA=$("echo ${infra.name} | sed 's/pedro-//g'")
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
@@ -120,12 +120,6 @@ templateExpressions:
     value: ${InfraDefinition_KUBERNETES}
   - name: entityType
     value: ENVIRONMENT
-- expression: ${InfraDefinition_KUBERNETES}
-  fieldName: infraDefinitionId
-  metadata:
-  - name: relatedField
-  - name: entityType
-    value: INFRASTRUCTURE_DEFINITION
 - expression: ${Service}
   fieldName: serviceId
   metadata:
@@ -134,6 +128,12 @@ templateExpressions:
     value: DOCKER
   - name: entityType
     value: SERVICE
+- expression: ${InfraDefinition_KUBERNETES}
+  fieldName: infraDefinitionId
+  metadata:
+  - name: relatedField
+  - name: entityType
+    value: INFRASTRUCTURE_DEFINITION
 templatized: true
 userVariables:
 - type: ENTITY
