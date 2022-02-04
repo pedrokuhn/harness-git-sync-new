@@ -20,3 +20,24 @@ pipelineStages:
     value: ${infra_dev}
   - name: chart_version
     value: dummy
+- type: ENV_STATE
+  name: WF test
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: WF test
+  workflowVariables:
+  - name: appName
+    value: traefik-v2-api
+  - name: instanceType
+    value: public
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: ${env}
+  - entityType: SERVICE
+    name: Service
+    value: ${service}
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: ${infra}
