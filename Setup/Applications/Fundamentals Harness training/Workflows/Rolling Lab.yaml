@@ -36,7 +36,7 @@ phases:
         includeInfraSelectors: true
         outputVars: SHORTEN_INFRA
         publishAsVar: true
-        scriptString: export SHORTEN_INFRA=$(echo "${infra.name}" | sed 's/pedro-//g')
+        scriptString: export SHORTEN_INFRA=$(echo "${infra.name}" | sed 's/-namespace//g')
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
