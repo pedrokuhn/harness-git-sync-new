@@ -34,15 +34,18 @@ phases:
         executeOnDelegate: true
         host: null
         includeInfraSelectors: true
-        outputVars: ''
-        publishAsVar: false
-        scriptString: echo "${serviceVariable.new_config_variable}"
+        outputVars: SHORTEN_INFRA
+        publishAsVar: true
+        scriptString: export SHORTEN_INFRA=$("echo {infra.name} | sed 's/pedro-//g'")
         scriptType: BASH
+        secretOutputVars: ''
         sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
+        sweepingOutputName: exported
+        sweepingOutputScope: PIPELINE
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
