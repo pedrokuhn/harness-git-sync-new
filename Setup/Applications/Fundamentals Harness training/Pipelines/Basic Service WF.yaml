@@ -17,7 +17,7 @@ pipelineStages:
     value: ${service}
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
-    value: ${infra_dev}
+    value: ${infra_def}
   - name: chart_version
     value: dummy
 - type: ENV_STATE
