@@ -36,7 +36,7 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: echo "${infra.kubernetes}"
+        scriptString: echo "${infra}"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
