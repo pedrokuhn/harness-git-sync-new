@@ -1,11 +1,11 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{.Values.name}}
-data:
-  config.properties: |-
-    teste=123
----
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: {{.Values.name}}
+# data:
+#   config.properties: |-
+#     teste=123
+# ---
 apiVersion: v1
 kind: Secret
 metadata:
