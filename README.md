@@ -1,1 +1,0 @@
-# harness-git-sync-new
