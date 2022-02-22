@@ -1,4 +1,4 @@
-name: dev-deploy
+name: test
 replicas: 1
 
 image: <+artifact.image>
@@ -10,7 +10,7 @@ serviceType: LoadBalancer
 
 servicePort: 80
 serviceTargetPort: 8080
-mountpathname: dev-deploy
+mountpathname: test
 key: key1
 env:
   config:
