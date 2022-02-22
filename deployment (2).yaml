@@ -6,13 +6,13 @@
 #   config.properties: |-
 #     teste=123
 # ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: {{.Values.name}}
-StringData:
-{{.Values.env.secrets | toYaml | indent 2}}
----
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: {{.Values.name}}
+# StringData:
+# {{.Values.env.secrets | toYaml | indent 2}}
+# ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
