@@ -15,4 +15,4 @@ key: key1
 env:
   config:
     config.properties: |
-      <+secrets.getValue("config")>
+    <+secrets.getValue("config")>
