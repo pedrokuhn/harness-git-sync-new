@@ -3,8 +3,7 @@ kind: ConfigMap
 metadata:
   name: {{.Values.name}}
 data:
-  config.properties: |
-Key={{.Values.Key}}
+  config.properties: |-
 {{.Values.env.config.properties | b64dec | indent 2}}
 ---
 apiVersion: v1
