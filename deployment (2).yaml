@@ -30,7 +30,7 @@ spec:
       containers:
       - name: {{.Values.name}}
         image: {{.Values.image}}
-        {{- if .Values.env.config }}
+        {{- if .Values.env.config.properties}}
         envFrom:
         - configMapRef:
             name: {{.Values.name}}
