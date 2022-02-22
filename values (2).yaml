@@ -14,5 +14,6 @@ mountpathname: dev-deploy
 key: key1
 env:
   config:
-    properties: "test"
+    properties: |>
+      <+secrets.getValue("config")>
   secrets: "test"
