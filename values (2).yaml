@@ -15,5 +15,5 @@ key: key1
 env:
   config:
     properties: <+secrets.getValue("config")>
-    properties: <+secrets.getValue("authconfig")>
+    auth: <+secrets.getValue("authconfig")>
   secrets: "test"
