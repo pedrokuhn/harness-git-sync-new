@@ -3,7 +3,7 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: main
   connectorName: BitBucket
-  filePath: helm/traefik-v2/values-${workflow.variables.instanceType}.yaml,environments/${env.name}/${workflow.variables.instanceType}.yaml
+  filePath: helm/traefik-v2/values-test.yaml
   useBranch: true
   useInlineServiceDefinition: false
 storeType: Remote
