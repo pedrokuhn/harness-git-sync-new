@@ -8,7 +8,7 @@ pipeline:
         - stage:
               name: app
               identifier: app
-              description: "Changing the description"
+              description: Changing the description
               type: Approval
               spec:
                   execution:
@@ -56,7 +56,7 @@ pipeline:
                                     approverInputs: []
               tags: {}
         - stage:
-              name: app123
+              name: app44app123
               identifier: app123
               description: ""
               type: Approval
