@@ -8,7 +8,7 @@ pipeline:
         - stage:
               name: app
               identifier: app
-              description: "adding a desc"
+              description: "Changing the description"
               type: Approval
               spec:
                   execution:
