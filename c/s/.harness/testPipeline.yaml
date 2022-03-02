@@ -8,7 +8,7 @@ pipeline:
         - stage:
               name: app
               identifier: app
-              description: ""
+              description: "adding a desc"
               type: Approval
               spec:
                   execution:
@@ -21,7 +21,7 @@ pipeline:
                                 spec:
                                     approvalMessage: |-
                                         Please review the following information
-                                        and approve the pipeline progression
+                                        and approve the test test test test pipeline progression
                                     includePipelineExecutionHistory: true
                                     approvers:
                                         minimumCount: 1
