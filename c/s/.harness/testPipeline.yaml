@@ -55,3 +55,28 @@ pipeline:
                                             - org.PEDRO_TEST__GG_INTEGRACAO_A_OPERACAO_E_SINISTRO_ADMINISTRADOR
                                     approverInputs: []
               tags: {}
+        - stage:
+              name: app123
+              identifier: app123
+              description: ""
+              type: Approval
+              spec:
+                  execution:
+                      steps:
+                          - step:
+                                name: Approval
+                                identifier: approval
+                                type: HarnessApproval
+                                timeout: 1d
+                                spec:
+                                    approvalMessage: |-
+                                        Please review the following information
+                                        and approve the pipeline progression
+                                    includePipelineExecutionHistory: true
+                                    approvers:
+                                        minimumCount: 1
+                                        disallowPipelineExecutor: false
+                                        userGroups:
+                                            - account.Test_User_Group
+                                    approverInputs: []
+              tags: {}
