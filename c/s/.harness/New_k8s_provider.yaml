@@ -1,0 +1,12 @@
+connector:
+  name: New k8s provider
+  identifier: New_k8s_provider
+  description:
+  orgIdentifier: default
+  projectIdentifier: Git_Experience
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+    - account-delegate
