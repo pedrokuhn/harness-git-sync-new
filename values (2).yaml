@@ -18,4 +18,4 @@ env:
     auth: <+secrets.getValue("authconfig")>
   secrets: "test"
 
-tags: "<+serviceConfig.serviceDefinition.spec.variables.tag>"
+tags: "<+stage.variables.custom_tag>˜
