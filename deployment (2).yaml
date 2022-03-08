@@ -26,7 +26,7 @@ spec:
       - env:
         - name: "DELEGATE_TAGS"
           value: {{.Values.tags}}
-      - name: {{.Values.name}}
+        name: {{.Values.name}}
         image: {{.Values.image}}
         {{- if .Values.env.config.properties}}
         envFrom:
