@@ -17,3 +17,5 @@ env:
     properties: <+secrets.getValue("config")>
     auth: <+secrets.getValue("authconfig")>
   secrets: "test"
+
+tags: <+serviceConfig.serviceDefinition.spec.variables.tag>
