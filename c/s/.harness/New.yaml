@@ -1,0 +1,21 @@
+inputSet:
+  identifier: "New"
+  name: "New"
+  orgIdentifier: "default"
+  projectIdentifier: "Git_Experience"
+  pipeline:
+    identifier: "Teste"
+    stages:
+    - stage:
+        identifier: "Rolling_Deploy"
+        type: "Deployment"
+        spec:
+          serviceConfig:
+            serviceDefinition:
+              type: "Kubernetes"
+              spec:
+                artifacts:
+                  primary:
+                    type: "DockerRegistry"
+                    spec:
+                      tag: "stable-alpine"
