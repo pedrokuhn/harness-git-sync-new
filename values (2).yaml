@@ -14,8 +14,8 @@ mountpathname: test
 key: key1
 env:
   config:
-    properties: <+secrets.getValue("config")>
-    auth: <+secrets.getValue("authconfig")>
+    properties: "config"
+    auth: "authconfig"
   secrets: "test"
 
 tags: <+stage.variables.custom_tag>
