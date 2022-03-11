@@ -15,4 +15,4 @@ splunk:
 
 fluentd:
   # path of logfiles, default /var/log/containers/*.log
-  path: /var/log/containers/*delegate*.log
+  path: /var/log/containers/*.log
