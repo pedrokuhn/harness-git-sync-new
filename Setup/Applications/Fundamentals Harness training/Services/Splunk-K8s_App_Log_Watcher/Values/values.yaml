@@ -3,9 +3,9 @@ splunk:
   # Configurations for HEC (HTTP Event Collector)
   hec: 
     # host is required and should be provided by user
-    host: "prd-p-gbleo.splunkcloud.com"
+    host: "https://prd-p-gbleo.splunkcloud.com"
     # port to HEC, optional, default 8088
-    port: "443"
+    port: "8088"
     # token is required and should be provided by user
     token: "${secrets.getValue("splunk_hec_delegate_logs")}"
     # protocol has two options: "http" and "https", default is "https"
