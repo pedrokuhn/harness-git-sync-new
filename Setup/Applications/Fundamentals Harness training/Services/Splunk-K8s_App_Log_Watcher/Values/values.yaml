@@ -18,10 +18,5 @@ fluentd:
   path: /var/log/containers/*delegate*.log
 
 containers:
-  # Path to root directory of container logs
-  path: /var/log
-  # Final volume destination of container log symlinks
-  pathDest: /var/lib/docker/containers
-  # Log format type, "json" or "cri"
   logFormatType: cri
   
