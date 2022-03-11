@@ -6,4 +6,4 @@ infrastructure:
 - type: DIRECT_KUBERNETES
   cloudProviderName: GKE cluster
   namespace: pedro-prod
-  releaseName: release-${infra.kubernetes.infraId}
+  releaseName: release-${workflow.releaseNo}
