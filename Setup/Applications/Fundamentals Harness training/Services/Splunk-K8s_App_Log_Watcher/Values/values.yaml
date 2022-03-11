@@ -1,7 +1,8 @@
 # Local splunk configurations
 splunk:
   # Configurations for HEC (HTTP Event Collector)
-  hec: 
+  hec:
+    insecureSSL: true
     # host is required and should be provided by user
     host: "prd-p-gbleo.splunkcloud.com"
     # port to HEC, optional, default 8088
