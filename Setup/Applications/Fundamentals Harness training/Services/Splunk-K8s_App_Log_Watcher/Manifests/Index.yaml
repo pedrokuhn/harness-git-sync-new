@@ -1,3 +1,9 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
-storeType: Local
+gitFileConfig:
+  branch: main
+  connectorName: Splunk_CNCF_Stuff
+  filePath: helm-chart/splunk-connect-for-kubernetes/charts/splunk-kubernetes-logging/
+  useBranch: true
+  useInlineServiceDefinition: false
+storeType: HelmSourceRepo
