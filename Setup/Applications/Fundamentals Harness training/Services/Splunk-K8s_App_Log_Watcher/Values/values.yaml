@@ -1,0 +1,18 @@
+# Local splunk configurations
+splunk:
+  # Configurations for HEC (HTTP Event Collector)
+  hec: 
+    # host is required and should be provided by user
+    host: "https://prd-p-gbleo.splunkcloud.com/"
+    # port to HEC, optional, default 8088
+    port: "8088"
+    # token is required and should be provided by user
+    token: "${secrets.getValue("splunk_hec_delegate_logs")}"
+    # protocol has two options: "http" and "https", default is "https"
+    protocol: "http"
+    # indexName tells which index to use, this is optional. If it's not present, will use the "main".
+    indexName: "harness_deployed_apps"
+
+fluentd:
+  # path of logfiles, default /var/log/containers/*.log
+  path: /var/log/containers/*delegate*.log
