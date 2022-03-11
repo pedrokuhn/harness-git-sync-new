@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: GIT
+branch: main
+keyAuth: false
+password: gcpkms:gitPasswordDefault
+providerType: GIT
+url: https://github.com/splunk/splunk-connect-for-kubernetes.git
+urlType: REPO
+username: pedrokuhn
