@@ -18,6 +18,6 @@ fluentd:
   # path of logfiles, default /var/log/containers/*.log
   path: /var/log/containers/*delegate*.log
 
-containers:
-  logFormatType: cri
+# containers:
+#   logFormatType: cri
   
