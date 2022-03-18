@@ -138,4 +138,10 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Service Test Security Shell-New
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: true
+  name: delegate
+  value: my first delegate
