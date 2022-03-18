@@ -145,7 +145,7 @@ rollbackPhases:
 templatized: true
 userVariables:
 - type: TEXT
+  allowedValues: eks-delegate-ypufem-0, helm-delegate-ypufem-0, my-first-delegate-ypufem-0, new-vm-delegate-ypufem-0
   fixed: false
   mandatory: true
   name: delegate
-  value: my first delegate
