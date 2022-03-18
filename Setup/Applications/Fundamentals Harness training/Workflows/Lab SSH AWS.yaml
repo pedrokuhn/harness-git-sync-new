@@ -83,10 +83,6 @@ phases:
         templateExpressions: null
         templateVariables: ''
         timeoutMillis: 60000
-    - type: COMMAND
-      name: Install
-      properties:
-        commandName: Install
     stepsInParallel: false
   - type: ENABLE_SERVICE
     name: Enable Service
