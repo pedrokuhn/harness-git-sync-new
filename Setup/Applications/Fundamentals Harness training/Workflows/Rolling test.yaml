@@ -42,6 +42,8 @@ phases:
         outputVars: continue
         publishAsVar: true
         scriptString: |-
+          export continue=0
+
           # Fetch verison number from app login page
           appVersion='dummy'
 
