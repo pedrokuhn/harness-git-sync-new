@@ -34,13 +34,39 @@ phases:
         executeOnDelegate: true
         host: null
         includeInfraSelectors: true
-        outputVars: ''
-        publishAsVar: false
-        scriptString: echo "${infra}"
+        outputVars: continue
+        publishAsVar: true
+        scriptString: |-
+          # Fetch verison number from app login page
+          appVersion='dummy'
+
+          if [ "$appVersion" == "" ]; then
+            echo "Unable to obtain application version"
+            exit 1
+          elif [[ "$appVersion" =~ "503" ]]; then
+            currentHour=`date +%H`
+            if [[ $currentHour =~ "" ]]; then
+              echo "The application is not currently available. It's past $currentHour':00', it is probably offline"
+              continue=0
+            else
+              echo "The application is not currently available, or it might be overloaded, please investigate"
+              continue=0
+            fi
+          fi
+
+          # If the versions don't match, we don't want to continue
+          if [ "dummy" != "$appVersion" ]; then
+            echo "App version $appVersion doesn't match Admin app version ${adminAppVersion}"
+            continue=0
+          else
+            echo "The application version $appVersion matches the Admin app version ${adminAppVersion}, continuing..."
+            continue=1
+          fi
         scriptType: BASH
+        secretOutputVars: ''
         sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
+        sweepingOutputName: successCriteria
+        sweepingOutputScope: WORKFLOW
         templateExpressions: null
         templateUuid: null
         templateVariables: null
