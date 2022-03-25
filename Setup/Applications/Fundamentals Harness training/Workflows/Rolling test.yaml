@@ -42,8 +42,6 @@ phases:
         outputVars: continue
         publishAsVar: true
         scriptString: |-
-          export continue=0
-
           # Fetch verison number from app login page
           appVersion='dummy'
 
@@ -69,6 +67,8 @@ phases:
             echo "The application version $appVersion matches the Admin app version ${adminAppVersion}, continuing..."
             continue=1
           fi
+
+          export continue
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
