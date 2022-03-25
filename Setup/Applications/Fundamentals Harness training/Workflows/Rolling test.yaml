@@ -39,7 +39,7 @@ phases:
         executeOnDelegate: true
         host: null
         includeInfraSelectors: true
-        outputVars: continue
+        outputVars: CONTINUE
         publishAsVar: true
         scriptString: |2-
 
