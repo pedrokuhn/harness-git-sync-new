@@ -39,13 +39,13 @@ phases:
         executeOnDelegate: true
         host: null
         includeInfraSelectors: true
-        outputVars: CONTINUE
+        outputVars: continue
         publishAsVar: true
         scriptString: |2-
 
-          CONTINUE=1
+          continue=1
 
-          export CONTINUE
+          export continue
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
