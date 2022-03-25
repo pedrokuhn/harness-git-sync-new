@@ -43,9 +43,9 @@ phases:
         publishAsVar: true
         scriptString: |2-
 
-          continue=1
+          CONTINUE=1
 
-          export continue
+          export CONTINUE
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
