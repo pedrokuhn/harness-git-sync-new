@@ -68,7 +68,7 @@ phases:
             CONTINUE=1
           fi
 
-          export TEST='"[monetization] Hide duplicate line item ID's dialog and test backticks and symbols - _  < > ? /  1 2 3 ! @ # $ % ^ * & ( ) + = ) ( \"'
+          export TEST=PR_TITLE=[monetization] Hide duplicate line item ID's dialog and test backticks and symbols - _  < > ? /  1 2 3 ! @ # $ % ^ * & ( ) + = ) ( \"
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
