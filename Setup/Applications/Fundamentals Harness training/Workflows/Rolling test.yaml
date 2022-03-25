@@ -39,7 +39,7 @@ phases:
         executeOnDelegate: true
         host: null
         includeInfraSelectors: true
-        outputVars: CONTINUE
+        outputVars: CONTINUE,TEST
         publishAsVar: true
         scriptString: |-
           # Fetch verison number from app login page
@@ -67,6 +67,8 @@ phases:
             echo "The application version $appVersion matches the Admin app version ${adminAppVersion}, continuing..."
             CONTINUE=1
           fi
+
+          export TEST='"[monetization] Hide duplicate line item ID's dialog and test backticks and symbols - _  < > ? /  1 2 3 ! @ # $ % ^ * & ( ) + = ) ( \"'
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
