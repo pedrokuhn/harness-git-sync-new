@@ -78,26 +78,6 @@ phases:
         templateVersion: null
         timeoutMillis: 60000
     - type: SHELL_SCRIPT
-      name: Shell Script_2
-      properties:
-        commandPath: null
-        connectionAttributeName: null
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: true
-        outputVars: ''
-        publishAsVar: false
-        scriptString: echo "exported var is -> ${context.successCriteria.CONTINUE}"
-        scriptType: BASH
-        sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
-    - type: SHELL_SCRIPT
       name: AfterExportVariable
       properties:
         commandPath: null
