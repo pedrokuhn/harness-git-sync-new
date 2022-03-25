@@ -89,7 +89,10 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: echo "${context.successCriteria.CONTINUE}"
+        scriptString: |-
+          echo "${context.successCriteria.CONTINUE}"
+
+          echo "${context.successCriteria.TEST}"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
