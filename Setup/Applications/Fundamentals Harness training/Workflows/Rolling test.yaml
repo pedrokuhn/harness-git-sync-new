@@ -43,7 +43,7 @@ phases:
         publishAsVar: true
         scriptString: |-
           # Fetch verison number from app login page
-          appVersion='dummy'
+          appVersion='dumm2y'
 
           if [ "$appVersion" == "" ]; then
             echo "Unable to obtain application version"
