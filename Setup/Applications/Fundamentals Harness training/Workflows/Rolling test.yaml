@@ -25,6 +25,11 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    stepSkipStrategies:
+    - assertionExpression: ${context.successCriteria.continue} == 0
+      scope: SPECIFIC_STEPS
+      steps:
+      - AfterExportVariable
     steps:
     - type: SHELL_SCRIPT
       name: Shell Script
