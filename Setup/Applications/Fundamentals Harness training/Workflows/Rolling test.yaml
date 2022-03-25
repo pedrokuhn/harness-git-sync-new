@@ -26,7 +26,7 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     stepSkipStrategies:
-    - assertionExpression: '"${context.successCriteria.CONTINUE}"==0'
+    - assertionExpression: ${context.successCriteria.CONTINUE} == 0
       scope: SPECIFIC_STEPS
       steps:
       - AfterExportVariable
