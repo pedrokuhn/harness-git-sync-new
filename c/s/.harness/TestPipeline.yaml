@@ -1,0 +1,39 @@
+pipeline:
+    name: TestPipeline
+    identifier: TestPipeline
+    allowStageExecutions: false
+    projectIdentifier: Git_Experience
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: Test
+              identifier: Test
+              template:
+                  templateRef: account.Template_Stage_Test
+                  versionLabel: Version1.0
+                  templateInputs:
+                      type: Deployment
+                      spec:
+                          serviceConfig:
+                              serviceRef: <+input>
+                              serviceDefinition:
+                                  type: Kubernetes
+                                  spec:
+                                      artifacts:
+                                          primary:
+                                              type: DockerRegistry
+                                              spec:
+                                                  tag: <+input>
+                          infrastructure:
+                              environmentRef: <+input>
+                          execution:
+                              steps:
+                                  - step:
+                                        identifier: Output_Variable
+                                        type: ShellScript
+                                        spec:
+                                            environmentVariables:
+                                                - name: TEST
+                                                  type: String
+                                                  value: <+input>
