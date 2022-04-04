@@ -48,7 +48,7 @@ metadata:
 spec:
   type: {{.Values.serviceType}}
   ports:
-  - port: {{.Values.servicePort}}
+  - port: {{.Values.service.ports}}
     targetPort: {{.Values.serviceTargetPort}}
     protocol: TCP
   selector:
