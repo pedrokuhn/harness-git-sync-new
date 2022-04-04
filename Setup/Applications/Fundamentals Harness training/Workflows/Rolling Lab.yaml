@@ -26,27 +26,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     steps:
-    - type: SHELL_SCRIPT
-      name: Shell Script
-      properties:
-        commandPath: null
-        connectionAttributeName: null
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: true
-        outputVars: SHORTEN_INFRA
-        publishAsVar: true
-        scriptString: export SHORTEN_INFRA=$(echo "${infra.name}" | sed 's/-namespace//g')
-        scriptType: BASH
-        secretOutputVars: ''
-        sshKeyRefName: null
-        sweepingOutputName: exported
-        sweepingOutputScope: PIPELINE
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
     stepsInParallel: false
