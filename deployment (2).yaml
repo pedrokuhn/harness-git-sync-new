@@ -12,6 +12,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{.Values.name}}
+  labels:
+    {{.Values.labels.tags.test.com/teste}}
 spec:
   replicas: {{int .Values.replicas}}
   selector:
