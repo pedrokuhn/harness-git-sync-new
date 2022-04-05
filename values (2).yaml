@@ -11,14 +11,17 @@ serviceType: LoadBalancer
 servicePort: 80
 serviceTargetPort: 8080
 
-siigo-chart:
-  service:
-    type: ClusterIP
-    ports:
-      - port: 8095
-        targetPort: 8095
-        protocol: TCP
-        name: http
+labels:
+  tags:
+    test.com/teste: "test"
+
+service:
+  type: ClusterIP
+  ports:
+    - port: 8095
+      targetPort: 8095
+      protocol: TCP
+      name: http
       #- name: grpc
       #  port: 10000
       #  protocol: TCP
