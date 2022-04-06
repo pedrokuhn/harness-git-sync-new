@@ -4,7 +4,7 @@ metadata:
   name: {{.Values.name}}-svc
   annotations:
     external-dns.alpha.kubernetes.io/hostname: "tenant00000-ingress-k8s.dev.aptivconnect.app"
-    service.beta/load-balancer-tcp-idle-timeout: "1234567894"
+    service.beta/load-balancer-tcp-idle-timeout: 1234567894
 spec:
   type: {{.Values.serviceType}}
   ports:
