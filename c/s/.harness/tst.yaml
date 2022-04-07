@@ -9,7 +9,7 @@ pipeline:
     - stage:
         name: Rolling Deploy
         identifier: Rolling_Deploy
-        description: aaa
+        description: aaaaaaaaaaaaaa
         type: Deployment
         spec:
           serviceConfig:
