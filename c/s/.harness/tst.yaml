@@ -1,0 +1,162 @@
+pipeline:
+  name: TestPipelineNewNew
+  identifier: TestPipelineNewNew
+  allowStageExecutions: false
+  projectIdentifier: Git_Experience
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Rolling Deploy
+        identifier: Rolling_Deploy
+        description: aa
+        type: Deployment
+        spec:
+          serviceConfig:
+            serviceRef: Basic_Service
+            serviceDefinition:
+              type: Kubernetes
+              spec:
+                variables:
+                  - name: tag
+                    type: String
+                    value: <+input>
+                manifests:
+                  - manifest:
+                      identifier: BasicManifest
+                      type: K8sManifest
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: account.tres
+                            gitFetchType: Branch
+                            paths:
+                              - /deployment (2).yaml
+                            repoName: pedrokuhn/harness-git-sync-new
+                            branch: t27885
+                        skipResourceVersioning: false
+                  - manifest:
+                      identifier: Values
+                      type: Values
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: account.tres
+                            gitFetchType: Branch
+                            paths:
+                              - /values (2).yaml
+                            repoName: pedrokuhn/harness-git-sync-new
+                            branch: t27885
+                artifacts:
+                  primary:
+                    spec:
+                      connectorRef: account.harnessImage
+                      imagePath: library/nginx
+                      tag: <+input>
+                    type: DockerRegistry
+          infrastructure:
+            environmentRef: Basic_Infra
+            infrastructureDefinition:
+              type: KubernetesDirect
+              spec:
+                connectorRef: account.CCM_Connector
+                namespace: test
+                releaseName: release-<+INFRA_KEY>
+            allowSimultaneousDeployments: false
+          execution:
+            steps:
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                  when:
+                    stageStatus: Success
+                  failureStrategies: []
+              - step:
+                  type: ShellScript
+                  name: Export Delegate
+                  identifier: Export_Delegate
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "Executed on delegate -> $HOSTNAME"
+                    environmentVariables: []
+                    outputVariables:
+                      - name: DELEGATE
+                        type: String
+                        value: DELEGATE_NAME
+                    executionTarget: {}
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: Check Output Variable
+                  identifier: Check_Output_Variable
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "<+steps.Export_Delegate.output.outputVariables.DELEGATE>"
+                    environmentVariables: []
+                    outputVariables: []
+                    executionTarget: {}
+                    delegateSelectors:
+                      - <+steps.Export_Delegate.output.outputVariables.DELEGATE>
+                  timeout: 10m
+                  failureStrategies: []
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+          serviceDependencies: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - Authentication
+                - Connectivity
+                - DelegateProvisioning
+                - Timeout
+                - Unknown
+                - Verification
+                - PolicyEvaluationFailure
+              action:
+                type: StageRollback
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: Ignore
+        variables:
+          - name: custom_tag
+            type: String
+            value: <+input>
+        when:
+          pipelineStatus: Success
+  notificationRules:
+    - name: Test
+      pipelineEvents:
+        - type: AllEvents
+      notificationMethod:
+        type: Email
+        spec:
+          userGroups:
+            - account.Test_User_Group
+          recipients: []
+      enabled: true
+  flowControl:
+    barriers: []
+  variables: []
