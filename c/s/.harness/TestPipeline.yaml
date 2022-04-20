@@ -7,7 +7,7 @@ pipeline:
     tags: {}
     stages:
         - stage:
-              name: Test
+              name: Tests
               identifier: Test
               template:
                   templateRef: account.Template_Stage_Test
