@@ -9,11 +9,11 @@ pipeline:
         - stage:
               name: Rolling Deploy
               identifier: Rolling_Deploy
-              description: "aaa"
+              description: aaa
               type: Deployment
               spec:
                   serviceConfig:
-                      serviceRef: Basic_Service
+                      serviceRef: Test_Service
                       serviceDefinition:
                           type: Kubernetes
                           spec:
