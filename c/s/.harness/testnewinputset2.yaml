@@ -1,0 +1,35 @@
+inputSet:
+  identifier: "testnewinputset2"
+  name: "test-new-inputset2"
+  orgIdentifier: "default"
+  projectIdentifier: "Git_Experience"
+  pipeline:
+    identifier: "TestPipelineNew"
+    stages:
+    - stage:
+        identifier: "Rolling_Deploy"
+        type: "Deployment"
+        spec:
+          serviceConfig:
+            serviceDefinition:
+              type: "Kubernetes"
+              spec:
+                variables:
+                - name: "tag"
+                  type: "String"
+                  value: "b"
+                - name: "test1"
+                  type: "String"
+                  value: "b"
+                - name: "test2"
+                  type: "String"
+                  value: "b"
+                artifacts:
+                  primary:
+                    type: "DockerRegistry"
+                    spec:
+                      tag: "stable"
+        variables:
+        - name: "custom_tag"
+          type: "String"
+          value: "b"
