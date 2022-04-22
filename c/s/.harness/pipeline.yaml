@@ -58,7 +58,7 @@ pipeline:
                               artifacts:
                                   primary:
                                       spec:
-                                          connectorRef: Docker
+                                          connectorRef: docker
                                           imagePath: library/nginx
                                           tag: <+input>
                                       type: DockerRegistry
