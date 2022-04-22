@@ -58,7 +58,7 @@ pipeline:
                               artifacts:
                                   primary:
                                       spec:
-                                          connectorRef: docker
+                                          connectorRef: account.harnessImage
                                           imagePath: library/nginx
                                           tag: <+input>
                                       type: DockerRegistry
