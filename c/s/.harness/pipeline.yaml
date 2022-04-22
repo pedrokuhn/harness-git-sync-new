@@ -21,6 +21,12 @@ pipeline:
                                   - name: tag
                                     type: String
                                     value: <+input>
+                                  - name: test1
+                                    type: String
+                                    value: <+input>
+                                  - name: test2
+                                    type: String
+                                    value: <+input>
                               manifests:
                                   - manifest:
                                         identifier: BasicManifest
