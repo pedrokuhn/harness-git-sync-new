@@ -1,0 +1,50 @@
+pipeline:
+    name: workflow-shared_cicd
+    identifier: workflowshared_cicd
+    allowStageExecutions: false
+    stages:
+        - stage:
+              name: Test
+              identifier: Test
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: account.CCM_Connector
+                          namespace: harness-build
+                          automountServiceAccountToken: true
+                  execution:
+                      steps:
+                          - step:
+                                type: Run
+                                name: Install packages
+                                identifier: Install_packages
+                                spec:
+                                    connectorRef: account.harnessImage
+                                    image: node:14
+                                    shell: Sh
+                                    command: |-
+                                        cd backend/workflow-shared
+                                        yarn install --frozen-lockfile
+                          - step:
+                                type: Run
+                                name: Run tests
+                                identifier: Run_tests
+                                spec:
+                                    connectorRef: account.harnessImage
+                                    image: node:14
+                                    shell: Sh
+                                    command: |-
+                                        cd backend/workflow-shared
+                                        yarn test
+    projectIdentifier: Git_Experience
+    orgIdentifier: default
+    tags: {}
+    properties:
+        ci:
+            codebase:
+                connectorRef: account.tres
+                repoName: property-estimating
+                build: <+input>
