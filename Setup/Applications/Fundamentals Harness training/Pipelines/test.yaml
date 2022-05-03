@@ -8,3 +8,10 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 1
   workflowName: Helm Native Workflow
+- type: ENV_STATE
+  name: Helm Native Workflow-1
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Helm Native Workflow
