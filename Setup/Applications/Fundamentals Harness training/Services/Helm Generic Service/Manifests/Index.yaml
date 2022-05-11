@@ -1,3 +1,12 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
-storeType: Local
+gitFileConfig:
+  branch: main
+  connectorName: tmp-dev-frealmyr
+  filePath: k8s/test/adguard
+  useBranch: true
+  useInlineServiceDefinition: false
+helmCommandFlag:
+  valueMap:
+    TEMPLATE: --dependency-update
+storeType: HelmSourceRepo
