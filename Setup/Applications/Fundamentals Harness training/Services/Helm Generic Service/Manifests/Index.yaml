@@ -6,4 +6,7 @@ gitFileConfig:
   filePath: k8s/test/adguard
   useBranch: true
   useInlineServiceDefinition: false
+helmCommandFlag:
+  valueMap:
+    TEMPLATE: --dependency-update
 storeType: HelmSourceRepo
