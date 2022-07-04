@@ -42,7 +42,7 @@ rollbackPhases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
   daemonSet: false
-  infraDefinitionName: prod-namespace
+  infraDefinitionName: prod-namespaces
   name: Rollback Rolling
   phaseNameForRollback: Rolling
   phaseSteps:
