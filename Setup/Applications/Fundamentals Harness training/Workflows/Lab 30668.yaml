@@ -28,6 +28,24 @@ phases:
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
+    - type: SHELL_SCRIPT
+      name: Shell Script Name
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        includeInfraSelectors: true
+        outputVars: ''
+        publishAsVar: false
+        scriptString: echo "Hello World"
+        scriptType: BASH
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
@@ -42,7 +60,7 @@ rollbackPhases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
   daemonSet: false
-  infraDefinitionName: prod-namespaces
+  infraDefinitionName: prod-namespace
   name: Rollback Rolling
   phaseNameForRollback: Rolling
   phaseSteps:
