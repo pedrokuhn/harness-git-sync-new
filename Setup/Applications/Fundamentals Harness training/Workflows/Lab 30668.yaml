@@ -27,7 +27,7 @@ phases:
     name: Deploy
     steps:
     - type: SHELL_SCRIPT
-      name: Shell Script Name
+      name: Shell Script Name New
       properties:
         commandPath: null
         connectionAttributeName: null
