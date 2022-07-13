@@ -1,6 +1,6 @@
 pipeline:
-    name: TestPipelineNew
-    identifier: TestPipelineNew
+    name: TestPipelineNew_ChangingName
+    identifier: TestPipelineNew_ChangingName
     allowStageExecutions: false
     projectIdentifier: Git_Experience
     orgIdentifier: default
