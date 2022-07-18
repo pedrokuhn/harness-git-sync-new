@@ -1,19 +1,17 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{.Values.name}}
-data:
-  config.properties: |-
-    Key={{.Values.Key}}
-{{.Values.env.config.properties | b64dec | indent 4}}
-{{.Values.env.config.auth | b64dec | indent 4}}
----
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: {{.Values.name}}
+# data:
+#   config.properties: |-
+#     Key={{.Values.Key}}
+# {{.Values.env.config.properties | b64dec | indent 4}}
+# {{.Values.env.config.auth | b64dec | indent 4}}
+# ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{.Values.name}}
-  labels:
-    {{.Values.labels.tags.test.com/teste}}
 spec:
   replicas: {{int .Values.replicas}}
   selector:
