@@ -35,4 +35,4 @@ env:
     auth: "authconfig"
   secrets: "test"
 
-tags: <+stage.variables.custom_tag>
+# tags: <+stage.variables.custom_tag>
