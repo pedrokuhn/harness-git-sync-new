@@ -1,0 +1,36 @@
+pipeline:
+    name: NEW PIPELINE
+    identifier: NEW_PIPELINE
+    template:
+        templateRef: account.Get_Tag_Pipeline
+        versionLabel: stable
+        templateInputs:
+            stages:
+                - stage:
+                      identifier: Rolling_Deployment
+                      type: Deployment
+                      spec:
+                          serviceConfig:
+                              serviceRef: <+input>
+                              serviceDefinition:
+                                  type: Kubernetes
+                                  spec:
+                                      artifacts:
+                                          primary:
+                                              type: DockerRegistry
+                                              spec:
+                                                  tag: <+input>
+                          infrastructure:
+                              environmentRef: <+input>
+                              infrastructureDefinition:
+                                  type: KubernetesDirect
+                                  spec:
+                                      connectorRef: <+input>
+                                      namespace: <+input>
+            variables:
+                - name: image_path
+                  type: String
+                  value: <+input>
+    tags: {}
+    projectIdentifier: GIT_EXPERIENCE_DEFAULT
+    orgIdentifier: default
