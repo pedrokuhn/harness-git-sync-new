@@ -1,5 +1,9 @@
 harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
+configVariables:
+- name: testGroup
+  value: Account Administrator
+  valueType: TEXT
 deploymentType: KUBERNETES
 helmVersion: V3
