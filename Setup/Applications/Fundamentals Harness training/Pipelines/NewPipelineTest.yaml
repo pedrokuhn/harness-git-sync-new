@@ -39,7 +39,12 @@ pipelineStages:
     - name: RFC
       value: test1
     stageName: STAGE 2
-    templateExpressions: ''
+    templateExpressions:
+    - expression: ${User_Group}
+      fieldName: userGroups
+      metadata:
+        entityType: USER_GROUP
+        relatedField: ''
     timeoutMillis: 86400000
     approvalStateType: USER_GROUP
     sweepingOutputName: RFC
