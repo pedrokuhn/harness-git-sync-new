@@ -18,13 +18,36 @@ notificationRules:
   - Account Administrator
 phases:
 - type: KUBERNETES
-  computeProviderName: GKE cluster
+  computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
   name: Canary
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
+    steps:
+    - type: SHELL_SCRIPT
+      name: Export UserGroup Variable
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        includeInfraSelectors: true
+        outputVars: USER_GROUP
+        publishAsVar: true
+        scriptString: |-
+          echo "exporting variable => ${serviceVariable.testGroup}"
+
+          export USER_GROUP=${serviceVariable.testGroup}
+        scriptType: BASH
+        secretOutputVars: ''
+        sshKeyRefName: null
+        sweepingOutputName: approvers
+        sweepingOutputScope: PIPELINE
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
@@ -111,7 +134,7 @@ preDeploymentSteps:
     timeoutMillis: 60000
 rollbackPhases:
 - type: KUBERNETES
-  computeProviderName: GKE cluster
+  computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
   name: Rollback Canary
