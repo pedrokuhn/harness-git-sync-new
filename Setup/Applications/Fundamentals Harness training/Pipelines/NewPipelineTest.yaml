@@ -38,7 +38,7 @@ pipelineStages:
     - name: RFC
       value: test1
     stageName: STAGE 2
-    userGroupExpression: ${serviceVariable.testGroup}
+    userGroupExpression: ${context.approvers.USER_GROUP}
     templateExpressions: ''
     timeoutMillis: 86400000
     approvalStateType: USER_GROUP
