@@ -33,20 +33,16 @@ pipelineStages:
   name: Approval 2
   parallel: false
   properties:
-    userGroups:
-    - Account Administrator
+    userGroups: null
     variables:
     - name: RFC
       value: test1
     stageName: STAGE 2
-    templateExpressions:
-    - expression: ${User_Group}
-      fieldName: userGroups
-      metadata:
-        entityType: USER_GROUP
-        relatedField: ''
+    userGroupExpression: ${serviceVariable.testGroup}
+    templateExpressions: ''
     timeoutMillis: 86400000
     approvalStateType: USER_GROUP
+    userGroupAsExpression: true
     sweepingOutputName: RFC
   skipCondition:
     type: DO_NOT_SKIP
