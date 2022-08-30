@@ -30,7 +30,7 @@ pipelineStages:
   stageName: STAGE 3
   workflowName: Workflow 18901- 2
 - type: APPROVAL
-  name: Approval 2
+  name: Approval TST
   parallel: false
   properties:
     workflowVariables: null
