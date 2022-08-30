@@ -39,7 +39,7 @@ phases:
         scriptString: |-
           echo "exporting variable => ${serviceVariable.testGroup}"
 
-          export USER_GROUP=${serviceVariable.testGroup}
+          export USER_GROUP="${serviceVariable.testGroup}"
         scriptType: BASH
         secretOutputVars: ''
         sshKeyRefName: null
