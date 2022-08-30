@@ -1,0 +1,70 @@
+harnessApiVersion: '1.0'
+type: PIPELINE
+pipelineStages:
+- type: ENV_STATE
+  name: Workflow 18901
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: Workflow 18901
+  workflowVariables:
+  - name: artifact
+    value: hashicorp_http-echo
+  - name: artifactSister
+    value: hashicorp_http-echo
+  - name: service
+    value: Basic Echo Service
+  - name: serviceSister
+    value: Basic Echo Service
+  - entityType: SERVICE
+    name: Service
+    value: Helm Generic Service
+  - name: repositoryName
+    value: Basic Echo Service
+- type: ENV_STATE
+  name: Workflow 18901- 2
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 3
+  workflowName: Workflow 18901- 2
+- type: APPROVAL
+  name: Approval TST
+  parallel: false
+  properties:
+    workflowVariables: null
+    userGroups:
+    - Account Administrator
+    variables:
+    - name: RFC
+      value: test
+    stageName: STAGE 2
+    templateExpressions: ''
+    timeoutMillis: 86400000
+    approvalStateType: USER_GROUP
+    sweepingOutputName: RFC
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+- type: ENV_STATE
+  name: Workflow 18901- 3
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 4
+  workflowName: Workflow 18901- 3
+  workflowVariables:
+  - entityType: SERVICE
+    name: ServiceSister
+    value: ${serviceSister}
+  - entityType: SERVICE
+    name: Service
+    value: ${service}
+- type: ENV_STATE
+  name: Workflow 18901- 2-1
+  parallel: true
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 4
+  workflowName: Workflow 18901- 2
