@@ -30,15 +30,14 @@ pipelineStages:
   stageName: STAGE 3
   workflowName: Workflow 18901- 2
 - type: APPROVAL
-  name: Approval TST
+  name: Approval 2
   parallel: false
   properties:
-    workflowVariables: null
     userGroups:
     - Account Administrator
     variables:
     - name: RFC
-      value: test
+      value: test1
     stageName: STAGE 2
     templateExpressions: ''
     timeoutMillis: 86400000
