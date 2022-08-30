@@ -33,7 +33,6 @@ phases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Echo Service
   statefulSet: false
   templateExpressions:
   - expression: ${Service}
@@ -89,6 +88,27 @@ preDeploymentSteps:
     templateExpressions: null
     templateVariables: ''
     timeoutMillis: 60000
+- type: SHELL_SCRIPT
+  name: Export UserGroup Variable
+  properties:
+    commandPath: null
+    connectionAttributeName: null
+    executeOnDelegate: true
+    host: null
+    outputVars: USER_GROUP
+    publishAsVar: true
+    scriptString: |-
+      echo "exporting variable => ${serviceVariable.testGroup}"
+
+      export USER_GROUP=${serviceVariable.testGroup}
+    scriptType: BASH
+    secretOutputVars: ''
+    sshKeyRefName: null
+    sweepingOutputName: approvers
+    sweepingOutputScope: PIPELINE
+    templateExpressions: null
+    templateVariables: ''
+    timeoutMillis: 60000
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
@@ -107,7 +127,6 @@ rollbackPhases:
     phaseStepNameForRollback: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Echo Service
   statefulSet: false
   templateExpressions:
   - expression: ${Service}
