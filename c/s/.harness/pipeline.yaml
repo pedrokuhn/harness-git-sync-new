@@ -93,7 +93,7 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo "Executed on delegate -> $HOSTNAME !"
+                        script: echo "Executed on delegate -> $HOSTNAME !!"
                     environmentVariables: []
                     outputVariables:
                       - name: DELEGATE
