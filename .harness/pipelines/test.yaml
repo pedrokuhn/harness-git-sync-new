@@ -1,0 +1,85 @@
+pipeline:
+    name: test
+    identifier: test
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    properties:
+        ci:
+            codebase:
+                connectorRef: Git_Acc
+                repoName: pedrokuhn/tst
+                build: <+input>
+    stages:
+        - stage:
+              name: test
+              identifier: test
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: Test_K8s_Connector
+                          namespace: sdasd4a
+                          automountServiceAccountToken: true
+                          nodeSelector: {}
+                          harnessImageConnectorRef: Docker
+                          os: Linux
+                  execution:
+                      steps:
+                          - step:
+                                type: Run
+                                name: tst
+                                identifier: tst
+                                spec:
+                                    connectorRef: Docker
+                                    image: tst
+                                    shell: Sh
+                                    command: sts
+        - stage:
+              name: testWithoutTemplate
+              identifier: testWithoutTemplate
+              description: ""
+              type: Deployment
+              spec:
+                  serviceConfig:
+                      serviceRef: Basic_Service
+                      serviceDefinition:
+                          spec:
+                              variables: []
+                          type: Kubernetes
+                  infrastructure:
+                      environmentRef: Basic_Infra
+                      infrastructureDefinition:
+                          type: KubernetesDirect
+                          spec:
+                              connectorRef: Test_K8s_Connector
+                              namespace: test
+                              releaseName: release-<+INFRA_KEY>
+                      allowSimultaneousDeployments: false
+                  execution:
+                      steps:
+                          - step:
+                                type: ShellScript
+                                name: Test
+                                identifier: Test
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: echo "Hello World"
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
+                      rollbackSteps: []
+              tags: {}
+              failureStrategies:
+                  - onFailure:
+                        errors:
+                            - AllErrors
+                        action:
+                            type: StageRollback
