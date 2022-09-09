@@ -1,0 +1,12 @@
+connector:
+  name: Test K8s Connector
+  identifier: Test_K8s_Connector
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: Rolling_Lab
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+    - ffffff
