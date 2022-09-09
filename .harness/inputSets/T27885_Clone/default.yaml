@@ -1,0 +1,31 @@
+inputSet:
+  identifier: "default"
+  pipeline:
+    identifier: "T27885_Clone"
+    stages:
+    - stage:
+        identifier: "Rolling_Deploy"
+        type: "Deployment"
+        spec:
+          serviceConfig:
+            serviceDefinition:
+              type: "Kubernetes"
+              spec:
+                artifacts:
+                  primary:
+                    type: "DockerRegistry"
+                    spec:
+                      connectorRef: "Docker"
+                      imagePath: "library/nginx"
+                      tag: "perl"
+        variables:
+        - name: "custom_tag"
+          type: "String"
+          value: "aaaaa"
+    variables:
+    - name: "a"
+      type: "String"
+      value: "aaaaaa"
+  name: "default"
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
