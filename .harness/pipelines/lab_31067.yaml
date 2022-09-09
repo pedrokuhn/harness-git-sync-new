@@ -1,0 +1,47 @@
+pipeline:
+    name: lab 31067
+    identifier: lab_31067
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: a1
+              identifier: a1
+              description: ""
+              type: Approval
+              spec:
+                  execution:
+                      steps:
+                          - step:
+                                name: Approval
+                                identifier: approval
+                                type: HarnessApproval
+                                timeout: 1d
+                                spec:
+                                    approvalMessage: |-
+                                        Please review the following information
+                                        and approve the pipeline progression
+                                    includePipelineExecutionHistory: true
+                                    approvers:
+                                        minimumCount: 1
+                                        disallowPipelineExecutor: false
+                                        userGroups:
+                                            - account.DOE.HRNS.AutomationEngineer
+                                    approverInputs: []
+                          - step:
+                                type: ShellScript
+                                name: echo
+                                identifier: echo
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: echo 'a'
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
+              tags: {}
