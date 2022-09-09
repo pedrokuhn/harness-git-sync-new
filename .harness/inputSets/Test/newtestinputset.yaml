@@ -1,0 +1,81 @@
+inputSet:
+  identifier: "newtestinputset"
+  name: "newtestinputset"
+  tags: {}
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
+  pipeline:
+    identifier: "Test"
+    stages:
+    - parallel:
+      - stage:
+          identifier: "One_CPU"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+      - stage:
+          identifier: "Two_CPU"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+      - stage:
+          identifier: "Four_CPU"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+      - stage:
+          identifier: "Six_CPUs"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+          - name: "CPU_NUMBER"
+            type: "Number"
+            value: 6
+          - name: "CPU_STRING"
+            type: "String"
+            value: "6"
+    properties:
+      ci:
+        codebase:
+          connectorRef: "Git_Acc"
+          repoName: "aaaaa"
+          build:
+            type: "branch"
+            spec:
+              branch: "main"
+    variables:
+    - name: "repo_branch"
+      type: "String"
+      value: "testing-harness-001"
+    - name: "repo_commit"
+      type: "String"
+      value: "6fc4ff060fd9512b8e558015231cd9961df45eac"
+    - name: "repo_name"
+      type: "String"
+      value: "centro-media-manager"
+    - name: "repo_workspace"
+      type: "String"
+      value: "CEN"
+    - name: "run"
+      type: "String"
+      value: "test"
+    - name: "bitbucket_pass"
+      type: "Secret"
+      value: "secret"
+    - name: "bitbucket_user"
+      type: "String"
+      value: "harness_bitbucket"
+    - name: "connector_ref_name"
+      type: "String"
+      value: "org.harness_kubernetes_eks_bld"
+    - name: "connector_namespace"
+      type: "String"
+      value: "build-namepsace"
