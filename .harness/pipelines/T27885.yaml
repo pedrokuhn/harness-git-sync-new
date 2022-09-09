@@ -1,0 +1,174 @@
+pipeline:
+  name: T27885
+  identifier: T27885
+  allowStageExecutions: false
+  projectIdentifier: Rolling_Lab
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Rolling Deploy
+        identifier: Rolling_Deploy
+        description: ""
+        type: Deployment
+        spec:
+          serviceConfig:
+            serviceRef: Basic_Service
+            serviceDefinition:
+              type: Kubernetes
+              spec:
+                variables:
+                  - name: tag
+                    type: String
+                    value: <+input>
+                manifests:
+                  - manifest:
+                      identifier: BasicManifest
+                      type: K8sManifest
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: account.tres
+                            gitFetchType: Branch
+                            paths:
+                              - /deployment (2).yaml
+                            repoName: pedrokuhn/harness-git-sync-new
+                            branch: t27885
+                        skipResourceVersioning: false
+                  - manifest:
+                      identifier: Values
+                      type: Values
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: account.tres
+                            gitFetchType: Branch
+                            paths:
+                              - /values (2).yaml
+                            repoName: pedrokuhn/harness-git-sync-new
+                            branch: t27885
+                artifacts:
+                  primary:
+                    spec:
+                      connectorRef: <+input>
+                      imagePath: <+input>
+                      tag: <+input>
+                    type: DockerRegistry
+          infrastructure:
+            environmentRef: Basic_Infra
+            infrastructureDefinition:
+              type: KubernetesDirect
+              spec:
+                connectorRef: account.CCM_Connector
+                namespace: test
+                releaseName: release-<+INFRA_KEY>
+              provisioner:
+                steps:
+                  - step:
+                      type: ShellScript
+                      name: export kube_config
+                      identifier: export_kube_config
+                      spec:
+                        shell: Bash
+                        onDelegate: true
+                        source:
+                          type: Inline
+                          spec:
+                            script: |-
+                              echo "########################"
+                              echo $HARNESS_KUBE_CONFIG_PATH
+                              echo "########################"
+
+                              kubeconfig=${HARNESS_KUBE_CONFIG_PATH}
+                        environmentVariables: []
+                        outputVariables:
+                          - name: kubeconfig
+                            type: String
+                            value: kubeconfig
+                        executionTarget: {}
+                      timeout: 10m
+            allowSimultaneousDeployments: false
+          execution:
+            steps:
+              - step:
+                  type: HarnessApproval
+                  name: Approval
+                  identifier: Approval
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      userGroups:
+                        - account.Test_User_Group
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
+              - step:
+                  type: ShellScript
+                  name: Echo
+                  identifier: Echo
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo $HARNESS_KUBE_CONFIG_PATH
+                    environmentVariables: []
+                    outputVariables: []
+                    executionTarget: {}
+                  timeout: 10m
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                  when:
+                    stageStatus: Success
+                  failureStrategies: []
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+          serviceDependencies: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: Abort
+        variables:
+          - name: custom_tag
+            type: String
+            value: <+input>
+        when:
+          pipelineStatus: Success
+  notificationRules:
+    - name: Test
+      identifier: ""
+      pipelineEvents:
+        - type: AllEvents
+      notificationMethod:
+        type: Email
+        spec:
+          userGroups:
+            - account.Test_User_Group
+          recipients: []
+      enabled: true
+  flowControl:
+    barriers: []
+  variables:
+    - name: a
+      type: String
+      default: aaaaaa
+      value: <+input>
