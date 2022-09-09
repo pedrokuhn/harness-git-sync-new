@@ -1,0 +1,46 @@
+template:
+    name: build_centro-media-manager_root_specs
+    identifier: build_centromediamanager_root_specs
+    versionLabel: 1.0.2
+    type: Step
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    spec:
+        type: Run
+        spec:
+            connectorRef: account.harnessImage
+            image: busybox
+            shell: Sh
+            command: |-
+                bundle install
+                env | sort
+                bundle exec rake assets:clobber spec:simple_chunky
+            privileged: false
+            reports:
+                type: JUnit
+                spec:
+                    paths:
+                        - /harness/reports/results-*.xml
+            envVariables:
+                LC_ALL: en_US.UTF-8
+                TZ: America/Chicago
+                RAILS_ENV: test
+                DISABLE_SPRING: "true"
+                GENERATE_REPORTS: "true"
+                CI_REPORTS: reports
+                AUTH_DATABASE_USERNAME: cmm
+                AUTH_DATABASE_PASSWORD: password
+                BI_EXPORT_DATABASE_USERNAME: cmm
+                BI_EXPORT_DATABASE_PASSWORD: password
+                CMM_DATABASE_USERNAME: cmm
+                CMM_DATABASE_PASSWORD: password
+                CHUNK: <+input>
+                TOTAL_CHUNKS: <+input>
+                NO_COVERAGE: "true"
+            imagePullPolicy: Always
+            resources:
+                limits:
+                    memory: 4000Mi
+                    cpu: "1.0"
+        timeout: 1h
