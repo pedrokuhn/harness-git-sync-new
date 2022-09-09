@@ -1,0 +1,57 @@
+pipeline:
+    name: ShellScriptPipeline
+    identifier: ShellScriptPipeline
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: ShellStageOnly
+              identifier: ShellStageOnly
+              description: ""
+              type: Custom
+              spec:
+                  execution:
+                      steps:
+                          - step:
+                                type: ShellScript
+                                name: SshClone Repo
+                                identifier: SshClone_Repo
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: |-
+                                                echo "Cloning using SSH Key from a secret"
+
+                                                # storing the ssh key in a file
+                                                echo "$github_key" | base64 -d > /tmp/gh_key
+                                                chmod 400 /tmp/gh_key
+
+                                                #executing git clone
+                                                GIT_SSH_COMMAND='ssh -i /tmp/gh_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=no' git clone git@github.com:pedrokuhn/janitor.git
+
+                                                #listing my cloned files
+
+                                                ls -lha /tmp/janitor
+
+                                                #Cleaning resources
+                                                rm -rf /tmp/gh_key
+                                                rm -rf /tmp/janitor
+                                    environmentVariables:
+                                        - name: github_key
+                                          type: String
+                                          value: <+stage.variables.repoSshKey>
+                                    outputVariables: []
+                                    executionTarget: {}
+                                    delegateSelectors:
+                                        - account-delegate-new
+                                timeout: 10m
+                                failureStrategies: []
+              tags: {}
+              variables:
+                  - name: repoSshKey
+                    type: Secret
+                    value: sshKeyGitNew
