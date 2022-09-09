@@ -1,0 +1,110 @@
+template:
+    name: Step CD template
+    identifier: Step_CD_template
+    versionLabel: v1
+    type: Stage
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    spec:
+        type: Deployment
+        spec:
+            serviceConfig:
+                serviceRef: Basic_Service
+                serviceDefinition:
+                    type: NativeHelm
+                    spec:
+                        variables:
+                            - name: tag
+                              type: String
+                              value: <+input>
+                        manifests:
+                            - manifest:
+                                  identifier: HelmManifest
+                                  type: HelmChart
+                                  spec:
+                                      store:
+                                          type: Github
+                                          spec:
+                                              connectorRef: Git_Acc
+                                              gitFetchType: Branch
+                                              folderPath: /
+                                              repoName: /pedrokuhn/helm-service-repo.git
+                                              branch: harness
+                                      skipResourceVersioning: false
+                                      helmVersion: V3
+                                      commandFlags:
+                                          - commandType: Install
+                                            flag: --set image.repository=<+artifact.image>
+                                          - commandType: Upgrade
+                                            flag: --set image.repository=<+artifact.image>
+                                          - commandType: Template
+                                            flag: --debug --dry-run --set image.repository=<+artifact.image>
+                        artifacts:
+                            primary:
+                                spec:
+                                    connectorRef: Docker
+                                    imagePath: library/nginx
+                                    tag: <+input>
+                                type: DockerRegistry
+            infrastructure:
+                environmentRef: Basic_Infra
+                infrastructureDefinition:
+                    type: KubernetesDirect
+                    spec:
+                        connectorRef: Test_K8s_Connector
+                        namespace: test
+                        releaseName: release-<+INFRA_KEY>
+                allowSimultaneousDeployments: true
+            execution:
+                steps:
+                    - step:
+                          type: ShellScript
+                          name: Test
+                          identifier: Test
+                          spec:
+                              shell: Bash
+                              onDelegate: true
+                              source:
+                                  type: Inline
+                                  spec:
+                                      script: echo <+pipeline.variables.<+pipeline.variables.test>Values>
+                              environmentVariables: []
+                              outputVariables: []
+                              executionTarget: {}
+                          timeout: 10m
+                rollbackSteps:
+                    - step:
+                          name: Rollback Rollout Deployment
+                          identifier: rollbackRolloutDeployment
+                          type: K8sRollingRollback
+                          timeout: 10m
+                          spec:
+                              skipDryRun: false
+            serviceDependencies: []
+        failureStrategies:
+            - onFailure:
+                  errors:
+                      - Authentication
+                      - Connectivity
+                      - DelegateProvisioning
+                      - Timeout
+                      - Unknown
+                      - Verification
+                      - PolicyEvaluationFailure
+                  action:
+                      type: StageRollback
+            - onFailure:
+                  errors:
+                      - AllErrors
+                  action:
+                      type: Ignore
+        variables:
+            - name: custom_tag
+              type: String
+              value: <+input>
+            - name: only_deploy_to
+              type: String
+              value: <+pipeline.variables.allowedEnvironment>
+        when:
+            pipelineStatus: Success
+            condition: <+env.name>==<+stage.variables.only_deploy_to>
