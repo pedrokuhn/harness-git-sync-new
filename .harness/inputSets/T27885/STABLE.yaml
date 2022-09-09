@@ -1,0 +1,29 @@
+inputSet:
+  identifier: "STABLE"
+  pipeline:
+    identifier: "T27885"
+    stages:
+    - stage:
+        identifier: "Rolling_Deploy"
+        type: "Deployment"
+        spec:
+          serviceConfig:
+            serviceDefinition:
+              type: "Kubernetes"
+              spec:
+                variables:
+                - name: "tag"
+                  type: "String"
+                  value: "a"
+                artifacts:
+                  primary:
+                    type: "DockerRegistry"
+                    spec:
+                      tag: "latest"
+        variables:
+        - name: "custom_tag"
+          type: "String"
+          value: "a"
+  name: "STABLE"
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
