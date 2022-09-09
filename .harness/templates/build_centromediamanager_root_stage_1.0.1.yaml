@@ -1,0 +1,77 @@
+template:
+    name: build_centromediamanager_root_stage
+    identifier: build_centromediamanager_root_stage
+    versionLabel: 1.0.1
+    type: Stage
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    spec:
+        type: CI
+        spec:
+            cloneCodebase: true
+            infrastructure:
+                type: KubernetesDirect
+                spec:
+                    connectorRef: <+input>
+                    namespace: <+input>
+                    initTimeout: 1h
+                    automountServiceAccountToken: true
+            serviceDependencies:
+                - identifier: postgres
+                  name: postgres
+                  type: Service
+                  spec:
+                      connectorRef: org.harness_artifactory_docker
+                      image: artifactory.basis.net/basis/cmm_postgres:9.6.11
+                      resources:
+                          limits:
+                              memory: 2000Mi
+                              cpu: "0.2"
+                - identifier: rabbitmq
+                  name: rabbitmq
+                  type: Service
+                  spec:
+                      connectorRef: org.harness_artifactory_docker
+                      image: artifactory.basis.net/upstream/rabbitmq:3.7.14-management
+                      resources:
+                          limits:
+                              memory: 300Mi
+                              cpu: "0.2"
+                - identifier: redis_sidekiq
+                  name: redis
+                  type: Service
+                  spec:
+                      connectorRef: org.harness_artifactory_docker
+                      image: artifactory.basis.net/upstream/redis:3.2.10
+                      resources:
+                          limits:
+                              memory: 400Mi
+                              cpu: "0.15"
+            execution:
+                steps:
+                    - step:
+                          name: seed
+                          identifier: rootspecs
+                          template:
+                              templateRef: build_centromediamanage_seed
+                              versionLabel: 1.0.2
+                    - step:
+                          name: root_specs
+                          identifier: root_specs
+                          template:
+                              templateRef: build_centromediamanager_root_specs
+                              versionLabel: 1.0.2
+                              templateInputs:
+                                  type: Run
+                                  spec:
+                                      envVariables:
+                                          CHUNK: <+input>
+                                          TOTAL_CHUNKS: <+input>
+        when:
+            pipelineStatus: Success
+            condition: <+pipeline.variables.run> == "test" || <+pipeline.variables.run> == "build_test" || <+stage.variables.enabled> == "true"
+        variables:
+            - name: enabled
+              type: String
+              value: <+input>
