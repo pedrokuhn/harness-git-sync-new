@@ -1,0 +1,21 @@
+inputSet:
+  identifier: "TestInputSet"
+  pipeline:
+    identifier: "T27885"
+    stages:
+    - stage:
+        identifier: "Rolling_Deploy"
+        type: "Deployment"
+        spec:
+          serviceConfig:
+            serviceDefinition:
+              type: "Kubernetes"
+              spec:
+                artifacts:
+                  primary:
+                    type: "DockerRegistry"
+                    spec:
+                      tag: "stable-alpine-perl"
+  name: "TestInputSet"
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
