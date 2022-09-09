@@ -1,0 +1,25 @@
+pipeline:
+    name: Name
+    identifier: Name
+    template:
+        templateRef: new_pipeline_template_name
+        versionLabel: v1
+        templateInputs:
+            stages:
+                - stage:
+                      identifier: testTemp
+                      type: Deployment
+                      spec:
+                          infrastructure:
+                              environmentRef: <+input>
+                              infrastructureDefinition:
+                                  type: KubernetesDirect
+                                  spec:
+                                      namespace: <+input>
+                      variables:
+                          - name: namespace_name
+                            type: String
+                            value: <+input>
+    tags: {}
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
