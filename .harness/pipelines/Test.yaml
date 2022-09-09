@@ -1,0 +1,71 @@
+pipeline:
+    name: Test
+    identifier: Test
+    allowStageExecutions: false
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    properties:
+        ci:
+            codebase:
+                connectorRef: <+input>
+                repoName: <+input>
+                build: <+input>
+    stages:
+        - stage:
+              name: root-unit-spec11
+              identifier: rootunitspec11
+              template:
+                  templateRef: build_centromediamanager_root_stage
+                  versionLabel: 1.0.1
+                  templateInputs:
+                      type: CI
+                      spec:
+                          infrastructure:
+                              type: KubernetesDirect
+                              spec:
+                                  connectorRef: <+pipeline.variables.connector_ref_name>
+                                  namespace: <+pipeline.variables.connector_namespace>
+                          execution:
+                              steps:
+                                  - step:
+                                        identifier: root_specs
+                                        template:
+                                            templateInputs:
+                                                type: Run
+                                                spec:
+                                                    envVariables:
+                                                        CHUNK: <+input>
+                                                        TOTAL_CHUNKS: <+input>
+                      variables:
+                          - name: enabled
+                            type: String
+                            value: <+input>
+    variables:
+        - name: repo_branch
+          type: String
+          value: <+input>
+        - name: repo_commit
+          type: String
+          value: <+input>
+        - name: repo_name
+          type: String
+          value: <+input>
+        - name: repo_workspace
+          type: String
+          value: <+input>
+        - name: run
+          type: String
+          value: <+input>
+        - name: bitbucket_pass
+          type: Secret
+          value: <+input>
+        - name: bitbucket_user
+          type: String
+          value: <+input>
+        - name: connector_ref_name
+          type: String
+          value: <+input>
+        - name: connector_namespace
+          type: String
+          value: <+input>
