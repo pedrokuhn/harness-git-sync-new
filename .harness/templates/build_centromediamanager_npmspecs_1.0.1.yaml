@@ -1,0 +1,42 @@
+template:
+    name: build_centro-media-manager_npm-specs
+    identifier: build_centromediamanager_npmspecs
+    versionLabel: 1.0.1
+    type: Step
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    spec:
+        type: Run
+        spec:
+            connectorRef: org.harness_artifactory_docker
+            image: artifactory.basis.net/basis/basis:base-dev
+            shell: Sh
+            command: |-
+                wget --no-check-certificate -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+                sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+                apt-get update && apt-get install -y google-chrome-stable
+
+                env | sort
+                # TODO: replace with ENV var
+                npm config set cache /test_artifacts/.cache/.npm-cache --global 
+                cd components/ui
+                npm install
+                npm run ci
+            privileged: false
+            reports:
+                type: JUnit
+                spec:
+                    paths:
+                        - /harness/**/reports/**/results-*.xml
+            envVariables:
+                CHUNK: <+input>
+                TOTAL_CHUNKS: <+input>
+                LC_ALL: en_US.UTF-8
+                TZ: America/Chicago
+            imagePullPolicy: Always
+            resources:
+                limits:
+                    memory: 4000Mi
+                    cpu: "0.75"
+        timeout: 1h
