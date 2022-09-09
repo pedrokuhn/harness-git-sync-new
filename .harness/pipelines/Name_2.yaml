@@ -1,0 +1,18 @@
+pipeline:
+    name: Name 2
+    identifier: Name_2
+    template:
+        templateRef: New_Pipeline_Template_Name_2
+        versionLabel: v1
+        templateInputs:
+            properties:
+                ci:
+                    codebase:
+                        build: <+input>
+            variables:
+                - name: TestVariable
+                  type: String
+                  value: <+input>
+    tags: {}
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
