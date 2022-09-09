@@ -1,0 +1,61 @@
+template:
+    name: New Pipeline Template Name
+    identifier: new_pipeline_template_name
+    versionLabel: v1
+    type: Pipeline
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    description: null
+    tags: {}
+    spec:
+        stages:
+            - stage:
+                  name: testTemp
+                  identifier: testTemp
+                  description: ""
+                  type: Deployment
+                  spec:
+                      serviceConfig:
+                          serviceRef: Basic_Service
+                          serviceDefinition:
+                              spec:
+                                  variables: []
+                              type: Kubernetes
+                      infrastructure:
+                          environmentRef: <+input>
+                          infrastructureDefinition:
+                              type: KubernetesDirect
+                              spec:
+                                  connectorRef: Test_K8s_Connector
+                                  namespace: <+input>
+                                  releaseName: release-<+INFRA_KEY>
+                          allowSimultaneousDeployments: false
+                      execution:
+                          steps:
+                              - step:
+                                    type: HarnessApproval
+                                    name: Test
+                                    identifier: Test
+                                    spec:
+                                        approvalMessage: Please review the following information and approve the pipeline progression
+                                        includePipelineExecutionHistory: true
+                                        approvers:
+                                            userGroups:
+                                                - account.new_test_usergroup
+                                            minimumCount: 1
+                                            disallowPipelineExecutor: false
+                                        approverInputs: []
+                                    timeout: 1d
+                          rollbackSteps: []
+                  tags: {}
+                  failureStrategies:
+                      - onFailure:
+                            errors:
+                                - AllErrors
+                            action:
+                                type: StageRollback
+                  variables:
+                      - name: namespace_name
+                        type: String
+                        default: test_value
+                        value: <+input>
