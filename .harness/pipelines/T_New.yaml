@@ -1,0 +1,51 @@
+pipeline:
+    name: T New
+    identifier: T_New
+    allowStageExecutions: true
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    stages:
+        - stage:
+              name: Rolling Deploy
+              identifier: Rolling_Deploy
+              template:
+                  templateRef: Step_CD_template
+                  versionLabel: v1
+                  templateInputs:
+                      type: Deployment
+                      spec:
+                          serviceConfig:
+                              serviceDefinition:
+                                  type: NativeHelm
+                                  spec:
+                                      variables:
+                                          - name: tag
+                                            type: String
+                                            value: <+input>
+                                      artifacts:
+                                          primary:
+                                              type: DockerRegistry
+                                              spec:
+                                                  tag: <+input>
+                      variables:
+                          - name: custom_tag
+                            type: String
+                            value: <+input>
+    notificationRules:
+        - name: notify
+          pipelineEvents:
+              - type: AllEvents
+          notificationMethod:
+              type: Email
+              spec:
+                  userGroups:
+                      - account.Test_User_Group
+                  recipients: []
+          enabled: true
+    flowControl:
+        barriers: []
+    variables:
+        - name: allowedEnvironment
+          type: String
+          value: Basic Infra
