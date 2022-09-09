@@ -1,0 +1,25 @@
+connector:
+  name: Git Acc
+  identifier: Git_Acc
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: Rolling_Lab
+  type: Github
+  spec:
+    url: https://github.com
+    validationRepo: pedrokuhn/harness-istio-tcp-lab
+    authentication:
+      type: Http
+      spec:
+        type: UsernameToken
+        spec:
+          username: pedrokuhn
+          tokenRef: account.GitHubToken
+    apiAccess:
+      type: Token
+      spec:
+        tokenRef: account.GitHubToken
+    delegateSelectors:
+    - account-delegate-new
+    executeOnDelegate: true
+    type: Account
