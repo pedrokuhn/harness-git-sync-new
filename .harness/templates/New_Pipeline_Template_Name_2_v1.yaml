@@ -1,0 +1,47 @@
+template:
+    name: New Pipeline Template Name 2
+    identifier: New_Pipeline_Template_Name_2
+    versionLabel: v1
+    type: Pipeline
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    spec:
+        properties:
+            ci:
+                codebase:
+                    connectorRef: Git_Acc
+                    repoName: pedrokuhn/tst
+                    build: <+input>
+        stages:
+            - stage:
+                  name: test
+                  identifier: test
+                  type: CI
+                  spec:
+                      cloneCodebase: true
+                      infrastructure:
+                          type: KubernetesDirect
+                          spec:
+                              connectorRef: Test_K8s_Connector
+                              namespace: igou
+                              automountServiceAccountToken: true
+                              nodeSelector: {}
+                              harnessImageConnectorRef: Docker
+                              os: Linux
+                      execution:
+                          steps:
+                              - step:
+                                    type: Run
+                                    name: ytesTEST
+                                    identifier: ytesTEST
+                                    spec:
+                                        connectorRef: Docker
+                                        image: ASD
+                                        shell: Sh
+                                        command: ASDQ
+        variables:
+            - name: TestVariable
+              type: String
+              default: defaultValueTest
+              value: <+input>
