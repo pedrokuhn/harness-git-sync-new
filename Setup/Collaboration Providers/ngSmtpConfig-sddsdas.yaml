@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: SMTP
+host: dsa33
+password: gcpkms:ngSmtpConfig-sddsdas-YpUfe9mVQECwIhopss9sVw-SmtpSecret
+port: 33
+useSSL: false
+username: pedro.mastelaro@harness.io
