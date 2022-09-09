@@ -1,0 +1,24 @@
+inputSet:
+  identifier: "trigger"
+  name: "trigger"
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
+  pipeline:
+    identifier: "T_New"
+    stages:
+    - stage:
+        identifier: "Rolling_Deploy"
+        type: "Deployment"
+        spec:
+          serviceConfig:
+            serviceDefinition:
+              type: "NativeHelm"
+              spec:
+                variables:
+                - name: "tag"
+                  type: "String"
+                  value: "a"
+        variables:
+        - name: "custom_tag"
+          type: "String"
+          value: "a"
