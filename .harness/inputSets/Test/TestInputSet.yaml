@@ -1,0 +1,78 @@
+inputSet:
+  identifier: "TestInputSet"
+  pipeline:
+    identifier: "Test"
+    stages:
+    - parallel:
+      - stage:
+          identifier: "One_CPU"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+      - stage:
+          identifier: "Two_CPU"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+      - stage:
+          identifier: "Four_CPU"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+      - stage:
+          identifier: "Six_CPUs"
+          type: "CI"
+          variables:
+          - name: "TIMEOUT"
+            type: "Number"
+            value: 60
+          - name: "CPU_NUMBER"
+            type: "Number"
+            value: 6
+          - name: "CPU_STRING"
+            type: "String"
+            value: "6"
+    - stage:
+        identifier: "rootunitspec11"
+        template:
+          templateInputs:
+            type: "CI"
+            spec:
+              infrastructure:
+                type: "KubernetesDirect"
+                spec:
+                  connectorRef: "Test_K8s_Connector"
+                  namespace: "aaaa"
+              execution:
+                steps:
+                - step:
+                    identifier: "root_specs"
+                    template:
+                      templateInputs:
+                        type: "Run"
+                        spec:
+                          envVariables:
+                            CHUNK: "a"
+                            TOTAL_CHUNKS: "a"
+            variables:
+            - name: "enabled"
+              type: "String"
+              value: "aaa"
+    properties:
+      ci:
+        codebase:
+          connectorRef: "Git_Acc"
+          repoName: "zzzz"
+          build:
+            type: "branch"
+            spec:
+              branch: "main"
+  name: "TestInputSet"
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
