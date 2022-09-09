@@ -1,0 +1,13 @@
+connector:
+  name: Docker
+  identifier: Docker
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: Rolling_Lab
+  type: DockerRegistry
+  spec:
+    dockerRegistryUrl: https://registry.hub.docker.com/v2/
+    providerType: DockerHub
+    auth:
+      type: Anonymous
+    executeOnDelegate: true
