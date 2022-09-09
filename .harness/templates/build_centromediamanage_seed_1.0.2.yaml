@@ -1,0 +1,41 @@
+template:
+    name: build_centro-media-manage_seed
+    identifier: build_centromediamanage_seed
+    versionLabel: 1.0.2
+    type: Step
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    spec:
+        type: Run
+        spec:
+            connectorRef: account.harnessImage
+            image: busybox
+            shell: Sh
+            command: |-
+                bundle install
+
+                bundle exec rake db:auth:drop db:auth:create db:auth:structure:load db:auth:migrate
+                bundle exec rake db:drop db:create db:structure:load db:migrate
+                bundle exec rake db:bi_export:drop db:bi_export:create db:bi_export:structure:load db:bi_export:migrate
+                bundle exec rake db:seed
+            privileged: false
+            envVariables:
+                LC_ALL: en_US.UTF-8
+                TZ: America/Chicago
+                RAILS_ENV: test
+                DISABLE_SPRING: "true"
+                GENERATE_REPORTS: "false"
+                CI_REPORTS: reports
+                AUTH_DATABASE_USERNAME: cmm
+                AUTH_DATABASE_PASSWORD: password
+                BI_EXPORT_DATABASE_USERNAME: cmm
+                BI_EXPORT_DATABASE_PASSWORD: password
+                CMM_DATABASE_USERNAME: cmm
+                CMM_DATABASE_PASSWORD: password
+            imagePullPolicy: Always
+            resources:
+                limits:
+                    memory: 3000Mi
+                    cpu: "0.75"
+        timeout: 1h
