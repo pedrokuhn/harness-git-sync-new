@@ -1,0 +1,44 @@
+pipeline:
+    name: testNotification
+    identifier: testNotification
+    allowStageExecutions: false
+    stages:
+        - stage:
+              name: t1
+              identifier: t1
+              description: ""
+              type: Approval
+              spec:
+                  execution:
+                      steps:
+                          - step:
+                                type: ShellScript
+                                name: s1
+                                identifier: s1
+                                spec:
+                                    shell: Bash
+                                    onDelegate: true
+                                    source:
+                                        type: Inline
+                                        spec:
+                                            script: echo 1
+                                    environmentVariables: []
+                                    outputVariables: []
+                                    executionTarget: {}
+                                timeout: 10m
+                  serviceDependencies: []
+              tags: {}
+    projectIdentifier: Rolling_Lab
+    orgIdentifier: default
+    tags: {}
+    notificationRules:
+        - name: test
+          pipelineEvents:
+              - type: PipelineSuccess
+          notificationMethod:
+              type: Email
+              spec:
+                  userGroups: []
+                  recipients:
+                      - pedro.mastelaro@harness.io
+          enabled: true
