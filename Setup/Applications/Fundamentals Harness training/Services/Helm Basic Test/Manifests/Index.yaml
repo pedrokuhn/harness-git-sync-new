@@ -6,7 +6,4 @@ gitFileConfig:
   filePath: helm/traefik-v2
   useBranch: true
   useInlineServiceDefinition: false
-helmCommandFlag:
-  valueMap:
-    TEMPLATE: --dependency-update
 storeType: HelmSourceRepo
