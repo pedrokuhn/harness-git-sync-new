@@ -18,7 +18,7 @@ notificationRules:
   - Account Administrator
 phases:
 - type: KUBERNETES
-  computeProviderName: GKE cluster
+  computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
   name: Rolling
@@ -26,11 +26,6 @@ phases:
   - type: K8S_PHASE_STEP
     name: Deploy
     steps:
-    - type: K8S_APPLY
-      name: Apply
-      properties:
-        filePaths: templates/secret.yaml
-        stateTimeoutInMinutes: 10
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
     stepsInParallel: false
@@ -45,7 +40,7 @@ phases:
   statefulSet: false
 rollbackPhases:
 - type: KUBERNETES
-  computeProviderName: GKE cluster
+  computeProviderName: Kubernetes Cluster 2
   daemonSet: false
   infraDefinitionName: staging-namespace
   name: Rollback Rolling
