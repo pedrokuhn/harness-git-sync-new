@@ -1,9 +1,0 @@
-harnessApiVersion: '1.0'
-type: APPLICATION_MANIFEST
-gitFileConfig:
-  branch: main
-  connectorName: BitBucket
-  filePath: helm/traefik-v2/values-api.yaml
-  useBranch: true
-  useInlineServiceDefinition: false
-storeType: Remote
