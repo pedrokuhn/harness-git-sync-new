@@ -3,7 +3,6 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: master
   connectorName: basic-helm-chart
-  filePath: /templates
   useBranch: true
   useInlineServiceDefinition: false
 storeType: HelmSourceRepo
