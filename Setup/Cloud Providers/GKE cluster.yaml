@@ -1,7 +1,9 @@
 harnessApiVersion: '1.0'
 type: KUBERNETES_CLUSTER
+continuousEfficiencyConfig:
+  continuousEfficiencyEnabled: false
 delegateSelectors:
-- my-first-delegate-ypufem-0
+- default
 skipValidation: false
 usageRestrictions:
   appEnvRestrictions:
