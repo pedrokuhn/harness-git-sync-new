@@ -2,11 +2,8 @@ harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: main
-  connectorName: tmp-dev-frealmyr
-  filePath: k8s/test/adguard
+  connectorName: basic-helm-chart
+  filePath: /templates
   useBranch: true
   useInlineServiceDefinition: false
-helmCommandFlag:
-  valueMap:
-    TEMPLATE: --dependency-update
 storeType: HelmSourceRepo
