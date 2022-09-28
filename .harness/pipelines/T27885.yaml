@@ -64,31 +64,6 @@ pipeline:
                 connectorRef: account.CCM_Connector
                 namespace: test
                 releaseName: release-<+INFRA_KEY>
-              provisioner:
-                steps:
-                  - step:
-                      type: ShellScript
-                      name: export kube_config
-                      identifier: export_kube_config
-                      spec:
-                        shell: Bash
-                        onDelegate: true
-                        source:
-                          type: Inline
-                          spec:
-                            script: |-
-                              echo "########################"
-                              echo $HARNESS_KUBE_CONFIG_PATH
-                              echo "########################"
-
-                              kubeconfig=${HARNESS_KUBE_CONFIG_PATH}
-                        environmentVariables: []
-                        outputVariables:
-                          - name: kubeconfig
-                            type: String
-                            value: kubeconfig
-                        executionTarget: {}
-                      timeout: 10m
             allowSimultaneousDeployments: false
           execution:
             steps:
