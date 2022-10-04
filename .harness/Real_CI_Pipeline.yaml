@@ -1,0 +1,62 @@
+pipeline:
+  name: Real CI Pipeline
+  identifier: Real_CI_Pipeline
+  projectIdentifier: Rolling_Lab
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.Harness_Kubernetes_Cluster
+              namespace: pedro
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run Unit Tests
+                  identifier: Run_Unit_Tests
+                  spec:
+                    connectorRef: Docker_Quickstart
+                    image: golang:1.15
+                    command: |-
+                      #go get gotest.tools/gotestsum
+                      #gotestsum --format=standard-verbose --junitfile unit-tests.xml || true
+                      #CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo
+
+                      echo <+codebase.commitSha>
+                      echo <+codebase.targetBranch>
+                      echo <+codebase.sourceBranch>
+                      echo <+codebase.prNumber>
+                      echo <+codebase.prTitle>
+                      echo <+codebase.commitRef>
+                      echo <+codebase.repoUrl>
+                      echo <+codebase.gitUserId>
+                      echo <+codebase.gitUserEmail>
+                      echo <+codebase.gitUser>
+                      echo <+codebase.gitUserAvatar>
+                      echo <+codebase.pullRequestLink>
+                      echo <+codebase.pullRequestBody>
+                      echo <+codebase.state>
+                    privileged: false
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "*.xml"
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.tres
+        repoName: test
+        build: <+input>
