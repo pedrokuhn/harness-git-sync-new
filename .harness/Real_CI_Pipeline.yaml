@@ -54,6 +54,27 @@ pipeline:
                       spec:
                         paths:
                           - "*.xml"
+              - parallel:
+                  - step:
+                      type: BuildAndPushECR
+                      name: Build and Push to ECR
+                      identifier: Build_and_Push_to_ECR
+                      spec:
+                        connectorRef: account.AWS
+                        region: us-east-2
+                        account: "915632791698"
+                        imageName: test2
+                        tags:
+                          - test
+                  - step:
+                      type: BuildAndPushDockerRegistry
+                      name: Build and push image to Docker Hub
+                      identifier: Build_and_push_image_to_Docker_Hub
+                      spec:
+                        connectorRef: account.harnessImage
+                        repo: pedrokuhnmaster/ciquickstart
+                        tags:
+                          - <+pipeline.sequenceId>
   properties:
     ci:
       codebase:
