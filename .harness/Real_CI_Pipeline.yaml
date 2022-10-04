@@ -85,5 +85,5 @@ pipeline:
     ci:
       codebase:
         connectorRef: account.tres
-        repoName: test
+        repoName: pedrokuhn/goHelloWorldServer
         build: <+input>
