@@ -27,8 +27,9 @@ pipeline:
                   name: Run Unit Tests
                   identifier: Run_Unit_Tests
                   spec:
-                    connectorRef: Docker_Quickstart
+                    connectorRef: account.harnessImage
                     image: golang:1.15
+                    shell: Sh
                     command: |-
                       #go get gotest.tools/gotestsum
                       #gotestsum --format=standard-verbose --junitfile unit-tests.xml || true
