@@ -75,6 +75,11 @@ pipeline:
                         repo: pedrokuhnmaster/ciquickstart
                         tags:
                           - <+pipeline.sequenceId>
+        variables:
+          - name: test
+            type: String
+            description: ""
+            value: test value
   properties:
     ci:
       codebase:
