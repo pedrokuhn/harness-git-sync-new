@@ -1,0 +1,38 @@
+inputSet:
+  identifier: "aaaeeee"
+  pipeline:
+    identifier: "T27885_Clone"
+    stages:
+    - stage:
+        identifier: "Rolling_Deploy"
+        type: "Deployment"
+        spec:
+          serviceConfig:
+            serviceDefinition:
+              type: "Kubernetes"
+              spec:
+                variables:
+                - name: "test"
+                  type: "String"
+                  value: "aa"
+                artifacts:
+                  primary:
+                    type: "DockerRegistry"
+                    spec:
+                      connectorRef: "account.harnessImage"
+                      imagePath: "library/nginx"
+                      tag: "perl"
+        variables:
+        - name: "custom_tag"
+          type: "String"
+          value: "test"
+    variables:
+    - name: "a"
+      type: "String"
+      value: "aaaaaa"
+    - name: "use_cache"
+      type: "String"
+      value: "true"
+  name: "aaaeeee"
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
