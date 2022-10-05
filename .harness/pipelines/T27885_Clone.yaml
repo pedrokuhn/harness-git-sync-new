@@ -81,8 +81,11 @@ pipeline:
                       - name: SECRET_NAME
                         type: String
                         value: SECRET_NAME
-                    executionTarget: {}
                   timeout: 10m
+                  when:
+                    stageStatus: Success
+                    condition: <+pipeline.variables.use_cache == "true">
+                  failureStrategies: []
             rollbackSteps:
               - step:
                   name: Rollback Rollout Deployment
@@ -122,6 +125,10 @@ pipeline:
     - name: a
       type: String
       default: aaaaaa
+      value: <+input>
+    - name: use_cache
+      type: String
+      description: ""
       value: <+input>
   identifier: T27885_Clone
   name: T32997 - get secret
