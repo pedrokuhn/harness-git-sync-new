@@ -84,7 +84,7 @@ pipeline:
                   timeout: 10m
                   when:
                     stageStatus: Success
-                    condition: <+pipeline.variables.use_cache == "true">
+                    condition: <+pipeline.variables.use_cache> == "true"
                   failureStrategies: []
             rollbackSteps:
               - step:
