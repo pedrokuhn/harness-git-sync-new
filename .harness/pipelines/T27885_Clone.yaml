@@ -75,7 +75,10 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: SECRET_NAME=$(echo "account.original<+project.name>crypto<+env.name>")
+                        script: |-
+                          SECRET_NAME=$(echo "account.original<+project.name>crypto<+env.name>")
+
+                          echo <+artifact.tag>
                     environmentVariables: []
                     outputVariables:
                       - name: SECRET_NAME
