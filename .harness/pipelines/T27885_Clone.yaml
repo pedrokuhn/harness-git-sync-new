@@ -75,10 +75,7 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: |-
-                          SECRET_NAME=$(echo "account.original<+project.name>crypto<+env.name>")
-
-                          echo <+artifact.tag>
+                        script: "echo \"The user who triggered my pipeline was: <+pipeline.triggeredBy.name>\"\""
                     environmentVariables: []
                     outputVariables:
                       - name: SECRET_NAME
