@@ -3,7 +3,7 @@ type: KUBERNETES_CLUSTER
 continuousEfficiencyConfig:
   continuousEfficiencyEnabled: false
 delegateSelectors:
-- default
+- first-gen-pedro-delegate
 skipValidation: false
 usageRestrictions:
   appEnvRestrictions:
