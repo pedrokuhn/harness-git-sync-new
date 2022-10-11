@@ -1,7 +1,6 @@
 harnessApiVersion: '1.0'
 type: ROLLING
 concurrencyStrategy: INFRA
-envName: GCP Environment
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
@@ -31,6 +30,29 @@ phases:
       steps:
       - AfterExportVariable
     steps:
+    - type: SHELL_SCRIPT
+      name: AfterExportVariable
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        includeInfraSelectors: true
+        outputVars: ''
+        publishAsVar: false
+        scriptString: |-
+          echo "${context.successCriteria.CONTINUE}"
+
+          echo "${context.successCriteria.TEST}"
+        scriptType: BASH
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        timeoutMillis: 60000
     - type: SHELL_SCRIPT
       name: Shell Script
       properties:
@@ -79,29 +101,6 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 60000
-    - type: SHELL_SCRIPT
-      name: AfterExportVariable
-      properties:
-        commandPath: null
-        connectionAttributeName: null
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: true
-        outputVars: ''
-        publishAsVar: false
-        scriptString: |-
-          echo "${context.successCriteria.CONTINUE}"
-
-          echo "${context.successCriteria.TEST}"
-        scriptType: BASH
-        sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
@@ -110,7 +109,6 @@ phases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Deployment
   statefulSet: false
   templateExpressions:
   - expression: ${Service}
@@ -148,7 +146,6 @@ rollbackPhases:
     phaseStepNameForRollback: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Deployment
   statefulSet: false
   templateExpressions:
   - expression: ${Service}
