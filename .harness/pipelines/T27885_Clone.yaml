@@ -75,7 +75,7 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: "echo \"The user who triggered my pipeline was: <+pipeline.triggeredBy.name>\"\""
+                        script: "echo \"The user who triggered my pipeline was: <+pipeline.triggeredBy.name>\""
                     environmentVariables: []
                     outputVariables:
                       - name: SECRET_NAME
