@@ -35,7 +35,12 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: echo "resolving ENTITY type variable ===> ${workflow.variables.Service}"
+        scriptString: |-
+          echo "resolving ENTITY type variable ===> ${workflow.variables.Service}"
+
+          echo "Service Name: ${service.name}"
+          echo "Infra Name: ${infra.name}"
+          echo "Env Name: ${env.name}"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
