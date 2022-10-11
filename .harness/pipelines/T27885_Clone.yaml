@@ -75,12 +75,21 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: "echo \"The user who triggered my pipeline was: <+pipeline.triggeredBy.name>\""
-                    environmentVariables: []
-                    outputVariables:
-                      - name: SECRET_NAME
+                        script: |-
+                          touch tst.sh
+                          echo "The user who triggered my pipeline was: <+pipeline.triggeredBy.name>" >> tst.sh
+                          echo "The user who triggered my pipeline was: ${TRIGGERED_BY}" >> tst.sh
+
+                          chmod +x ./tst.sh
+
+                          ./tst.sh
+
+                          rm -rf tst.sh
+                    environmentVariables:
+                      - name: TRIGGERED_BY
                         type: String
-                        value: SECRET_NAME
+                        value: <+pipeline.triggeredBy.name>
+                    outputVariables: []
                   timeout: 10m
                   when:
                     stageStatus: Success
