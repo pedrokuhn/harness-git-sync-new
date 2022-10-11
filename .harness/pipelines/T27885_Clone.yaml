@@ -77,8 +77,8 @@ pipeline:
                       spec:
                         script: |-
                           touch tst.sh
-                          echo "The user who triggered my pipeline was: <+pipeline.triggeredBy.name>" >> tst.sh
-                          echo "The user who triggered my pipeline was: ${TRIGGERED_BY}" >> tst.sh
+                          echo 'echo "The user who triggered my pipeline was: <+pipeline.triggeredBy.name>"'' >> tst.sh
+                          echo 'echo "The user who triggered my pipeline was: ${TRIGGERED_BY}"'' >> tst.sh
 
                           chmod +x ./tst.sh
 
