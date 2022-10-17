@@ -11,7 +11,7 @@ pipeline:
         type: Deployment
         spec:
           serviceConfig:
-            serviceRef: Basic_Service
+            serviceRef: <+input>
             serviceDefinition:
               type: Kubernetes
               spec:
