@@ -11,7 +11,7 @@ pipeline:
         type: Deployment
         spec:
           serviceConfig:
-            serviceRef: <+pipeline.variables.use_cache>
+            serviceRef: Basic_Service
             serviceDefinition:
               type: Kubernetes
               spec:
@@ -117,6 +117,34 @@ pipeline:
             value: <+input>
         when:
           pipelineStatus: Success
+    - stage:
+        name: SkipTest
+        identifier: SkipTest
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: test
+                  identifier: test
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - account._account_all_users
+                    approverInputs: []
+        tags: {}
+        when:
+          pipelineStatus: Success
+          condition: <+pipeline.variables.use_cache> == "true"
   notificationRules:
     - name: Test
       pipelineEvents:
