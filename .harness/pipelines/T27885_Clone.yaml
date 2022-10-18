@@ -11,7 +11,7 @@ pipeline:
         type: Deployment
         spec:
           serviceConfig:
-            serviceRef: <+stage.spec.serviceConfig.serviceDefinition.spec.variables.test>
+            serviceRef: <+pipeline.variables.use_cache>
             serviceDefinition:
               type: Kubernetes
               spec:
