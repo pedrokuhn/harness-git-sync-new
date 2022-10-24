@@ -2,6 +2,9 @@ harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
 configVariables:
+- name: public_domain
+  value: environment-override
+  valueType: TEXT
 - name: os
   value: linux
   valueType: TEXT
