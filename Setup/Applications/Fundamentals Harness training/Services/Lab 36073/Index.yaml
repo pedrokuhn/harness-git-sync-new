@@ -2,6 +2,9 @@ harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
 configVariables:
+- name: os
+  value: linux
+  valueType: TEXT
 - name: init_pfx_args
   value: environment-override
   valueType: TEXT
