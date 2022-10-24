@@ -1,4 +1,4 @@
-name: harness-example
+name: ${service.name}
 replicas: 1
 
 image: ${artifact.metadata.image}
@@ -8,14 +8,19 @@ createNamespace: true
 namespace: ${infra.kubernetes.namespace}
 
 # Service Type allow you to specify what kind of service you want.
-# Possible values for ServiceVariableType are:
+# Possible values for ServiceType are:
 # ClusterIP | NodePort | LoadBalancer | ExternalName
-serviceType: LoadBalancer
+serviceType: ClusterIP
 
 # A Service can map an incoming port to any targetPort.
 # targetPort is where application is listening on inside the container.
 servicePort: 80
 serviceTargetPort: 80
+
+ingress:
+  # Full dns name here
+  hostName: ${workflow.variables.service_url}
+  path: /
 
 # Specify all environment variables to be added to the container.
 # The following two maps, config and secrets, are put into a ConfigMap
@@ -23,6 +28,71 @@ serviceTargetPort: 80
 # Both are added to the container environment in podSpec as envFrom source.
 env:
   config:
-    key1: value1
+    enviroment: "${env.name}"
+    env_name: "${env.name.split('-')[0].toLowerCase()}"
+    iso_code: "${env.name.split('-')[1].toLowerCase()}"
+    env_instance: "${env.name.split('-')[2].toLowerCase()}"
+    service_url: https://${workflow.variables.service_url}
+    aws_region: ${serviceVariable.aws_region}
+    dns_domain: ${serviceVariable.dns_domain}
+    public_domain: ${serviceVariable.public_domain}
+    CONSUL_HTTP_ADDR: hashicorp-consul-server.hashicorp-consul:8500
+    ASPNETCORE_ENVIRONMENT: "${env.name.split('-')[0].toLowerCase()}"
+    Vault__KubernetesRole: ${service.name}
+    FEATURE_FLAGS_FILE_PATH: /app/bin/feature-flags/feature_state.json
+    FEATURE_FLAGS_CONSUL_PATH: feature_flags
   secrets:
-    key2: value2
+
+# Specify Operating system of the worker on which the pod is to be run
+operatingsystem: linux
+
+# Variable used by the service account to map to IAM role - ensure this value is quoted
+awsaccountid: "${serviceVariable.aws_account_id}"
+
+vaultInit:
+  initImage: ${account.defaults.init_vault_linux}
+  initArgs:
+  - --vault_address=http://hashicorp-vault.hashicorp-vault:8200
+  - signing,/kv/certificates/signing,pfx
+  - signing,/kv/certificates/signing,passphrase
+  - encryption,/kv/certificates/encryption,pfx
+  - encryption,/kv/certificates/encryption,passphrase
+
+certTrust:
+  trustImage: ${account.defaults.init_dotnetpfx}
+  initArgs:
+  - ${serviceVariable.init_pfx_args}
+
+featureFlags:
+  imageName: ${account.defaults.init_consul_linux}
+  mountPath: /app/bin/feature-flags
+
+# Specify resources requests and limits for the containers, such as ram, cpu, etc.
+resources:
+  default:
+    ram:
+      request: 1Gi
+      limit: 2Gi
+  vaultInit:
+    ram:
+      request: ${app.defaults.resources_linux_init_ram_request}
+      limit: ${app.defaults.resources_linux_init_ram_request}
+  certTrust:
+    ram:
+      request: ${app.defaults.resources_linux_init_ram_request}
+      limit: ${app.defaults.resources_linux_init_ram_request}
+  featureFlags:
+    ram:
+      request: ${app.defaults.resources_linux_init_ram_request}
+      limit: ${app.defaults.resources_linux_init_ram_request}
+
+# Restart blue and green pods
+restartPods:
+  imageName: ${account.defaults.job_restart_pods}
+  cron: ${account.defaults.job_restart_pods_cron}
+  jitter: ${account.defaults.cron_job_jitter_seconds}
+
+affinity: {}
+
+cronJobs:
+  apiVersion: ${serviceVariable.cron_job_api_version}
