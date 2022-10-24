@@ -2,6 +2,9 @@ harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
 configVariables:
+- name: dns_domain
+  value: environment-override
+  valueType: TEXT
 - name: deployment_strategy
   value: blue_green
   valueType: TEXT
