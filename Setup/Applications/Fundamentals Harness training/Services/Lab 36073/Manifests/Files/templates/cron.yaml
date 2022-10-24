@@ -1,0 +1,24 @@
+#Restart pods
+apiVersion: {{.Values.cronJobs.apiVersion}}
+kind: CronJob
+metadata:
+  name: {{.Values.name}}-restart-pods
+  namespace: {{.Values.namespace}}
+spec:
+  schedule: {{.Values.restartPods.cron}}
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        spec:
+          containers:
+            - name: kubectl
+              image: {{.Values.restartPods.imageName}}
+              args:
+                - {{.Values.name}}
+                - intelligent-office
+                - {{.Values.restartPods.jitter}}
+          restartPolicy: Never
+          nodeSelector:
+            kubernetes.io/os: linux
+          serviceAccount: {{.Values.name}}
