@@ -2,6 +2,9 @@ harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
 configVariables:
+- name: deployment_strategy
+  value: blue_green
+  valueType: TEXT
 - name: deployable_region
   value: global
   valueType: TEXT
