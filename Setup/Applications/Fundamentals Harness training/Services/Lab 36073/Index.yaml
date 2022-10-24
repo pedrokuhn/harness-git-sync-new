@@ -2,6 +2,9 @@ harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
 configVariables:
+- name: deployable_region
+  value: global
+  valueType: TEXT
 - name: aws_region
   value: envrionment-override
   valueType: TEXT
