@@ -31,7 +31,7 @@ env:
     enviroment: "${env.name}"
     env_name: "${env.name.split('-')[0].toLowerCase()}"
     iso_code: "${env.name.split('-')[1].toLowerCase()}"
-    env_instance: "${env.name.split('-')[2].toLowerCase()}"
+    env_instance: "08"
     service_url: https://${workflow.variables.service_url}
     aws_region: ${serviceVariable.aws_region}
     dns_domain: ${serviceVariable.dns_domain}
