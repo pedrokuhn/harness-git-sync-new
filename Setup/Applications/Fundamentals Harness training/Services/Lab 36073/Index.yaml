@@ -1,5 +1,9 @@
 harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
+configVariables:
+- name: aws_account_id
+  value: environment-override
+  valueType: TEXT
 deploymentType: KUBERNETES
 helmVersion: V2
