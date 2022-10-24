@@ -2,6 +2,9 @@ harnessApiVersion: '1.0'
 type: SERVICE
 artifactType: DOCKER
 configVariables:
+- name: values_kms_key
+  value: environment-override
+  valueType: TEXT
 - name: repository_name
   value: Microservice.ProviderDocuments
   valueType: TEXT
