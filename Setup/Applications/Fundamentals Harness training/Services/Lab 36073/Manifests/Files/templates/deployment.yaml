@@ -36,6 +36,7 @@ kind: Deployment
 metadata:
   name: {{.Values.name}}-deployment
 spec:
+  revisionHistoryLimit: 2
   replicas: {{int .Values.replicas}}
   selector:
     matchLabels:
@@ -44,14 +45,33 @@ spec:
     metadata:
       labels:
         app: {{.Values.name}}
+        {{- if .Values.podLabels}}
+        {{- toYaml .Values.podLabels | nindent 8 }}
+        {{- end }}
     spec:
+    {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+    {{- end }}
+      serviceAccount: {{.Values.name}}
+      serviceAccountName: {{.Values.name}}    
       {{- if .Values.dockercfg}}
       imagePullSecrets:
       - name: {{.Values.name}}-dockercfg
       {{- end}}
-      containers:
-      - name: {{.Values.name}}
-        image: {{.Values.image}}
+      {{- if .Values.vaultInit}}
+      volumes:
+      - name: vault-share
+        emptyDir: {}
+      initContainers:
+      - name: vault-init
+        image: {{.Values.vaultInit.initImage}}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: {{.Values.resources.vaultInit.ram.request}}
+          limits:
+            memory: {{.Values.resources.vaultInit.ram.limit}}
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
@@ -63,3 +83,73 @@ spec:
             name: {{.Values.name}}
         {{- end}}
         {{- end}}
+        volumeMounts:
+        - name: vault-share
+          mountPath: /mount
+        args: {{toJson .Values.vaultInit.initArgs}}
+      - name: cert-trust
+        image: {{.Values.certTrust.trustImage}}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: {{.Values.resources.certTrust.ram.request}}
+          limits:
+            memory: {{.Values.resources.certTrust.ram.limit}}
+        volumeMounts:
+        - name: vault-share
+          mountPath: /mount
+        args: {{toJson .Values.certTrust.initArgs}}
+      {{- end}}
+      containers:
+      - name: {{.Values.name}}
+        image: {{.Values.image}}
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: {{.Values.resources.default.ram.request}}
+          limits:
+            memory: {{.Values.resources.default.ram.limit}}
+        {{- if or .Values.env.config .Values.env.secrets}}
+        envFrom:
+        {{- if .Values.env.config}}
+        - configMapRef:
+            name: {{.Values.name}}
+        {{- end}}
+        {{- if .Values.env.secrets}}
+        - secretRef:
+            name: {{.Values.name}}
+        {{- end}}
+        {{- end}}
+        {{- if .Values.vaultInit}}
+        volumeMounts:
+        - name: vault-share
+          mountPath: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+          subPath: certs/ca-bundle.crt
+        - name: vault-share
+          mountPath: /etc/pki/ca-trust/extracted/openssl/ca-bundle.trust.crt
+          subPath: certs/ca-bundle.trust.crt
+        - name: vault-share
+          mountPath: /etc/pki/ca-trust/source/anchors/intelliflo_root_ca.pem
+          subPath: certs/intelliflo_root_ca.pem
+        - name: vault-share
+          mountPath: /root/.dotnet
+          subPath: .dotnet
+        {{- end}}
+        args: 
+          - -template=appsettings.ctmpl:appsettings.{{.Values.env.config.env_name}}.json
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 120
+          periodSeconds: 60
+          timeoutSeconds: 5
+      nodeSelector:
+        kubernetes.io/os: {{.Values.operatingsystem}}
