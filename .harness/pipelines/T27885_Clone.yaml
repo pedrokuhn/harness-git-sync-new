@@ -59,8 +59,8 @@ pipeline:
             infrastructureDefinition:
               type: KubernetesDirect
               spec:
-                connectorRef: account.CCM_Connector
-                namespace: test
+                connectorRef: account.Testaaa
+                namespace: pedro
                 releaseName: release-<+INFRA_KEY>
             allowSimultaneousDeployments: false
           execution:
@@ -95,6 +95,14 @@ pipeline:
                     stageStatus: Success
                     condition: <+pipeline.variables.use_cache> == "true"
                   failureStrategies: []
+              - step:
+                  type: K8sRollingDeploy
+                  name: Rolling Deployment
+                  identifier: Rolling_Deployment
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+                  timeout: 10m
             rollbackSteps:
               - step:
                   name: Rollback Rollout Deployment
