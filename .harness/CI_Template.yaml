@@ -14,9 +14,21 @@ pipeline:
             identifier: Test
             type: CI
             variables:
+              - name: aws_account_id
+                type: String
+                value: <+input>
+              - name: aws_region
+                type: String
+                value: <+input>.allowedValues(us-east-1,us-east-2,us-west-1,us-west-2)
               - name: java_version
                 type: String
                 value: <+input>.allowedValues(8,11)
+              - name: java_vendor
+                type: String
+                value: <+input>.allowedValues(oracle,corretto)
+              - name: ecr_repo_name
+                type: String
+                value: <+input>
   tags: {}
   projectIdentifier: Rolling_Lab
   orgIdentifier: default
