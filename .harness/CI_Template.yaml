@@ -1,0 +1,22 @@
+pipeline:
+  name: CI Template
+  identifier: CI_Template
+  template:
+    templateRef: account.Test
+    versionLabel: "2"
+    templateInputs:
+      properties:
+        ci:
+          codebase:
+            build: <+input>
+      stages:
+        - stage:
+            identifier: Test
+            type: CI
+            variables:
+              - name: java_version
+                type: String
+                value: <+input>.allowedValues(8,11)
+  tags: {}
+  projectIdentifier: Rolling_Lab
+  orgIdentifier: default
