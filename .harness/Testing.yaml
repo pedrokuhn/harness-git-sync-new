@@ -1,0 +1,40 @@
+pipeline:
+  name: Testing
+  identifier: Testing
+  template:
+    templateRef: account.Get_Tag_Pipeline
+    versionLabel: "1.0"
+    templateInputs:
+      stages:
+        - stage:
+            identifier: Rolling_Deployment
+            type: Deployment
+            spec:
+              serviceConfig:
+                serviceRef: <+input>
+                serviceDefinition:
+                  type: Kubernetes
+                  spec:
+                    variables:
+                      - name: java_version
+                        type: String
+                        value: <+input>.allowedValues(8,11)
+                    artifacts:
+                      primary:
+                        type: DockerRegistry
+                        spec:
+                          tag: <+input>
+              infrastructure:
+                environmentRef: <+input>
+                infrastructureDefinition:
+                  type: KubernetesDirect
+                  spec:
+                    connectorRef: <+input>
+                    namespace: <+input>
+      variables:
+        - name: from_template_variable
+          type: String
+          value: <+input>
+  tags: {}
+  projectIdentifier: Rolling_Lab
+  orgIdentifier: default
