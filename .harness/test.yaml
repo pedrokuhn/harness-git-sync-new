@@ -1,0 +1,36 @@
+inputSet:
+  identifier: "test"
+  pipeline:
+    identifier: "CI_Template"
+    template:
+      templateInputs:
+        properties:
+          ci:
+            codebase:
+              build:
+                type: "branch"
+                spec:
+                  branch: "main"
+        stages:
+        - stage:
+            identifier: "Test"
+            type: "CI"
+            variables:
+            - name: "aws_account_id"
+              type: "String"
+              value: "5478"
+            - name: "aws_region"
+              type: "String"
+              value: "us-east-1"
+            - name: "java_version"
+              type: "String"
+              value: "8"
+            - name: "java_vendor"
+              type: "String"
+              value: "oracle"
+            - name: "ecr_repo_name"
+              type: "String"
+              value: "7165"
+  name: "test"
+  orgIdentifier: "default"
+  projectIdentifier: "Rolling_Lab"
