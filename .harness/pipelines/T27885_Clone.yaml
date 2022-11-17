@@ -75,7 +75,29 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo 1
+                        script: |-
+                          case <+stage.variables.test> in
+
+                            dev)
+                              echo -n "Dev environemnt is using delegates from: pedrocs"
+                              DELEGATE="pedrocs"
+                              ;;
+
+                            staging | Moldova)
+                              echo -n "Dev environemnt is using delegates from: pedrocse-staging"
+                              DELEGATE="pedrocse-staging"
+                              ;;
+
+                            prod | "San Marino" | Switzerland | "Vatican City")
+                              echo -n "Dev environemnt is using delegates from: pedrocse-prod"
+                              DELEGATE="pedrocse-prod"
+                              ;;
+
+                            *)
+                              echo -n "<+stage.variables.test> is not a valid environment"
+                              exit 1
+                              ;;
+                          esac
                     environmentVariables: []
                     outputVariables:
                       - name: DELEGATE_NAME
