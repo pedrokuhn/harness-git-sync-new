@@ -152,14 +152,6 @@ pipeline:
       enabled: true
   flowControl:
     barriers: []
-  variables:
-    - name: a
-      type: String
-      default: aaaaaa
-      value: <+input>
-    - name: use_cache
-      type: String
-      description: ""
-      value: <+input>
+  variables: []
   identifier: T27885_Clone
   name: T32997 - get secret
