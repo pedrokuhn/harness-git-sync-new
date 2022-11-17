@@ -15,10 +15,7 @@ pipeline:
             serviceDefinition:
               type: Kubernetes
               spec:
-                variables:
-                  - name: test
-                    type: String
-                    value: <+input>
+                variables: []
                 manifests:
                   - manifest:
                       identifier: BasicManifest
