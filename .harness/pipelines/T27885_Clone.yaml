@@ -132,9 +132,6 @@ pipeline:
               action:
                 type: StageRollback
         variables:
-          - name: custom_tag
-            type: String
-            value: <+input>
           - name: test
             type: String
             default: dev
