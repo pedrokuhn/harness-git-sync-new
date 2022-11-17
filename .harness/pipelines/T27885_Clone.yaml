@@ -67,34 +67,21 @@ pipeline:
             steps:
               - step:
                   type: ShellScript
-                  name: Get Secret Name
-                  identifier: Prepare_Secret
+                  name: Configure Delegate based on the environment
+                  identifier: Configure_Delegate_based_on_the_environment
                   spec:
                     shell: Bash
                     onDelegate: true
                     source:
                       type: Inline
                       spec:
-                        script: |-
-                          touch tst.sh
-                          echo 'echo "The user who triggered my pipeline was: <+pipeline.triggeredBy.name>"' >> tst.sh
-                          echo 'echo "The user who triggered my pipeline was: ${TRIGGERED_BY}"' >> tst.sh
-
-                          chmod +x ./tst.sh
-
-                          ./tst.sh
-
-                          rm -rf tst.sh
-                    environmentVariables:
-                      - name: TRIGGERED_BY
+                        script: echo 1
+                    environmentVariables: []
+                    outputVariables:
+                      - name: DELEGATE_NAME
                         type: String
-                        value: <+pipeline.triggeredBy.name>
-                    outputVariables: []
+                        value: DELEGATE
                   timeout: 10m
-                  when:
-                    stageStatus: Success
-                    condition: <+pipeline.variables.use_cache> == "true"
-                  failureStrategies: []
               - step:
                   type: K8sRollingDeploy
                   name: Rolling Deployment
@@ -123,36 +110,13 @@ pipeline:
           - name: custom_tag
             type: String
             value: <+input>
+          - name: test
+            type: String
+            default: dev
+            description: ""
+            value: <+input>.allowedValues(dev,staging,prod)
         when:
           pipelineStatus: Success
-    - stage:
-        name: SkipTest
-        identifier: SkipTest
-        description: ""
-        type: Approval
-        spec:
-          execution:
-            steps:
-              - step:
-                  name: test
-                  identifier: test
-                  type: HarnessApproval
-                  timeout: 1d
-                  spec:
-                    approvalMessage: |-
-                      Please review the following information
-                      and approve the pipeline progression
-                    includePipelineExecutionHistory: true
-                    approvers:
-                      minimumCount: 1
-                      disallowPipelineExecutor: false
-                      userGroups:
-                        - account._account_all_users
-                    approverInputs: []
-        tags: {}
-        when:
-          pipelineStatus: Success
-          condition: <+pipeline.variables.use_cache> == "true"
   notificationRules:
     - name: Test
       pipelineEvents:
