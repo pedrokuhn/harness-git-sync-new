@@ -111,7 +111,10 @@ pipeline:
                   spec:
                     skipDryRun: false
                     pruningEnabled: false
+                    delegateSelectors:
+                      - <+steps.Configure_Delegate_based_on_the_environment.output.outputVariables.DELEGATE_NAME>
                   timeout: 10m
+                  failureStrategies: []
             rollbackSteps:
               - step:
                   name: Rollback Rollout Deployment
