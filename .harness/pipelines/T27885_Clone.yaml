@@ -47,9 +47,9 @@ pipeline:
                 artifacts:
                   primary:
                     spec:
-                      connectorRef: <+input>
-                      imagePath: <+input>
-                      tag: <+input>
+                      connectorRef: account.harnessImage
+                      imagePath: library/nginx
+                      tag: <+stage.variables.test>
                     type: DockerRegistry
           infrastructure:
             environmentRef: Basic_Infra
