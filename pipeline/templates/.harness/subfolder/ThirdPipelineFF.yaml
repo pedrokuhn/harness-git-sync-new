@@ -1,0 +1,29 @@
+pipeline:
+  name: ThirdPipelineFF
+  identifier: ThirdPipelineFF
+  projectIdentifier: GitX_V2
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        description: ""
+        type: FeatureFlag
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Shell Step
+                  identifier: Shell_Step
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "Hello World"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
