@@ -95,12 +95,7 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
-        variables:
-          - name: test
-            type: String
-            default: dev
-            description: ""
-            value: <+input>.allowedValues(dev,staging,prod)
+        variables: []
         when:
           pipelineStatus: Success
   notificationRules:
