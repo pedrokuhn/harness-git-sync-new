@@ -5,11 +5,6 @@ envName: Pedro Production
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
-  - APPLICATION_ERROR
-  repairActionCode: ROLLBACK_WORKFLOW
-  retryCount: 0
-- executionScope: WORKFLOW
-  failureTypes:
   - CONNECTIVITY
   - VERIFICATION_FAILURE
   - AUTHENTICATION
