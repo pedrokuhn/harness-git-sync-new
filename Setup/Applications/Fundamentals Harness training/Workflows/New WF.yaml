@@ -8,6 +8,14 @@ failureStrategies:
   - APPLICATION_ERROR
   repairActionCode: ROLLBACK_WORKFLOW
   retryCount: 0
+- executionScope: WORKFLOW
+  failureTypes:
+  - CONNECTIVITY
+  - VERIFICATION_FAILURE
+  - AUTHENTICATION
+  - APPLICATION_ERROR
+  repairActionCode: ABORT_WORKFLOW_EXECUTION
+  retryCount: 0
 notificationRules:
 - conditions:
   - FAILED
