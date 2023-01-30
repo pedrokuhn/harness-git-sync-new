@@ -7,3 +7,5 @@ infrastructure:
   cloudProviderName: GKE cluster
   namespace: pedro
   releaseName: release-${workflow.releaseNo}
+scopedServices:
+- GCR test Service
