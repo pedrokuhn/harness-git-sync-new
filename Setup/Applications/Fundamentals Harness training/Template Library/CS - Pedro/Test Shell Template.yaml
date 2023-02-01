@@ -1,0 +1,34 @@
+harnessApiVersion: '1.0'
+type: SHELL_SCRIPT
+scriptString: |-
+  #!/bin/bash
+
+  # set -euo pipefail
+
+  # test
+
+  ##
+  # VARIABLE DEFINITIONS
+  ##
+  export TIMESTAMP="$(date +%Y%m%d%H%M%S.%N)"
+  export TMPDIR="$(mktemp -p /tmp -d harness-${TIMESTAMP}-XXXXXXXXXX)"
+  export BASE_DIR="${TMPDIR}/intersight"
+  export BENDER_BRANCH_NAME="${BENDER_BRANCH_NAME}"
+  export BENDER_REPO_DIR="${BASE_DIR}/bender"
+  export BENDER_REPO_URL="ssh://git@bitbucket-eng-sjc1.cisco.com:7999/an/bender.git"
+  export CLOUD_NAME="${CLOUD}"
+scriptType: BASH
+timeoutMillis: 600000
+variables:
+- name: BENDER_BRANCH_NAME
+  value: master
+- name: SWITCH_CLOUD
+  value: 'true'
+- name: PLAYBOOK_NAME
+- name: PLAYBOOK_ARGS
+- name: ISIGHT_SUBCLUSTER_NAME
+- name: AWS_DEFAULT_REGION
+  value: us-east-1
+- name: CLEANUP_TMPDIR
+  value: 'true'
+- name: CLOUD
