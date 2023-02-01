@@ -15,7 +15,7 @@ scriptString: |-
   export BASE_DIR="${TMPDIR}/intersight"
   export BENDER_BRANCH_NAME="${BENDER_BRANCH_NAME}"
   export BENDER_REPO_DIR="${BASE_DIR}/bender"
-  export BENDER_REPO_URL="https://github.com/pedrokuhn/goHelloWorldServerT.git"
+  export BENDER_REPO_URL="https://github.com/pedrokuhn/goHedddlloWorldServerT.git"
   export CLOUD_NAME="${CLOUD}"
 
   ##
