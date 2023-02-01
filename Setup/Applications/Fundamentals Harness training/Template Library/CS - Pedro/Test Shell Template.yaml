@@ -17,6 +17,20 @@ scriptString: |-
   export BENDER_REPO_DIR="${BASE_DIR}/bender"
   export BENDER_REPO_URL="ssh://git@bitbucket-eng-sjc1.cisco.com:7999/an/bender.git"
   export CLOUD_NAME="${CLOUD}"
+
+  ##
+  # FUNCTION DEFINITIONS
+  ##
+  function clone_bender() {
+    echo "Cloning bender branch ${BENDER_BRANCH_NAME} to ${BENDER_REPO_DIR}..."
+
+    # Create the base directory
+    mkdir -p ${BASE_DIR}
+    git clone --branch ${BENDER_BRANCH_NAME} --depth 1 ${BENDER_REPO_URL} ${BENDER_REPO_DIR}
+  }
+
+
+  clone_bender
 scriptType: BASH
 timeoutMillis: 600000
 variables:
