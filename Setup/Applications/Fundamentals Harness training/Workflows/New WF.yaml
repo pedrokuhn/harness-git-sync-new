@@ -32,7 +32,18 @@ phases:
     - type: SHELL_SCRIPT
       name: Test Shell Template
       properties:
+        commandPath: null
+        connectionAttributeName: null
+        delegateSelectors:
+        - first-gen-pedro-delegate
         executeOnDelegate: true
+        host: null
+        includeInfraSelectors: false
+        publishAsVar: false
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
         timeoutMillis: 600000
       templateUri: App/CS - Pedro/Test Shell Template:latest
       templateVariables:
@@ -41,9 +52,9 @@ phases:
       - name: SWITCH_CLOUD
         value: 'true'
       - name: PLAYBOOK_NAME
-        value: ''
+        value: 'true'
       - name: PLAYBOOK_ARGS
-        value: ''
+        value: 'true'
       - name: ISIGHT_SUBCLUSTER_NAME
         value: ''
       - name: AWS_DEFAULT_REGION
@@ -51,7 +62,7 @@ phases:
       - name: CLEANUP_TMPDIR
         value: 'true'
       - name: CLOUD
-        value: ''
+        value: 'true'
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
