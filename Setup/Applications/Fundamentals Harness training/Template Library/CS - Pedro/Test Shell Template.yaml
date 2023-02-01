@@ -3,7 +3,7 @@ type: SHELL_SCRIPT
 scriptString: |-
   #!/bin/bash
 
-  # set -euo pipefail
+  set -euo pipefail
 
   # test
 
