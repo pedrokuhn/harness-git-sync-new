@@ -3,13 +3,15 @@ type: ROLLING
 concurrencyStrategy: INFRA
 envName: Pedro Production
 failureStrategies:
-- executionScope: WORKFLOW
+- actionAfterTimeout: END_EXECUTION
+  executionScope: WORKFLOW
   failureTypes:
   - CONNECTIVITY
   - VERIFICATION_FAILURE
   - AUTHENTICATION
   - APPLICATION_ERROR
-  repairActionCode: ABORT_WORKFLOW_EXECUTION
+  manualInterventionTimeout: 1209600000
+  repairActionCode: MANUAL_INTERVENTION
   retryCount: 0
 notificationRules:
 - conditions:
