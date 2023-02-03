@@ -49,7 +49,7 @@ pipeline:
                     spec:
                       connectorRef: account.harnessImage
                       imagePath: library/nginx
-                      tag: <+stage.variables.test>
+                      tag: <+input>
                     type: DockerRegistry
           infrastructure:
             environmentRef: Basic_Infra
