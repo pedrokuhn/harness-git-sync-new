@@ -63,22 +63,16 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: ShellScript
-                  name: Configure Delegate based on the environment
-                  identifier: Configure_Delegate_based_on_the_environment
+                  type: K8sRollingDeploy
+                  name: Rolling Deployment_1
+                  identifier: RollingDeployment_1
                   spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: branch='test' if [ $branch = 'test'] echo "hello" fi
-                    environmentVariables: []
-                    outputVariables:
-                      - name: DELEGATE_NAME
-                        type: String
-                        value: DELEGATE
+                    skipDryRun: false
+                    pruningEnabled: false
+                    delegateSelectors:
+                      - dallas-training
                   timeout: 10m
+                  failureStrategies: []
             rollbackSteps:
               - step:
                   name: Rollback Rollout Deployment
