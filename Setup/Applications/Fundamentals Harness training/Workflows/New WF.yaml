@@ -32,40 +32,6 @@ phases:
     name: Deploy
     steps:
     - type: SHELL_SCRIPT
-      name: Test Shell Template
-      properties:
-        commandPath: null
-        connectionAttributeName: null
-        delegateSelectors:
-        - first-gen-pedro-delegate
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: false
-        publishAsVar: false
-        sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        timeoutMillis: 600000
-      templateUri: App/CS - Pedro/Test Shell Template:latest
-      templateVariables:
-      - name: BENDER_BRANCH_NAME
-        value: master
-      - name: SWITCH_CLOUD
-        value: 'true'
-      - name: PLAYBOOK_NAME
-        value: 'true'
-      - name: PLAYBOOK_ARGS
-        value: 'true'
-      - name: ISIGHT_SUBCLUSTER_NAME
-        value: ''
-      - name: AWS_DEFAULT_REGION
-        value: us-east-1
-      - name: CLEANUP_TMPDIR
-        value: 'true'
-      - name: CLOUD
-        value: 'true'
-    - type: SHELL_SCRIPT
       name: Shell Script_2
       properties:
         commandPath: null
