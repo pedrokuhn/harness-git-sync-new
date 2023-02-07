@@ -8,6 +8,10 @@ variableOverrides:
   serviceName: Helm Native
   value: stable-alpine-perl
   valueType: TEXT
+- name: ConfigurationVariablesName
+  serviceName: Basic Deployment
+  value: '0'
+  valueType: TEXT
 - name: A
   serviceName: Basic Echo Service
   value: test
