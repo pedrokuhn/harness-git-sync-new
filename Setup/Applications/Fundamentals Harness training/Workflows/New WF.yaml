@@ -64,7 +64,7 @@ phases:
       - name: CLOUD
         value: ''
       - name: INTERSIGHT_API_KEY_ID
-        value: test
+        value: harness-intersight-staging-api-key-id
       - name: EC2_TAG_ENVIRONMENT
         value: TEST
     stepsInParallel: false
