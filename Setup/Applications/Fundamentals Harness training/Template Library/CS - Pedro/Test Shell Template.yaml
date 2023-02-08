@@ -26,7 +26,6 @@ scriptString: |-
 
     # Create the base directory
     mkdir -p ${BASE_DIR}
-    git clone --branch ${BENDER_BRANCH_NAME} --depth 1 ${BENDER_REPO_URL} ${BENDER_REPO_DIR}
   }
 
   export INTERSIGHT_API_KEY_ID_${EC2_TAG_ENVIRONMENT}="${secrets.getValue("${INTERSIGHT_API_KEY_ID}")}"
