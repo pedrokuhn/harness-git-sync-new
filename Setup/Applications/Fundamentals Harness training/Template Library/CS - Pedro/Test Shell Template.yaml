@@ -29,6 +29,7 @@ scriptString: |-
     git clone --branch ${BENDER_BRANCH_NAME} --depth 1 ${BENDER_REPO_URL} ${BENDER_REPO_DIR}
   }
 
+  export INTERSIGHT_API_KEY_ID_${EC2_TAG_ENVIRONMENT}="${secrets.getValue("${INTERSIGHT_API_KEY_ID}")}"
 
   clone_bender
 scriptType: BASH
@@ -46,3 +47,7 @@ variables:
 - name: CLEANUP_TMPDIR
   value: 'true'
 - name: CLOUD
+- name: INTERSIGHT_API_KEY_ID
+  value: test
+- name: EC2_TAG_ENVIRONMENT
+  value: TEST
