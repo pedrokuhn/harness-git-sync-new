@@ -34,7 +34,16 @@ phases:
     - type: SHELL_SCRIPT
       name: Test Shell Template
       properties:
+        commandPath: null
+        connectionAttributeName: null
         executeOnDelegate: true
+        host: null
+        includeInfraSelectors: true
+        publishAsVar: true
+        sshKeyRefName: null
+        sweepingOutputName: test
+        sweepingOutputScope: PIPELINE
+        templateExpressions: null
         timeoutMillis: 600000
       templateUri: App/CS - Pedro/Test Shell Template:latest
       templateVariables:
