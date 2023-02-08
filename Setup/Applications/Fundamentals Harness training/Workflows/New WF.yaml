@@ -54,6 +54,29 @@ phases:
         templateVariables: null
         templateVersion: null
         timeoutMillis: 60000
+    - type: SHELL_SCRIPT
+      name: Test Shell Template
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: App/CS - Pedro/Test Shell Template:latest
+      templateVariables:
+      - name: BENDER_BRANCH_NAME
+        value: master
+      - name: SWITCH_CLOUD
+        value: 'true'
+      - name: PLAYBOOK_NAME
+        value: ''
+      - name: PLAYBOOK_ARGS
+        value: ''
+      - name: ISIGHT_SUBCLUSTER_NAME
+        value: ''
+      - name: AWS_DEFAULT_REGION
+        value: us-east-1
+      - name: CLEANUP_TMPDIR
+        value: 'true'
+      - name: CLOUD
+        value: ''
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
