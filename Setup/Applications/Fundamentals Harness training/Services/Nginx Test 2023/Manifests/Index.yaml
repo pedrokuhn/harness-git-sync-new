@@ -1,3 +1,10 @@
 harnessApiVersion: '1.0'
 type: APPLICATION_MANIFEST
-storeType: Local
+gitFileConfig:
+  branch: configmap
+  connectorName: GitHub Account
+  filePath: templates
+  repoName: /pedrokuhn/basic-service-manifest
+  useBranch: true
+  useInlineServiceDefinition: false
+storeType: Remote
