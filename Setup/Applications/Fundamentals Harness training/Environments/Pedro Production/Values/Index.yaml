@@ -1,9 +1,0 @@
-harnessApiVersion: '1.0'
-type: APPLICATION_MANIFEST_VALUES_ENV_OVERRIDE
-gitFileConfig:
-  branch: master
-  connectorName: helm source repo personal
-  filePath: src/values-4.yaml
-  useBranch: true
-  useInlineServiceDefinition: false
-storeType: Remote
