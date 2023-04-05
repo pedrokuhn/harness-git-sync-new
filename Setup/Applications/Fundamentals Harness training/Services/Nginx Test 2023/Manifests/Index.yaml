@@ -3,7 +3,6 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: configmap
   connectorName: GitHub Account
-  filePath: templates
   repoName: /pedrokuhn/basic-service-manifest
   useBranch: true
   useInlineServiceDefinition: false
