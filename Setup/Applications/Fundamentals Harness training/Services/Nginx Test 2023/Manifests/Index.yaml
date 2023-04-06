@@ -3,7 +3,7 @@ type: APPLICATION_MANIFEST
 gitFileConfig:
   branch: configmap
   connectorName: GitHub Account
-  repoName: /pedrokuhn/basic-service-manifest
+  repoName: /pedrokuhn/helm-service-repo
   useBranch: true
   useInlineServiceDefinition: false
 storeType: HelmSourceRepo
