@@ -6,4 +6,4 @@ gitFileConfig:
   repoName: /pedrokuhn/basic-service-manifest
   useBranch: true
   useInlineServiceDefinition: false
-storeType: Remote
+storeType: HelmSourceRepo
