@@ -68,6 +68,29 @@ phases:
   provisionNodes: false
   serviceName: pedro-wp-go
   statefulSet: false
+preDeploymentSteps:
+- type: TERRAFORM_PROVISION
+  name: Terraform Provision
+  properties:
+    awsConfigId: fHzMl8s-RZeJAd_7unBTtQ
+    awsRegion: us-gov-west-1
+    backendConfigs: null
+    delegateTag: ''
+    environmentVariables: null
+    exportPlanToApplyStep: false
+    exportPlanToHumanReadableOutput: false
+    inheritApprovedPlan: false
+    inheritFromLast: true
+    name: Terraform Provision
+    provisionerName: infra prov test
+    runPlanOnly: false
+    targets: null
+    tfVarFiles: ''
+    tfVarGitFileConfig: null
+    tfVarS3FileConfig: null
+    timeoutMillis: 300000
+    variables: null
+    workspace: ''
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: GKE cluster
