@@ -1,0 +1,9 @@
+harnessApiVersion: '1.0'
+type: CLOUD_FORMATION
+gitFileConfig:
+  branch: main
+  connectorId: TieYaeivQkGuQv_J6QWCjQ
+  filePath: .
+  useBranch: true
+  useInlineServiceDefinition: false
+sourceType: GIT
