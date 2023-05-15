@@ -28,6 +28,12 @@ phases:
     steps:
     - type: K8S_DEPLOYMENT_ROLLING
       name: Rollout Deployment
+    - type: SHELL_SCRIPT
+      name: asdas
+      properties:
+        executeOnDelegate: true
+        timeoutMillis: 600000
+      templateUri: CS - Pedro/asdas:latest
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
