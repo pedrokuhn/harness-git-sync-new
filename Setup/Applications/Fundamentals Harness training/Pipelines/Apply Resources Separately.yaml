@@ -15,3 +15,18 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE Apply Deployment
   workflowName: Workflow to apply deployment
+- type: APPROVAL
+  name: Approval 2
+  parallel: false
+  properties:
+    approvalStateParams:
+      shellScriptApprovalParams:
+        scriptString: echo "Hello World"
+        retryInterval: 30000
+    stageName: STAGE 3
+    timeoutMillis: 86400000
+    approvalStateType: SHELL_SCRIPT
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 3
+rollbackPreviousStages: false
