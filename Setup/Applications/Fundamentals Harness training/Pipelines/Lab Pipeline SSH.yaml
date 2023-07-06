@@ -14,7 +14,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 2
-  workflowName: Lab SSH AWS
+  workflowName: Get Tag Renamed
 - type: ENV_STATE
   name: nginx_deploy_training-to-staging
   parallel: false
