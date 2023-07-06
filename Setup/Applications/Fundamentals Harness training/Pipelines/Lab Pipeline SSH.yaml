@@ -6,7 +6,7 @@ pipelineStages:
   parallel: false
   skipCondition:
     type: DO_NOT_SKIP
-  stageName: STAGE 1
+  stageName: STAGE 2
   workflowName: Get Tag Renamed
 - type: ENV_STATE
   name: Lab SSH AWS
@@ -29,3 +29,4 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 5
   workflowName: SSH New Rolling
+rollbackPreviousStages: false
