@@ -82,7 +82,10 @@ rollbackPhases:
             scriptString: exit 1
             retryInterval: 3000
         approvalStateType: SHELL_SCRIPT
-        timeoutMillis: 30000
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Wrap Up
