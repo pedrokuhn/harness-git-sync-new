@@ -43,14 +43,17 @@ phases:
         publishAsVar: false
         scriptString: |2-
 
+          # ${workflow.variables.CHGTEMPLATE_${env.name.split('_')[0]}}
 
-          echo "${workflow.variables.CHGTEMPLATE_${env.name.split('_')[0]}}"
+          echo "test: ${env.name.split('_')[0]}"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
