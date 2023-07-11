@@ -45,7 +45,7 @@ phases:
 
           # ${workflow.variables.CHGTEMPLATE_${env.name.split('_')[0]}}
 
-          echo "test: ${env.name.split(' ')[0]}"
+          echo "test: ${workflow.variables.CHGTEMPLATE_${env.name.split('_')[0]}}"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
