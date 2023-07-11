@@ -30,27 +30,6 @@ phases:
   phaseSteps:
   - type: K8S_PHASE_STEP
     name: Deploy
-    steps:
-    - type: SHELL_SCRIPT
-      name: Shell Script
-      properties:
-        commandPath: null
-        connectionAttributeName: null
-        executeOnDelegate: true
-        host: null
-        includeInfraSelectors: true
-        outputVars: ''
-        publishAsVar: false
-        scriptString: "#/bin/bash\n\necho \"starting\"\nCA_CERT=${secrets.getValue(\"fluentd_cacert_stage_prod\")}\nTOKEN=${secrets.getValue('fluentd_token_stage')}\nCA_CERT_TOKEN=${secrets.getValue(\"fluentd_token_stage\")}\nHEC_TOKEN=${secrets.getValue(\"fluentd_splunk_hec_token_stage\")}\nDOCKER_JSON=${secrets.getValue(\"fluentd_dockerjson_stage-prod\")}\necho ${CA_CERT_TOKEN}\necho ${HEC_TOKEN}  \n\necho \"exporting\"\n\nexport CA_CERT=${CA_CERT}\nexport  HEC_TOKEN=${HEC_TOKEN}\nexport  DOCKER_JSON=${DOCKER_JSON}\nexport  CA_CERT_TOKEN=${CA_CERT_TOKEN}\n\necho \"Running script\"\n\nsh /opt/harness-delegate/tst.sh test  ${CA_CERT} ${CA_CERT_TOKEN} ${DOCKER_JSON} ${HEC_TOKEN}"
-        scriptType: BASH
-        sshKeyRefName: null
-        sweepingOutputName: null
-        sweepingOutputScope: null
-        templateExpressions: null
-        templateUuid: null
-        templateVariables: null
-        templateVersion: null
-        timeoutMillis: 60000
     stepsInParallel: false
   - type: K8S_PHASE_STEP
     name: Verify
