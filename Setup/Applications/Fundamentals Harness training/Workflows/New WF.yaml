@@ -98,4 +98,10 @@ rollbackPhases:
   provisionNodes: false
   serviceName: Basic Deployment
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: false
+  name: CHGTEMPLATE_Pedro
+  value: testValue
