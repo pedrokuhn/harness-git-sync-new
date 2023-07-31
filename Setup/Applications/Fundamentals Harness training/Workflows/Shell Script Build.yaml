@@ -24,13 +24,15 @@ phases:
         host: null
         outputVars: ''
         publishAsVar: false
-        scriptString: 'curl -i -X GET ''https://app.harness.io/ng/api/usage/CD/serviceInstancesLicense?accountIdentifier=TSw91wglQiKwCocRRpn5xA&timestamp="1690216630"'' -H ''x-api-key: VFN3OTF3Z2xRaUt3Q29jUlJwbjV4QTo6SVBGS2Q3eWJjajBwTFRLZ1pGSm5jRTh6S1l2SldQQXFEd2VKT1cwc0xjdmZMUXl6ZXI2bkZsQm1QV3BFY1h3ZWFhck82aU9PalR5b3hQYm0='
+        scriptString: 'curl -i -X GET ''https://app.harness.io/ng/api/usage/CD/serviceInstancesLicense?accountIdentifier=YpUfe9mVQECwIhopss9sVw&timestamp=1690216630'' -H ''x-api-key: sat.YpUfe9mVQECwIhopss9sVw.64245a15868527755fe9915a.xsYWY7HUhbjzgQrwAP1c'''
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
         sweepingOutputScope: null
         templateExpressions: null
-        templateVariables: ''
+        templateUuid: null
+        templateVariables: null
+        templateVersion: null
         timeoutMillis: 60000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
