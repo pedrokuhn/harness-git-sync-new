@@ -17,9 +17,6 @@ phases:
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
-    steps:
-    - type: ARTIFACT_COLLECTION
-      name: Artifact Collection
     stepsInParallel: false
   - type: WRAP_UP
     name: Wrap Up
