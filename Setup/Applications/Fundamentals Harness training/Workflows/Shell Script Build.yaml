@@ -14,6 +14,24 @@ phases:
   phaseSteps:
   - type: PREPARE_STEPS
     name: Prepare Steps
+    steps:
+    - type: SHELL_SCRIPT
+      name: Shell Script
+      properties:
+        commandPath: null
+        connectionAttributeName: null
+        executeOnDelegate: true
+        host: null
+        outputVars: ''
+        publishAsVar: false
+        scriptString: 'curl -i -X GET ''https://app.harness.io/ng/api/usage/CD/serviceInstancesLicense?accountIdentifier=TSw91wglQiKwCocRRpn5xA&timestamp="1690216630"'' -H ''x-api-key: VFN3OTF3Z2xRaUt3Q29jUlJwbjV4QTo6SVBGS2Q3eWJjajBwTFRLZ1pGSm5jRTh6S1l2SldQQXFEd2VKT1cwc0xjdmZMUXl6ZXI2bkZsQm1QV3BFY1h3ZWFhck82aU9PalR5b3hQYm0='
+        scriptType: BASH
+        sshKeyRefName: null
+        sweepingOutputName: null
+        sweepingOutputScope: null
+        templateExpressions: null
+        templateVariables: ''
+        timeoutMillis: 60000
     stepsInParallel: false
   - type: COLLECT_ARTIFACT
     name: Collect Artifact
