@@ -62,9 +62,7 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: "while [ ! -n \"$COMPLETED\" ]; do\n  sleep 30\n\tCOMPLETED=$(kubectl\
-          \ get pods --selector 'job-name=processing-job-test' -n pedro -o 'jsonpath={..status.conditions[?(@.reason==\"\
-          PodCompleted\")].status}' | grep -i Truea)\n  echo \"Waiting...\"\ndone"
+        scriptString: "while [ ! -n \"$COMPLETED\" ]; do\n  sleep 30\n\tCOMPLETED=$(kubectl get pods --selector 'job-name=processing-job-test' -n pedro -o 'jsonpath={..status.conditions[?(@.reason==\"PodCompleted\")].status}' | grep -i Truea)\n  echo \"Waiting...\"\ndone"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null

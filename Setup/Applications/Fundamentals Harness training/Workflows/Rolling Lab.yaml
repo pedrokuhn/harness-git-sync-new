@@ -1,7 +1,6 @@
 harnessApiVersion: '1.0'
 type: ROLLING
 concurrencyStrategy: INFRA
-envName: Pedro Production
 failureStrategies:
 - executionScope: WORKFLOW
   failureTypes:
@@ -36,7 +35,6 @@ phases:
     name: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: New Basic
   statefulSet: false
   templateExpressions:
   - expression: ${Service}
@@ -74,7 +72,6 @@ rollbackPhases:
     phaseStepNameForRollback: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: New Basic
   statefulSet: false
   templateExpressions:
   - expression: ${Service}

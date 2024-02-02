@@ -24,3 +24,4 @@ pipelineStages:
     type: CONDITIONAL_SKIP
   stageName: STAGE 3
   workflowName: Rollback Deploy
+rollbackPreviousStages: false

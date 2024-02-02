@@ -41,3 +41,4 @@ pipelineStages:
   - entityType: INFRASTRUCTURE_DEFINITION
     name: InfraDefinition_KUBERNETES
     value: ${infra_def}
+rollbackPreviousStages: false

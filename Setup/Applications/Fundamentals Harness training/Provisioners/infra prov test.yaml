@@ -5,3 +5,4 @@ secretMangerName: 'Harness Secrets Manager '
 skipRefreshBeforeApplyingPlan: false
 sourceRepoBranch: master
 sourceRepoSettingName: Fundamentals git training
+sourceType: GIT

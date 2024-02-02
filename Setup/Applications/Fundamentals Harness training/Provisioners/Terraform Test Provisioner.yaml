@@ -6,3 +6,4 @@ secretMangerName: 'Harness Secrets Manager '
 skipRefreshBeforeApplyingPlan: true
 sourceRepoBranch: ${workflow.variables.branch}
 sourceRepoSettingName: GitHub Account
+sourceType: GIT

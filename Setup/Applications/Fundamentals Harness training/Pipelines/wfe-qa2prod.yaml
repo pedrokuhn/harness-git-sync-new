@@ -50,3 +50,4 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 5
   workflowName: nginx_deploy_training-to-production
+rollbackPreviousStages: false

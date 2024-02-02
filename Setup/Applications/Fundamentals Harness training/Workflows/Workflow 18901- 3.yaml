@@ -60,7 +60,6 @@ phases:
         timeoutMillis: 60000
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Service
   statefulSet: false
   templateExpressions:
   - expression: ${Service}
@@ -115,7 +114,6 @@ phases:
         timeoutMillis: 60000
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Service
   statefulSet: false
   templateExpressions:
   - expression: ${ServiceSister}
@@ -169,7 +167,6 @@ rollbackPhases:
     phaseStepNameForRollback: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Service
   statefulSet: false
   templateExpressions:
   - expression: ${Service}
@@ -200,7 +197,6 @@ rollbackPhases:
     phaseStepNameForRollback: Wrap Up
     stepsInParallel: false
   provisionNodes: false
-  serviceName: Basic Service
   statefulSet: false
   templateExpressions:
   - expression: ${ServiceSister}

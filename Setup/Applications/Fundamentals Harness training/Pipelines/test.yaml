@@ -22,3 +22,4 @@ pipelineStages:
     type: DO_NOT_SKIP
   stageName: STAGE 1
   workflowName: Helm Native Workflow
+rollbackPreviousStages: false

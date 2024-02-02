@@ -85,23 +85,7 @@ phases:
         includeInfraSelectors: true
         outputVars: ''
         publishAsVar: false
-        scriptString: "export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}\n\n### After\
-          \ Swap ###\n\n# Step 1: No changes in the default scripts that get all old\
-          \ version Deployments within the namespace, it just separates the output\
-          \ in a different line to be iterate later\nALL_DEPLOYMENTS_THAT_MATCH=$(kubectl\
-          \ get deploy -n ${infra.kubernetes.namespace} -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\\\
-          .io/color==\"'$(kubectl get service/${k8s.stageServiceName} -n ${infra.kubernetes.namespace}\
-          \ -o jsonpath='{.spec.selector.harness\\.io/color}')'\")].metadata.name}'\
-          \ | grep -o '[^ ]\\+')\n\n# Step 2: Get all deployments that match with\
-          \ our Unique label\nGET_DEPLOYMENT_BASED_ON_LABEL=$(kubectl get deploy -n\
-          \ ${infra.kubernetes.namespace} -l 'app-id=secondary' --no-headers -o custom-columns=':metadata.name\
-          \ ' | tr '\\n' ' ')\n\n# Iterate over the list we create in the Step 1\n\
-          echo \"$ALL_DEPLOYMENTS_THAT_MATCH\" | while IFS= read -r line; do \n  #\
-          \ Will execute the downscale only for Deployment that is present in the\
-          \ deployment list we got from the Step 2\n\tif [[ $GET_DEPLOYMENT_BASED_ON_LABEL\
-          \ == *\"$line\"* ]]; then\n    echo \"Downscaling -> $line\"\n\t\tkubectl\
-          \ scale deploy -n ${infra.kubernetes.namespace} $line --replicas=0\n  fi\n\
-          done\n\nexit 0"
+        scriptString: "export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}\n\n### After Swap ###\n\n# Step 1: No changes in the default scripts that get all old version Deployments within the namespace, it just separates the output in a different line to be iterate later\nALL_DEPLOYMENTS_THAT_MATCH=$(kubectl get deploy -n ${infra.kubernetes.namespace} -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\\.io/color==\"'$(kubectl get service/${k8s.stageServiceName} -n ${infra.kubernetes.namespace} -o jsonpath='{.spec.selector.harness\\.io/color}')'\")].metadata.name}' | grep -o '[^ ]\\+')\n\n# Step 2: Get all deployments that match with our Unique label\nGET_DEPLOYMENT_BASED_ON_LABEL=$(kubectl get deploy -n ${infra.kubernetes.namespace} -l 'app-id=secondary' --no-headers -o custom-columns=':metadata.name ' | tr '\\n' ' ')\n\n# Iterate over the list we create in the Step 1\necho \"$ALL_DEPLOYMENTS_THAT_MATCH\" | while IFS= read -r line; do \n  # Will execute the downscale only for Deployment that is present in the deployment list we got from the Step 2\n\tif [[ $GET_DEPLOYMENT_BASED_ON_LABEL == *\"$line\"* ]]; then\n    echo \"Downscaling -> $line\"\n\t\tkubectl scale deploy -n ${infra.kubernetes.namespace} $line --replicas=0\n  fi\ndone\n\nexit 0"
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null

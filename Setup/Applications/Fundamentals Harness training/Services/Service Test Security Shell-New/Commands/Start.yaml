@@ -2,17 +2,7 @@ harnessApiVersion: '1.0'
 type: START
 commandUnitType: COMMAND
 commandUnits:
-- command: "#!/bin/bash\n\nset -e\n\n#Create a working directory and set variable\
-    \ \ncd /tmp\nmkdir -p /tmp/test\ncd test\n\n#working_directory=$(echo ${workflow.startTs})\n\
-    \necho \"#########################################################\"\necho \"\
-    Just printing the git commands instead of executing it to test the conditional\"\
-    \necho \"#########################################################\"\necho \"\"\
-    \n\n\n#Clone GIT repository\necho \"git clone https://github.com/pedrokuhn/${serviceVariable.repository_name}.git\"\
-    \necho \"cd ${serviceVariable.repository_name}\"\n\necho \"Cloning repo: ${serviceVariable.repository_name}\"\
-    \necho \"Artifact: ${artifact.fileName}\"\n\nif [[ \"${artifact.fileName}\" !=\
-    \ *\"master\"* ]]\nthen\n  echo \"#### Entered in the conditional ####\"\n  echo\
-    \ \"Pulling PR ${context.package.pr_number}\"\n  echo \"git pull origin pull/${context.package.pr_number}/merge\"\
-    \nfi\n"
+- command: "#!/bin/bash\n\nset -e\n\n#Create a working directory and set variable \ncd /tmp\nmkdir -p /tmp/test\ncd test\n\n#working_directory=$(echo ${workflow.startTs})\n\necho \"#########################################################\"\necho \"Just printing the git commands instead of executing it to test the conditional\"\necho \"#########################################################\"\necho \"\"\n\n\n#Clone GIT repository\necho \"git clone https://github.com/pedrokuhn/${serviceVariable.repository_name}.git\"\necho \"cd ${serviceVariable.repository_name}\"\n\necho \"Cloning repo: ${serviceVariable.repository_name}\"\necho \"Artifact: ${artifact.fileName}\"\n\nif [[ \"${artifact.fileName}\" != *\"master\"* ]]\nthen\n  echo \"#### Entered in the conditional ####\"\n  echo \"Pulling PR ${context.package.pr_number}\"\n  echo \"git pull origin pull/${context.package.pr_number}/merge\"\nfi\n"
   commandUnitType: EXEC
   deploymentType: SSH
   name: Git Clone
