@@ -12,4 +12,15 @@ pipelineStages:
   - entityType: SERVICE
     name: Service
     value: Basic Deployment
+- type: ENV_STATE
+  name: JASDASYDGKHASD-1
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 2
+  workflowName: JASDASYDGKHASD
+  workflowVariables:
+  - entityType: SERVICE
+    name: Service
+    value: Basic Deployment
 rollbackPreviousStages: false
