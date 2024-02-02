@@ -1,10 +1,6 @@
 harnessApiVersion: '1.0'
 type: CUSTOM_DEPLOYMENT_TYPE
-fetchInstanceScript: "#\n# Script is expected to query Infrastructure and dump json\n\
-  # in $INSTANCE_OUTPUT_PATH file path\n#\n# Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}\n\
-  # environment variable - a random unique file path on delegate,\n# so script execution\
-  \ can save the result.\n#\n#\n\ncat > $INSTANCE_OUTPUT_PATH <<_EOF_\n{\n  \"data\"\
-  : [\n    {\n      \"functionName\": \"${app.name}\"\n    }\n  ]\n} \n_EOF_"
+fetchInstanceScript: "#\n# Script is expected to query Infrastructure and dump json\n# in $INSTANCE_OUTPUT_PATH file path\n#\n# Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}\n# environment variable - a random unique file path on delegate,\n# so script execution can save the result.\n#\n#\n\ncat > $INSTANCE_OUTPUT_PATH <<_EOF_\n{\n  \"data\": [\n    {\n      \"functionName\": \"${app.name}\"\n    }\n  ]\n} \n_EOF_"
 hostAttributes:
   hostname: functionName
 hostObjectArrayPath: data

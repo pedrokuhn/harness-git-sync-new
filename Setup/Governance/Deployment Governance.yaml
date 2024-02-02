@@ -24,5 +24,9 @@ timeRangeBasedFreezeConfigs:
     from: '1650286664143'
     timeZone: Asia/Calcutta
     to: '1650891464143'
+  userGroupSelection:
+    filterType: CUSTOM
+    userGroupNames:
+    - Account Administrator
   userGroups:
   - Account Administrator

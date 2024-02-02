@@ -1,6 +1,7 @@
 harnessApiVersion: '1.0'
 type: GIT
 branch: master
+disableUserGitConfig: false
 keyAuth: false
 password: gcpkms:gitPasswordDefault
 providerType: GIT

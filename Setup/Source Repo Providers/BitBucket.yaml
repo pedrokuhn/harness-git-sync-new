@@ -3,6 +3,7 @@ type: GIT
 branch: main
 delegateSelectors:
 - my-first-delegate
+disableUserGitConfig: false
 keyAuth: true
 providerType: GIT
 sshKeyName: BitBucket

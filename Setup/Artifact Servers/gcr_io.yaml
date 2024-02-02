@@ -1,5 +1,6 @@
 harnessApiVersion: '1.0'
 type: DOCKER
+skipValidation: false
 url: https://us.gcr.io/v2/
 usageRestrictions:
   appEnvRestrictions:

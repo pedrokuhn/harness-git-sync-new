@@ -1,5 +1,7 @@
 harnessApiVersion: '1.0'
 type: KUBERNETES_CLUSTER
+continuousEfficiencyConfig:
+  continuousEfficiencyEnabled: false
 delegateSelectors:
 - new-vm-delegate-ypufem-0
 skipValidation: false
