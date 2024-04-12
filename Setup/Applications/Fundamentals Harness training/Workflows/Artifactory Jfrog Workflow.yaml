@@ -39,10 +39,7 @@ phases:
         scriptString: |
           echo "Hello World"
 
-          MESSAGE='**${workflow.displayName} succeeded.**</br></br>**Application:**
-          ${app.name}</br>**Service:** ${service.name}</br>**Environment:**
-          ${env.name}</br>**Triggered By:**
-          ${deploymentTriggeredBy}</br>**Details:** [${deploymentUrl}](${deploymentUrl})'
+          MESSAGE='${artifact.metadata.image}'
         scriptType: BASH
         sshKeyRefName: null
         sweepingOutputName: null
