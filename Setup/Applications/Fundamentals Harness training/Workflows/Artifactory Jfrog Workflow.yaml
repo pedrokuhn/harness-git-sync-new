@@ -41,7 +41,7 @@ phases:
 
           MESSAGE='**${workflow.displayName} succeeded.**</br></br>**Application:**
           ${app.name}</br>**Service:** ${service.name}</br>**Environment:**
-          ${env.name}</br>**Artifact:** ${artifact.metadata.image}</br>**Triggered By:**
+          ${env.name}</br>**Triggered By:**
           ${deploymentTriggeredBy}</br>**Details:** [${deploymentUrl}](${deploymentUrl})'
         scriptType: BASH
         sshKeyRefName: null
