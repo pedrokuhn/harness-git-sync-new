@@ -1,0 +1,7 @@
+harnessApiVersion: '1.0'
+type: CONFIG_FILE_OVERRIDE
+checksum: jaWDlRDD8k+Cu3qH3J1qLQ==
+checksumType: MD5
+encrypted: false
+fileName: SSH test file
+targetFilePath: SSH test file
