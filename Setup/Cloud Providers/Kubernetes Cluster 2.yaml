@@ -3,7 +3,7 @@ type: KUBERNETES_CLUSTER
 continuousEfficiencyConfig:
   continuousEfficiencyEnabled: false
 delegateSelectors:
-- new-vm-delegate-ypufem-0
+- first-gen-pedro-delegate
 skipValidation: false
 usageRestrictions:
   appEnvRestrictions:
