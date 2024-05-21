@@ -1,6 +1,0 @@
-harnessApiVersion: '1.0'
-type: CONFIG_FILE_OVERRIDE
-checksumType: MD5
-encrypted: true
-fileName: gcpkms:value_json
-targetFilePath: Test Config File

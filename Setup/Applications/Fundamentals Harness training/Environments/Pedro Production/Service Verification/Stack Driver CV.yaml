@@ -3,10 +3,8 @@ type: STACK_DRIVER_LOG
 alertEnabled: false
 alertPriority: P5
 alertThreshold: 0.5
-baselineEndMinute: 27133620
-baselineStartMinute: 27133546
 connectorName: Google Cloud Platform GCS
-enabled24x7: true
+enabled24x7: false
 hostnameField: resource.labels.pod_name
 isLogsConfiguration: true
 messageField: textPayload
