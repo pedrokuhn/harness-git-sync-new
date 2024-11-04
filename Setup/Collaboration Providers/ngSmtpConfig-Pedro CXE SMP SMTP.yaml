@@ -1,0 +1,8 @@
+harnessApiVersion: '1.0'
+type: SMTP
+fromAddress: pedro@harnesscx.io
+host: http://mx.harnesscx.io/
+password: gcpkms:ngSmtpConfig-Pedro-CXE-SMP-SMTP-YpUfe9mVQECwIhopss9sVw-SmtpSecret
+port: 587
+useSSL: false
+username: pedro@harnesscx.io
